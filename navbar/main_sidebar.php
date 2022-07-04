@@ -66,9 +66,8 @@ if (!isset($_SESSION["email"])) {
             </a>  -->
           </li>
          
-          <li class="nav-header">INCIDENT</li>
-          <?php 
-          if($_SESSION['ROLE'] == '1'){?>
+          <!-- <li class="nav-header">INCIDENT</li> -->
+         
             <li class="nav-item">
               <a href="../admin/ticket_incident.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
@@ -87,35 +86,9 @@ if (!isset($_SESSION["email"])) {
               <p>Ticket Details </p> 
               </a>
             </li>
-              <?php
-            }
+       
 
-            ?>
-            <?php 
-          if($_SESSION['ROLE'] == '2'){?>
-            <li class="nav-item">
-              <a href="../User/user_ticket_incident.php" class="nav-link">
-                <i class='fas fa-ticket-alt'></i>
-                <p> Ticket Incident</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../User/user_ticket_table_container.php" class="nav-link">
-              <i class='fas fa-ticket-alt' style='color:red'></i>
-              <p>Ticket Table </p> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../User/user_ticket_details_container.php" class="nav-link">
-              <i class='fas fa-info' ></i>
-              <p>Ticket Details </p> 
-              </a>
-            </li>
-            <?php
-            }
-
-            ?>
-          <li class="nav-header">MISCELLANEOUS</li>
+          <!-- <li class="nav-header">MISCELLANEOUS</li> -->
           <!-- <li class="nav-item">
             <a href="iframe.html" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
@@ -129,33 +102,29 @@ if (!isset($_SESSION["email"])) {
             </a> -->
           </li>
           <?php 
-          if($_SESSION['ROLE'] == '1'){?>
-            <li class="nav-header">Employee</li>
-          <li class="nav-item">
-            <a href="Ticket_add_employee.php" class="nav-link">
-            <i class="fas fa-user-plus"></i>
-              <p>Add Employee</p>
-              
-            </a>
-          </li>
-          <?php
+          if($_SESSION['ROLE'] == '1' || $_SESSION['ROLE'] == '2'){?>
+                                                <!-- <li class="nav-header">Employee</li> -->
+                                              <li class="nav-item">
+                                                <a href="Ticket_add_employee.php" class="nav-link">
+                                                <i class="fas fa-user-plus"></i>
+                                                  <p>Add Employee</p>
+                                                  
+                                                </a>
+                                              </li>
+                           <?php 
           }
-
-          ?>
-              <?php 
-          if($_SESSION['ROLE'] == '1'){?>
-          <li class="nav-header">History</li>
+                           ?>                 
           
+          <!-- <li class="nav-header">History</li> -->
+          <?php 
+          if($_SESSION['ROLE'] == '1'){?>
           <li class="nav-item">
             <a href="../admin/ticket_permission_container.php?id=<?php echo md5('autohubgroup')?>" class="nav-link">
             <i class='fas fa-history' style='color:red'></i>
               <p class="text">Settings</p>
             </a>
           </li>
-          <?php
-          }
-
-          ?>
+         <?php } ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

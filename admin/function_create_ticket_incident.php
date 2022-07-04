@@ -8,10 +8,10 @@ if (!isset($_SESSION["email"])) {
 	}
 use LDAP\Result;
     $date = date('d-m-y h:i:s');
-    require '../connect.php';
+  
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln'];
     $user_id = $_SESSION['user_id'];
-    $employee_id = $_SESSION['u_id'];
+    $employee_id = $_SESSION['id'];
     $sortdiscription = $_POST['inputSubject'];
     $discription = $_POST['inputMessage'];
     $departmentType = $_POST['inputeparment'];
@@ -72,9 +72,6 @@ use LDAP\Result;
       
         
         header("location: ../admin/ticket_details_container.php?id=".$last_id);
-        // $queryticket = "INSERT INTO ticket_assignee(id, user_id, ticket_id, createAt) VALUES ('',$user_id,'$ticket_number',(SELECT NOW())))";
-        // if (!mysqli_query($conn,$queryticket)){ 
-        //     echo'pumasok na sa database yung ticket mo ';
-        // }
+       
     
 ?>

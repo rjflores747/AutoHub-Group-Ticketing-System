@@ -1,12 +1,13 @@
 <?php 
-   if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
-    header('location: index.php');
-    die();
+  //  if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
+  //   header('location: index.php');
+  //   die();
     if (!isset($_SESSION["email"])) {
       header("Location: index.php");
       exit();
     }
-} ?>
+// }
+ ?>
   <!-- Main content -->
   <section class="content">
       <div class="container-fluid">

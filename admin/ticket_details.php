@@ -105,8 +105,9 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
              
 
 
-                          
-                        <span class="info-box-number text-left  mb-0">Status#:
+                    <?php 
+                      if($_SESSION['ROLE'] == '1'){?>
+                       <span class="info-box-number text-left  mb-0">Status#:
                           <div class="select2-purple">
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
                                 <option value="" style="text-align:center">---------- STATUS ----------</option>
@@ -139,6 +140,50 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                                 <i class="fas fa-user-edit"></i>	Update
                         </button>
                       </span>
+                      <?php
+                      }
+
+                      ?>
+                                          <?php 
+                      if($_SESSION['ROLE'] == '2'){?>
+                       <span class="info-box-number text-left  mb-0">Status#:
+                          <div class="select2-purple">
+                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
+                                <option value="" style="text-align:center">---------- STATUS ----------</option>
+                                    <?php 
+                                      
+                                        $query= "SELECT * from ticket_status 
+                                        order by ticket_status_name ASC";
+                                        $result1= mysqli_query($conn,$query);
+                                       
+                                        while ($statusrow = mysqli_fetch_array($result1)) { 
+
+                                          if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
+                                          ?>  
+                                          <option selected value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <?php
+                                          
+                                          }
+                                          else
+                                          {
+                                            ?>  
+                                          <option  value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <?php
+                                          }?>
+                         
+                                    <?php } ?>
+                            </select>
+                          </div><br>
+                          <button class="btn btn-primary" 
+                                id="Updatestatu" name="Updatestatu" >
+                                <i class="fas fa-user-edit"></i>	Update
+                        </button>
+                      </span>
+                      <?php
+                      }
+
+                      ?>
+                        
                     </form>
                   </div>
                 </div>

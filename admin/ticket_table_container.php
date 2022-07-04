@@ -162,54 +162,39 @@ $(function() {
         // className: "align-middle p-1 dt-center",
 
         render: function (data, type, row, meta) {
+
+          var view = `<a href="../admin/ticket_details_container.php?id=`+
+            row.id +
+            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
+          var update = `         <a href="../admin/ticket_update_incident_container.php?id=`+
+            row.id +
+            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
+          var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
+          
       
-          if(row['ticket_user_role'] == '1'){
+          if(row['ticket_user_role'] == '1' ){
             return (
             `
                    <div class="row justify-content-center">
-                           <a href="../admin/ticket_details_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> 
-            <a href="../admin/ticket_update_incident_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a> 
-                           <a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>
+                   `+view+update+remove+` 
                    </div>
                    `
-                   
           );
           }else if(row['ticket_user_role'] == '2'){
-            return (
-            `
-                   <div class="row justify-content-center">
-                           <a href="../admin/ticket_details_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> 
-            <a href="../admin/ticket_update_incident_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a> 
-                           <a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove" diabled><i class="fa fa-trash"></i></a>
+            return(`
+            <div class="row justify-content-center">
+                   `+view+update+` 
                    </div>
-                   `
                    
-          );
+            `);
           }else if(row['ticket_user_role'] == '3'){
-            return (
-            `
-                   <div class="row justify-content-center">
-                           <a href="../admin/ticket_details_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> 
-            <a href="../admin/ticket_update_incident_container.php?id=`+
-            row.id +
-            `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen" diabled></i></a> 
-                           <a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove" diabled><i class="fa fa-trash"></i></a>
+            return(`
+            <div class="row justify-content-center">
+                   `+view+` 
                    </div>
-                   `
                    
-          );
+            `);
           }
-        
         },
       },
     ];
@@ -273,7 +258,7 @@ $(function() {
         var ticket_id = $(this).attr('data-action-remove');
 
            Swal.fire({
-          title: "Are you sure, you want to remove this product?",
+          title: "Are you sure, you want to remove this Ticket?",
           text: "This action cannot be undone.",
           icon: "warning",
           showCancelButton: true,
@@ -329,6 +314,7 @@ $(function() {
    
 
 <script>
+  
   $(function() {
     var Toast = Swal.mixin({
       toast: true,

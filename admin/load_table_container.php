@@ -1,8 +1,16 @@
 
                   <?php               
                  require_once '../connect.php';
+                 $ticketwhere = '';
+                 if($_SESSION['ROLE'] == 1){
+                  $ticketwhere = '';
+                 }elseif($_SESSION['ROLE'] == 2){
+                  $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
+                 }elseif($_SESSION['ROLE'] == 3){
+                  $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
+                 }
                     // $refeshtablenew = $_POST["refeshtablenew"];
-                    $sqltable="SELECT * FROM ticket_incident ";
+                    $sqltable="SELECT * FROM ticket_incident  where 1 ".$ticketwhere;
                     $resultsqltable = mysqli_query($conn,$sqltable);
                     $ticket['data'] = array();
                     while ($rowsqltable = mysqli_fetch_assoc($resultsqltable)){

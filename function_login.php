@@ -32,16 +32,19 @@
             $_SESSION['ticket_fn'] = $ticketfn;
             $_SESSION['ticket_ln'] = $ticketln;	
 			$_SESSION['ticket_user_department']	= $ticketdepartment;
-			$_SESSION['ticket_user_url']	= $ticket_user_url;
+			$_SESSION['ticket_user_url'] = $ticket_user_url;
 			$_SESSION['ticket_user_role'] = $ticket_user_role;
 			$_SESSION['u_id'] = $employee_id;
 			$_SESSION['ROLE']=$row['ticket_user_role'];
 			$_SESSION['IS_LOGIN']='yes';
-			if($row['ticket_user_role']==1){
+			if($row['ticket_user_role'] == 1 ){
 				header('Location: ./admin/ticket_incident.php');
 				die();
-			}if($row['ticket_user_role']==2){
-				header('Location: ./User/user_ticket_incident.php');
+			}if($row['ticket_user_role'] == 2){
+				header('Location: ./admin/ticket_incident.php');
+				die();
+			}if($row['ticket_user_role'] == 3){
+				header('Location: ./admin/ticket_incident.php');
 				die();
 			}
 			// echo $ticketfn,$ticketln,$ticketdepartment;
