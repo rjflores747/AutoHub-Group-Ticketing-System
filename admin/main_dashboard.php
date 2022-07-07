@@ -5,13 +5,23 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-ticket-alt"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
+                <?php
+                require_once '../connect.php';
+                $sql="select count(*) as total from ticket_incident";
+                $result=mysqli_query($conn,$sql);
+                $data=mysqli_fetch_assoc($result);
+              
+                ?>
+                <span class="info-box-text">TICKET </span>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                  <?php 
+                 echo $data['total'];
+               
+                  ?>
+                 
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -54,8 +64,19 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
+              <?php
+                require_once '../connect.php';
+                $sql="select count(*) as total from ticket_user";
+                $result=mysqli_query($conn,$sql);
+                $data=mysqli_fetch_assoc($result);
+              
+                ?>
+                <span class="info-box-text">TICKET </span>
+                <span class="info-box-number">
+                  <?php 
+                 echo $data['total'];
+               
+                  ?>
               </div>
               <!-- /.info-box-content -->
             </div>

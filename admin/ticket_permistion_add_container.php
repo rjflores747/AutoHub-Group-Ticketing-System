@@ -29,7 +29,7 @@ require_once '../connect.php';
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  <?php include '../admin/ticket_permission_list.php';?>
+  <?php include '../admin/ticket_permistion_add.php';?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -52,26 +52,26 @@ require_once '../connect.php';
 <!-- Page specific script -->
 <script>
   //for the deparment to deparment assignment
-  $(document).ready(function(){
-    $("#tkdepart").change()
-      $("#tkdepart").change(function(){
-        // alert (   $("#tkdepart").val());
-        var tkdepart_id = this.value;
-        $.ajax({
-        url: "function_update_ticket_incident_ajax.php",
-        type: "POST",
-        data: {
-          tkdepart_id: $("#tkdepart").val()
-          // tkdepart_id: tkdepart_id
-        },
-        cache: false,
-        success: function(result1){     
-          $("#deptgroup").html(result1);
+//   $(document).ready(function(){
+//     $("#tkdepart").change()
+//       $("#tkdepart").change(function(){
+//         // alert (   $("#tkdepart").val());
+//         var tkdepart_id = this.value;
+//         $.ajax({
+//         url: "function_update_ticket_incident_ajax.php",
+//         type: "POST",
+//         data: {
+//           tkdepart_id: $("#tkdepart").val()
+//           // tkdepart_id: tkdepart_id
+//         },
+//         cache: false,
+//         success: function(result1){     
+//           $("#deptgroup").html(result1);
     
-        }
-        });    
-      });  
-    });
+//         }
+//         });    
+//       });  
+//     });
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()

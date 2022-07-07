@@ -1,19 +1,16 @@
 <?php 
+
 require_once '../connect.php';
 
-
-if (!isset($_SESSION["email"])) {
-  header("Location: index.php");
-  exit();
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AutoHubGroup | TicketingSystem</title>
-  
+
   <?php include '../link-required-start.php';?>
 
 </head>
@@ -32,7 +29,7 @@ if (!isset($_SESSION["email"])) {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  <?php include '../admin/ticket_incident_table.php';?>
+  <?php include '../admin/ticket_role_add.php';?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -52,6 +49,7 @@ if (!isset($_SESSION["email"])) {
 
 </body>
 </html>
+
 <!-- Page specific script -->
 
 <script>
@@ -99,57 +97,44 @@ $(function() {
         data: "id",
         className: "",
         // orderable: true,
-        // width: "1%",
+        width: "1%",
       },
       {
-        title: "Ticket Number#	",
-        data: "ticket_number",
+        title: "Role Name	",
+        data: "role_name",
         className: "",
         // orderable: true,
         width: "1%",
       },
-      {
-        title: "Short Discription ",
-        data: "ticket_short_discrip",
-        className: "",
-        // orderable: true,
       
-        
-        
-      },
-      {
-        title: "Discription ",
-        data: "ticket_discription",
-        className: "",
-        // orderable: true,
-        // width: "1%",
-      },
+      
       {
         title: "Status",
-        data: "ticket_status",
+        data: "role_status",
         className: "",
         
         render: function (data, type, row, meta) {
           //  alert(row['ticket_status']);
-          if(row['ticket_status'] == 'Open'){
+          if(row['role_status'] == '1'){
 
-            return '<span class="badge badge-info">Open</span>';
-          }else if(row['ticket_status'] == 'Close' ){
+            return '<span class="badge badge-info">Active</span>';
+          }else if(row['role_status'] == '0' ){
 
-            return '<span class="badge badge-danger">Close</span>' ;
-          }else if(row['ticket_status'] == 'New' ){
-
-          return '<span class="badge badge-success">New</span>' ;
-          }else if(row['ticket_status'] == 'Pending'){
-
-            return '<span class="badge badge-warning">Pending</span> ';
-          }else if(row['ticket_status'] == 'Success' ){
-            return '<span class="badge badge-success">Success</span>';
-
-          }else if(row['ticket_status'] == 'In Progress' ){
-
-            return '<span class="badge badge-primary">In Progress</span>';
+            return '<span class="badge badge-danger">Deactive</span>' ;
           }
+          // else if(row['ticket_status'] == 'New' ){
+
+          // return '<span class="badge badge-success">New</span>' ;
+          // }else if(row['ticket_status'] == 'Pending'){
+
+          //   return '<span class="badge badge-warning">Pending</span> ';
+          // }else if(row['ticket_status'] == 'Success' ){
+          //   return '<span class="badge badge-success">Success</span>';
+
+          // }else if(row['ticket_status'] == 'In Progress' ){
+
+          //   return '<span class="badge badge-primary">In Progress</span>';
+          // }
         },
         // orderable: true,
         width: "1%",
@@ -158,12 +143,12 @@ $(function() {
         title: "Action",
         data: null,
         orderable: false,
-        width: "5%",
+        width: "1%",
         // className: "align-middle p-1 dt-center",
 
         render: function (data, type, row, meta) {
 
-          var view = `<a href="../admin/ticket_details_container.php?id=`+
+          var view = `<a href="../admin/ticket_permission_select_container.php?id=`+
             row.id +
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
           var update = `         <a href="../admin/ticket_update_incident_container.php?id=`+
@@ -172,29 +157,30 @@ $(function() {
           var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
           
       
-          if(row['ticket_user_role'] == '1' ){
+          if(row['role_status'] == '1' ){
             return (
             `
                    <div class="row justify-content-center">
-                   `+view+update+remove+` 
+                   `+view+` 
                    </div>
                    `
           );
-          }else if(row['ticket_user_role'] == '2'){
-            return(`
-            <div class="row justify-content-center">
-                   `+view+update+` 
-                   </div>
-                   
-            `);
-          }else if(row['ticket_user_role'] == '3'){
-            return(`
-            <div class="row justify-content-center">
-                   `+view+` 
-                   </div>
-                   
-            `);
           }
+          // else if(row['ticket_user_role'] == '2'){
+          //   return(`
+          //   <div class="row justify-content-center">
+          //          `+view+update+` 
+          //          </div>
+                   
+          //   `);
+          // }else if(row['ticket_user_role'] == '3'){
+          //   return(`
+          //   <div class="row justify-content-center">
+          //          `+view+` 
+          //          </div>
+                   
+          //   `);
+          // }
         },
       },
     ];
@@ -205,7 +191,7 @@ $(function() {
       },
 //get data in table from database 
       ajax: {
-        url: "load_table_container.php",
+        url: "load_table_role_container.php",
         data: function (d) {
           return $.extend({}, d, {
             search_type: "search_type_filter",
@@ -312,4 +298,5 @@ $(function() {
 
 
    
+
 

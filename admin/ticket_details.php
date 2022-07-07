@@ -2,11 +2,7 @@
  require_once '../connect.php';
   if (isset($_GET['id'])) {
   $lastId = $_GET['id'];
-  if (!isset($_SESSION["email"])) {
-    header("Location: index.php");
-    exit();
-   
-  }
+
   $creatTk="SELECT * FROM ticket_incident WHERE id= '".$lastId."'";
   $query_run = mysqli_query($conn,$creatTk);
   $row = mysqli_fetch_array($query_run);

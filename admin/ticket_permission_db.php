@@ -1,24 +1,19 @@
 <?php
-require_once '../connect.php';
-if(isset($_POST['permissionsubmit']))
-{
-$user_id=$_POST['user_id'];
-	if($user_id!='')
-	{
-		$deleteqry="DELETE FROM ticket_menu_useraccess where user_id='$user_id'";
-		$delteres=mysqli_query($conn,$deleteqry);
-		
-		foreach ($_POST['user_permission'] as $key => $value) {
-			$user_permission=$_POST['user_permission'][$key];
-			$menu_id=$_POST['menu_id'][$key];
-			$submenu_id=$_POST['submenu_id'][$key];
+include '../connect.php';
 
-			$insertqry="INSERT INTO `ticket_menu_useraccess`( `menu_id`, `sub_menu_id`, `user_id`, `user_permission`) VALUES ('$menu_id','$submenu_id','$user_id','$user_permission')";
-			$insertres=mysqli_query($conn,$insertqry);
-		}
+if(isset($_POST['Permission_submit']))
+{
+	$Permission_id=$_POST['Permission_id'];
+	$Permission_name=$_POST['Permission_name'];
+	$Permission_status=$_POST['Permission_status'];
+
+	if($Permission_name!='')
+	{
+		$insertqry="INSERT INTO  `ticket_role_permission`(`role_permission_id`, `role_permission`, `role_permission_status`)  VALUES ('$Permission_id','$Permission_name','$Permission_status')";
+		$insertres=mysqli_query($conn,$insertqry);
 	}
 }
-echo '<script>alert(" Permission is added successfully.");
-		window.location="index.php";
+echo '<script>alert(" Menu is added successfully.");
+		window.location="ticket_permistion_add_container.php";
 </script>';
 ?>

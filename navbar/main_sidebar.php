@@ -118,12 +118,37 @@ if (!isset($_SESSION["email"])) {
           <!-- <li class="nav-header">History</li> -->
           <?php 
           if($_SESSION['ROLE'] == '1'){?>
-          <li class="nav-item">
-            <a href="../admin/ticket_permission_container.php?id=<?php echo md5('autohubgroup')?>" class="nav-link">
-            <i class='fas fa-history' style='color:red'></i>
-              <p class="text">Settings</p>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+            <i class="fas fa-tools"></i>
+              <p>
+                 Configuration
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../admin/ticket_role_add_container.php" class="nav-link">
+                  <i class="fas fa-user-cog"></i>
+                  <p>Role Add </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/ticket_permistion_add_container.php" class="nav-link ">
+                  <i class="fas fa-users-cog"></i>
+                  <p>Permission Add</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/ticket_permission_container.php" class="nav-link ">
+                <i class="fas fa-cogs"></i>
+                  <p>Settings</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
+          
          <?php } ?>
         </ul>
       </nav>
