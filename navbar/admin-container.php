@@ -33,7 +33,7 @@
             <form action="../admin/function_create_ticket_incident.php" method="POST">
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
-                   <select class="form-control select2bs4"  name="inputeparment" style="width: 100%;">
+                   <select class="form-control select2bs4"  name="inputeparment" style="width: 100%;" require>
                               <option value="" require>----- NONE -----</option>
                               <?php
                              

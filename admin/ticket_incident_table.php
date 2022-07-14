@@ -259,9 +259,21 @@ if (!isset($_SESSION["email"])) {
               
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+         
+                <table id='empTable' class='display dataTable' width='100%'>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ticket Number</th>
+                    <th>Short Discription</th>
+                    <th>Discription</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
                  
-                </table>
+            </table>
+              
               </div>
               <!-- /.card-body -->
             </div>

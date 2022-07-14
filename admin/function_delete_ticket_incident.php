@@ -5,8 +5,8 @@ if(isset($_POST['ticket_id']))
     $id = $_POST['ticket_id'];
     $return_arr = array(); 
     $query = "DELETE FROM ticket_incident WHERE id='$id'"; 
-    $query_run = mysqli_query($connection, $query); // echo $query; exit;
-    $deleted = mysqli_affected_rows($connection);
+    $query_run = mysqli_query($conn, $query); // echo $query; exit;
+    $deleted = mysqli_affected_rows($conn);
 
     if($query_run > 0)
     {

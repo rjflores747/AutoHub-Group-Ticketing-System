@@ -37,6 +37,11 @@
 <script src="../app/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../app/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+
+
 
 <!-- Select2 -->
 <script src="../app/plugins/select2/js/select2.full.min.js"></script>
@@ -45,7 +50,6 @@
 <!-- Toastr -->
 <script src="../app/plugins/toastr/toastr.min.js"></script>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <!-- for rating star of user -->
     
 <script>
@@ -94,27 +98,3 @@
 
     });
 </script>
-<!-- 
-<script>
-  $("#deletedata").on('click', function(){
- 
-    $.ajax({
-        url: "function_delete_ticket_incident.php",
-        type: "POST",
-        data: {
-          delete_id: $("#delete_id").val()
-          // tkdepart_id: tkdepart_id
-        },
-        cache: false,
-        success: function(result1){     
-          // $('.swalDefaultInfo').click(function() {
-          Toast.fire({
-            icon: 'info',
-            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-          })
-        // });
-    
-        }
-        });
-      });
-</script> -->

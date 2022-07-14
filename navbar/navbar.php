@@ -75,12 +75,12 @@ if (!isset($_SESSION["email"])) {
       border-bottom:solid 3px #dddddd;" ></center>
            <p><?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?><br>
            <?php echo $_SESSION['ticket_user_department']?>
-           <?php echo $_SESSION['u_id']?></p>
+           
             
             
 					</div>
           <li class="user-footer">
-          <a href="profile_home.php" class="btn btn-primary btn-flat">
+          <a href="ticket_profile_home_container.php" class="btn btn-primary btn-flat">
           <i class="fas fa-address-card"></i> Profile</a>
 
           <a href="../logout.php" class="btn btn-primary btn-flat float-right" >

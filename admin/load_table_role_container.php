@@ -1,5 +1,6 @@
 
-                  <?php               
+                  <?php            
+                
                   require_once '../connect.php';
                   $ticketwhere = '';
                   if($_SESSION['ROLE'] == 1){
