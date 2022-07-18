@@ -93,7 +93,7 @@ if (!isset($_SESSION["email"])) {
                   },
                 'processing': true,
                 'serverSide': true,
-                'serverMethod': 'post',
+                'serverMethod': 'get',
                 'ajax': {
                     'url':'load_table_container.php'
                 },
@@ -130,15 +130,16 @@ if (!isset($_SESSION["email"])) {
                     title: "Action",
                     data: null,
                     orderable: true,
-                    width: "1%",
-                    // className: "align-middle p-1 dt-center",
+                    width: "3%",
+                   
+                   
 
                     render: function (data, type, row, meta) {
 
                       var view = `<a href="../admin/ticket_details_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
-                      var update = `         <a href="../admin/ticket_update_incident_container.php?id=`+
+                      var update = `<a href="../admin/ticket_update_incident_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
                       var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;

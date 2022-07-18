@@ -1,15 +1,34 @@
 <?php
  require_once '../connect.php'; 
-//  print_r($_SESSION);
-//  exit;
+
 if (!isset($_SESSION["email"])) {
   header("Location: index.php");
   exit();
  
 }
+if(count($_POST)>0) {
+mysqli_query($conn,"UPDATE ticket_incident set
+ id='" . $_POST['update_id'] . "', 
+ ticket_category='" . $_POST['inputcategory'] . "' ,
+ ticket_subcategory='" . $_POST['inputsubcategory'] . "', 
+ ticket_service='" . $_POST['inputService'] . "', 
+ ticket_config_item='" . $_POST['inputconfigitem'] . "' ,
+ ticket_short_discrip='" . $_POST['inputSubject'] . "', 
+ ticket_discription='" . $_POST['inputMessage'] . "', 
+ ticket_contact_type='" . $_POST['contacttype'] . "' ,
+ ticket_status='" . $_POST['inputstate'] . "', 
+ ticket_imapact='" . $_POST['inputImpact'] . "', 
+ ticket_urgent='" . $_POST['inputurgent'] . "' ,
+ ticket_priority='" . $_POST['inputPriority'] . "', 
+ ticket_assign_group='" . $_POST['deptgroup'] . "', 
+ ticket_assign_to='' ,
+ ticket_department_id='" . $_POST['tkdepart'] . "'WHERE id='" . $_POST['update_id'] . "'");
+$message = "Record Modified Successfully";
+}
+$result = mysqli_query($conn,"SELECT * FROM ticket_user WHERE id='" . $_GET['id'] . "'");
+$row= mysqli_fetch_array($result);
 
 ?>
-
 <section class="content">
 
                 <div class="container-fluid">
@@ -350,7 +369,17 @@ if (!isset($_SESSION["email"])) {
                                                             <div class="form-group mb-2 dropdown-input mr-2" id="department_div">
                                                                 <label class="dropdown" hidden="">Department</label>
                                                                 <select name="department" id="department" class="form-control form-control-sm select2-hidden-accessible" style="width: 100%;" data-select2-id="department" tabindex="-1" aria-hidden="true">
-                                                                    <option value="545" data-select2-id="10">ACCOUNTING DEPARTMENT</option><option value="546" data-select2-id="14">APPLICATION &amp; DATABASE DEPARTMENT</option><option value="465">CUSTOMER RELATIONSHIP MANAGEMENT&nbsp;</option><option value="468">DEALER CUSTOMER RELATION CENTER</option><option value="1">DEFAULT</option><option value="472">EXECUTIVE</option><option value="476">FINANCING &amp; INSURANCE</option><option value="484">HUMAN RESOURCE&nbsp;</option><option value="489">INFORMATION TECHNOLOGY</option><option value="549">LAND TRANSPORTATION OFFICE</option><option value="517">PARTS</option><option value="525">SALES AND MARKETING</option><option value="527">SERVICE</option><option value="547">SYSTEM DEPARTMENT</option>
+                                                                    <option value="545" data-select2-id="10">ACCOUNTING DEPARTMENT</option>
+                                                                    <option value="546" data-select2-id="14">APPLICATION &amp; DATABASE DEPARTMENT</option>
+                                                                    <option value="465">CUSTOMER RELATIONSHIP MANAGEMENT&nbsp;</option>
+                                                                    <option value="468">DEALER CUSTOMER RELATION CENTER</option>
+                                                                    <option value="1">DEFAULT</option><option value="472">EXECUTIVE</option>
+                                                                    <option value="476">FINANCING &amp; INSURANCE</option>
+                                                                    <option value="484">HUMAN RESOURCE&nbsp;</option>
+                                                                    <option value="489">INFORMATION TECHNOLOGY</option>
+                                                                    <option value="549">LAND TRANSPORTATION OFFICE</option>
+                                                                    <option value="517">PARTS</option><option value="525">SALES AND MARKETING</option>
+                                                                    <option value="527">SERVICE</option><option value="547">SYSTEM DEPARTMENT</option>
                                                                 </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-department-container"><span class="select2-selection__rendered" id="select2-department-container" role="textbox" aria-readonly="true" title="APPLICATION &amp; DATABASE DEPARTMENT"><span class="select2-selection__clear" title="Remove all items" data-select2-id="15">×</span>APPLICATION &amp; DATABASE DEPARTMENT</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                                                             </div>
                                                             <span><strong>Position</strong></span>

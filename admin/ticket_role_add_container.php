@@ -152,7 +152,7 @@ $(function() {
             row.id +
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
           var update = `         <a href="../admin/ticket_update_incident_container.php?id=`+
-            row.id +
+            row.id +  
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
           var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
           
@@ -161,7 +161,7 @@ $(function() {
             return (
             `
                    <div class="row justify-content-center">
-                   `+view+` 
+                   `+view+update+` 
                    </div>
                    `
           );
@@ -184,7 +184,18 @@ $(function() {
         },
       },
     ];
- 
+    $(document).on('click','.update',function(){
+      var id = $(this).attr('id'); 
+      $.ajax({
+        url:"",
+        method:"POST",
+        data:{id,id},
+        success:function(data)
+        {
+
+        }
+      })
+    });
     ticketlist =  $("#example1").DataTable({
       fnDrawCallback: function () {
         initActionRemove();

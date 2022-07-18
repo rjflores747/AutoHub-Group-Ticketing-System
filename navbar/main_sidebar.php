@@ -82,7 +82,7 @@ if (!isset($_SESSION["email"])) {
             </li>
             <li class="nav-item">
               <a href="../admin/ticket_details_container.php" class="nav-link">
-              <i class='fas fa-info' ></i>
+              <i class='fas fa-info'></i>
               <p>Ticket Details </p> 
               </a>
             </li>
