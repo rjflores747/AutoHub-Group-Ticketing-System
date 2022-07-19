@@ -1,69 +1,50 @@
   <!-- Main content -->
   <section class="content">
       <div class="container-fluid">
-        <!-- Info boxes -->
+        <!-- Small Box (Stat card) -->
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-ticket-alt"></i></span>
-
-              <div class="info-box-content">
-                <?php
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <!-- Loading (remove the following to stop the loading)-->
+              <!-- <div class="overlay">
+                <i class="fas fa-3x fa-sync-alt"></i>
+              </div> -->
+              
+              <?php
                 require_once '../connect.php';
                 $sql="select count(*) as total from ticket_incident";
                 $result=mysqli_query($conn,$sql);
                 $data=mysqli_fetch_assoc($result);
               
                 ?>
-                <span class="info-box-text">TICKET </span>
-                <span class="info-box-number">
-                  <?php 
+              <!-- end loading -->
+              <div class="inner">
+                <h3>   <?php 
                  echo $data['total'];
                
-                  ?>
-                 
-                </span>
+                  ?></h3>
+
+                <p>Incident</p>
               </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+              <div class="icon">
+                <i class="fas fa-ticket-alt"></i>
               </div>
-              <!-- /.info-box-content -->
+              <a href="#" class="small-box-footer">
+                More info 
+                <i class="fas fa-arrow-circle-right"></i>
+              </a>
             </div>
-            <!-- /.info-box -->
           </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <!-- Loading (remove the following to stop the loading)-->
+              <!-- <div class="overlay dark">
+                <i class="fas fa-3x fa-sync-alt"></i>
+              </div> -->
+              <!-- end loading -->
               <?php
                 require_once '../connect.php';
                 $sql="select count(*) as total from ticket_user";
@@ -71,20 +52,72 @@
                 $data=mysqli_fetch_assoc($result);
               
                 ?>
-                <span class="info-box-text">TICKET </span>
-                <span class="info-box-number">
-                  <?php 
+              <div class="inner">
+                <h3>  <?php 
                  echo $data['total'];
                
-                  ?>
+                  ?><sup style="font-size: 20px">%</sup></h3>
+
+                <p>User Registrations</p>
               </div>
-              <!-- /.info-box-content -->
+              <div class="icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
             </div>
-            <!-- /.info-box -->
           </div>
-          <!-- /.col -->
+          <!-- ./col -->
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <!-- Loading (remove the following to stop the loading)-->
+              <div class="overlay dark">
+                <i class="fas fa-3x fa-sync-alt"></i>
+              </div>
+              <!-- end loading -->
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+              <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <!-- Loading (remove the following to stop the loading)-->
+              <div class="overlay dark">
+                <i class="fas fa-3x fa-sync-alt"></i>
+              </div>
+              <!-- end loading -->
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
         <!-- /.row -->
+     
 
         <div class="row">
           <div class="col-md-12">

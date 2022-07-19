@@ -69,6 +69,8 @@ use LDAP\Result;
             }
             
         } 
+         // Insert visitor activity log into database 
+            $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully add new ticket' ,NOW())");
       
         
         header("location: ../admin/ticket_details_container.php?id=".$last_id);

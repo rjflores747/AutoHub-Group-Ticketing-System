@@ -17,7 +17,13 @@ mysqli_query($conn,"UPDATE ticket_incident set
  ticket_assign_group='" . $_POST['deptgroup'] . "', 
  ticket_assign_to='' ,
  ticket_department_id='" . $_POST['tkdepart'] . "'WHERE id='" . $_POST['update_id'] . "'");
+
+
+ // Insert visitor activity log into database 
+$ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");
+
 $message = "Record Modified Successfully";
+
 }
 $result = mysqli_query($conn,"SELECT * FROM ticket_incident WHERE id='" . $_GET['id'] . "'");
 $row= mysqli_fetch_array($result);

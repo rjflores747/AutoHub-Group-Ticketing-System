@@ -39,12 +39,21 @@
 			$_SESSION['IS_LOGIN']='yes';
 			if($row['ticket_user_role'] == 1 ){
 				header('Location: ./admin/ticket_incident.php');
+				 // Insert visitor activity log into database 
+				 $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully login' ,NOW())");
+
 				die();
 			}if($row['ticket_user_role'] == 2){
 				header('Location: ./admin/ticket_incident.php');
+				// Insert visitor activity log into database 
+				$ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully login' ,NOW())");
+
 				die();
 			}if($row['ticket_user_role'] == 3){
 				header('Location: ./admin/ticket_incident.php');
+				// Insert visitor activity log into database 
+				$ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully login' ,NOW())");
+
 				die();
 			}
 			// echo $ticketfn,$ticketln,$ticketdepartment;
