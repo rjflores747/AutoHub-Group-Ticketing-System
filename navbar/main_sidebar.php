@@ -57,27 +57,33 @@ if (!isset($_SESSION["email"])) {
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Ticket Incident
+              Ticket
               <i class="right fas fa-angle-left text-md"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="../admin/ticket_incident.php" class="nav-link">
+                <i class='fas fa-ticket-alt'></i>
+                  <p> Create </p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../admin/ticket_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
-                  <p> Ticket Table</p>
+                  <p> All Tickets </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/ticket_incident.php" class="nav-link">
+                <a href="../admin/ticket_myticket_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
-                  <p> Create Ticket</p>
+                  <p> My Tickets</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/ticket_department_assign_table.php" class="nav-link">
+                <a href="../admin/ticket_support_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
-                  <p> Department Assig</p>
+                  <p> Support Tickets</p>
                 </a>
               </li>
             </ul>
@@ -114,12 +120,12 @@ if (!isset($_SESSION["email"])) {
                  
           <?php 
           if($_SESSION['ROLE'] == '1'){?>
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="fas fa-tools"></i>
               <p>
                  Configuration
-                <i class="fas fa-angle-down"></i>
+                 <i class="right fas fa-angle-left text-md"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">

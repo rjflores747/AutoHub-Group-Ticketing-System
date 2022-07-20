@@ -33,7 +33,7 @@ if (!isset($_SESSION["email"])) {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  <?php include '../admin/ticket_support_table.php';?>
+  <?php include '../admin/ticket_myticket_table.php';?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -100,7 +100,7 @@ if (!isset($_SESSION["email"])) {
                   
                     data: function (d) {
                     return $.extend({}, d, {
-                        'type': 1,
+                        'type': 2,
                     });
                     },
                 },

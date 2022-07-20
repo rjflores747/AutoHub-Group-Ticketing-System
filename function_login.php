@@ -1,12 +1,6 @@
 <?php
 	require_once './connect.php';
 
-	// if (!isset($_SESSION["email"])) {
-	// 	header("Location: index.php");
-	// 	exit();
-	// }
-
-	// if (isset($_POST["logIn"])) {
     if (isset($_POST["email"]) && isset($_POST["password"])) {
 
 		$email = $conn->real_escape_string($_POST["email"]);

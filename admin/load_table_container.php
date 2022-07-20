@@ -1,16 +1,23 @@
 
                   <?php               
                  require_once '../connect.php';
+                 $type = $_GET['type'];
                  $ticketwhere = '';
-                //  if($_SESSION['ROLE'] == 1){
-                //   $ticketwhere = 'AND ticket_department_id= '.$_SESSION['id'];
-                //  }elseif($_SESSION['ROLE'] == 2){
-                //   $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
+                 $role = $_SESSION['ticket_user_role'];
+                 if($type == 1){
+                  if($role == 1){
+                    $ticketwhere = '';
+                  }else{
+                    $ticketwhere = 'AND ticket_department_id = '.$_SESSION['id'];
+                  }
                   
-                //  }elseif($_SESSION['ROLE'] == 3){
-                //   $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
+                 }elseif($type == 2){
+                  $ticketwhere = 'AND u_id = '.$_SESSION['id'];
+                  
+                 }elseif($type == 3){
+                  $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
                  
-                //  }
+                 }
                 //  $search = $_GET['search']['value'];
                  $draw = $_GET['draw'];  
                  $offset = $_GET['start']; 
@@ -46,6 +53,8 @@
                           %s  /*order*/
                           %s /*limit*/";
                           $empQuery = sprintf($incidentQuery,$Allfield,$search,$ticketwhere,$order,$offset_limit);
+                        //  echo$empQuery;
+                        //  exit;
                           $empRecords = mysqli_query($conn, $empQuery);
                          
                           // GET DATA FROM DATABASE

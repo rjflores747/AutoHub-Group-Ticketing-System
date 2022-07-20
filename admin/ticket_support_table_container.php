@@ -100,7 +100,7 @@ if (!isset($_SESSION["email"])) {
                   
                     data: function (d) {
                     return $.extend({}, d, {
-                        'type': 1,
+                        'type': 3,
                     });
                     },
                 },
