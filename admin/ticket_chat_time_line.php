@@ -1,5 +1,17 @@
 
 <style>
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #fff;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
     .timeline {
   list-style: none;
   padding: 20px 0 20px;

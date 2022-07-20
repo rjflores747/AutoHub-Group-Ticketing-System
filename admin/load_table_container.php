@@ -2,15 +2,15 @@
                   <?php               
                  require_once '../connect.php';
                  $ticketwhere = '';
-                 if($_SESSION['ROLE'] == 1){
-                  $ticketwhere = 'AND ticket_department_id= '.$_SESSION['id'];
-                 }elseif($_SESSION['ROLE'] == 2){
-                  $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
+                //  if($_SESSION['ROLE'] == 1){
+                //   $ticketwhere = 'AND ticket_department_id= '.$_SESSION['id'];
+                //  }elseif($_SESSION['ROLE'] == 2){
+                //   $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
                   
-                 }elseif($_SESSION['ROLE'] == 3){
-                  $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
+                //  }elseif($_SESSION['ROLE'] == 3){
+                //   $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
                  
-                 }
+                //  }
                 //  $search = $_GET['search']['value'];
                  $draw = $_GET['draw'];  
                  $offset = $_GET['start']; 
@@ -34,27 +34,11 @@
 
                   $search =" and (ticket_number LIKE '%".$searchValue."%' OR ticket_short_discrip LIKE '%".$searchValue."%') ";
                 }
-                    // // $refeshtablenew = $_POST["refeshtablenew"];
-                    // $sqltable="SELECT * FROM ticket_incident  where  1  and (ticket_number LIKE '%".$searchValue."%' OR ticket_short_discrip LIKE '%".$searchValue."%')  ".$ticketwhere ;
-                    // $resultsqltable = mysqli_query($conn,$sqltable);
-                    // $ticket['data'] = array();
-                    // while ($rowsqltable = mysqli_fetch_assoc($resultsqltable)){
-                    //     $ticket['data'][] = array(
-                    //       'id'=>$rowsqltable['id'],
-                    //       'ticket_number'=>$rowsqltable['ticket_number'],
-                    //       'ticket_short_discrip'=>$rowsqltable['ticket_short_discrip'],
-                    //       'ticket_discription'=>$rowsqltable['ticket_discription'],
-                    //       'ticket_status'=>$rowsqltable['ticket_status'],
-                    //       'ticket_user_role'=>$_SESSION['ticket_user_role'],
-                    //     );
-                        
-                        
-                    // }
+                   
                 ## Fetch records
                           $order = "order by ".$columnName." ".$columnSortOrder." ";
                           $offset_limit = " limit ".$offset.",".$limit;
-                          // $empQuery = "select * from ticket_incident WHERE 1  and (ticket_number LIKE '%".$searchValue."%' OR ticket_short_discrip LIKE '%".$searchValue."%')  ".$ticketwhere ." ".$search." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage ;
-                        //  all field
+              
                         $Allfield =' * ';
                           $incidentQuery = "select %s from ticket_incident WHERE 1 
                           %s /*seach*/

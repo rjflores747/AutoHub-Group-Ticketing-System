@@ -24,8 +24,9 @@
             </div>
               <h1><b>AutoHub<strong></b></strong></h1>
               <h1>Ticketing<strong>System</strong></h1>
-              <p class="lead mb-5"> Ford, Blk 15, Rizal Dr, Crescent Park West, Taguig, 1634 Metro Manila<br>
-                Phone: +63 917 528 4442 
+              <p class="lead mb-5">THE SOLUTION OF YOUR PROBLEMS 
+                <!-- Ford, Blk 15, Rizal Dr, Crescent Park West, Taguig, 1634 Metro Manila<br>
+                Phone: +63 917 528 4442  -->
               </p>  
             </div>
           </div>
