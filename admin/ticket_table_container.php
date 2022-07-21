@@ -187,12 +187,6 @@ if (!isset($_SESSION["email"])) {
                 function initActionRemove() {
                   $("[data-action-remove]").each(function () {
                     $(this).on("click", function () {
-                      // const product_id =   $("#example1").DataTable().row(row).data().id;
-                      //  //$(this).attr('data-action-remove');
-                      // alert (product_id);
-
-                      // return false;
-                      // var row = $(this).closest("tr");
                       var ticket_id = $(this).attr('data-action-remove');
 
                         Swal.fire({

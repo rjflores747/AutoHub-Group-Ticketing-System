@@ -19,7 +19,10 @@ if(count($_POST)>0) {
 mysqli_query($conn,"UPDATE ticket_incident set
  id='" . $_POST['update_status_id'] . "', 
  ticket_status ='" . $_POST['statusText'] . "'WHERE id='" . $_POST['update_status_id'] . "'");
-$message = "Record Modified Successfully";
+ // Insert visitor activity log into database 
+ $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully updated' ,NOW())");
+
+ $message = "Record Modified Successfully";
 }
 $result = mysqli_query($conn,"SELECT * FROM ticket_incident WHERE id='" . $_GET['id'] . "'");
 $row= mysqli_fetch_array($result);
@@ -94,54 +97,18 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
                   <!-- star rating -->
-                  <div class="rateYo" id= "rateYo"
-                    data-rateyo-num-stars="5" >
-                    </div>
-
-             
+                  <?php if($row['ticket_status'] == 'Close'){?>
+                    <div class="rateYo" id= "rateYo"
+                      data-rateyo-num-stars="5"> 
+                      </div>
+                  
+                  <?php
+                  }?>
+             <!-- end star rating -->
 
 
                     <?php 
-                      if($_SESSION['ROLE'] == '1'){?>
-                       <span class="info-box-number text-left  mb-0">Status#:
-                          <div class="select2-purple">
-                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
-                                <option value="" style="text-align:center">---------- STATUS ----------</option>
-                                    <?php 
-                                      
-                                        $query= "SELECT * from ticket_status 
-                                        order by ticket_status_name ASC";
-                                        $result1= mysqli_query($conn,$query);
-                                       
-                                        while ($statusrow = mysqli_fetch_array($result1)) { 
-
-                                          if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
-                                          ?>  
-                                          <option selected value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
-                                          
-                                          }
-                                          else
-                                          {
-                                            ?>  
-                                          <option  value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
-                                          }?>
-                         
-                                    <?php } ?>
-                            </select>
-                          </div><br>
-                          <button class="btn btn-primary" 
-                                id="Updatestatu" name="Updatestatu" >
-                                <i class="fas fa-user-edit"></i>	Update
-                        </button>
-                      </span>
-                      <?php
-                      }
-
-                      ?>
-                                          <?php 
-                      if($_SESSION['ROLE'] == '2'){?>
+                      if($_SESSION['ROLE'] == '1'||$_SESSION['ROLE'] == '2'){?>
                        <span class="info-box-number text-left  mb-0">Status#:
                           <div class="select2-purple">
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
