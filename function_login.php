@@ -8,7 +8,7 @@
         $query = "SELECT id,ticket_fn,ticket_ln,ticket_user_department,ticket_user_url,ticket_user_role,u_id FROM ticket_user WHERE ticket_email='$email' AND ticket_passaword='$password' AND ticket_status='1'"; 
       
 		$data = $conn->query($query);
-        
+        $ticketfn ='';
         foreach($data AS $row){
             $ticketfn = $row['ticket_fn']; 
             $ticketln = $row['ticket_ln']; 

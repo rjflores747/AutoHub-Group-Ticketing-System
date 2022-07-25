@@ -73,8 +73,9 @@ if (!isset($_SESSION["email"])) {
       border-left:solid 3px #dddddd;
       border-right:solid 3px #dddddd;
       border-bottom:solid 3px #dddddd;" ></center>
-           <p><?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?><br>
-           <?php echo $_SESSION['ticket_user_department']?>
+           <p><h1><?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?></h1><br>
+           <?php 
+          //  echo $_SESSION['ticket_user_department']?>
            
             
             

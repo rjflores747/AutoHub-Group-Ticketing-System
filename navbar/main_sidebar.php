@@ -1,12 +1,12 @@
 <?php
- require_once '../connect.php'; 
-//  print_r($_SESSION);
-//  exit;
-if (!isset($_SESSION["email"])) {
-  header("Location: index.php");
-  exit();
+//  require_once '../connect.php'; 
+// //  print_r($_SESSION);
+// //  exit;
+// if (!isset($_SESSION["email"])) {
+//   header("Location: index.php");
+//   exit();
  
-}
+// }
 
 ?>
 <!-- Main Sidebar Container -->
@@ -44,7 +44,7 @@ if (!isset($_SESSION["email"])) {
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/dashboard.php" class="nav-link">
+                <a href="../admin/ticket_dashboard_container.php" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -55,7 +55,7 @@ if (!isset($_SESSION["email"])) {
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-ticket-alt"></i>
               <p>
               Ticket
               <i class="right fas fa-angle-left text-md"></i>
@@ -152,6 +152,20 @@ if (!isset($_SESSION["email"])) {
           </li>
           
          <?php } ?>
+
+         <li class="nav-item menu-open">
+            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../admin/ticket_history_logs_container.php" class="nav-link">
+                <i class="nav-icon fas fa-history"></i>
+                  <p>History Logs</p>
+                </a>
+              </li>
+             
+              
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
