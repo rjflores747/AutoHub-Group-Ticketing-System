@@ -2,9 +2,7 @@
 @session_start();
 
 define('APP_URL','http://localhost/AutoHub-Group-Ticketing-System');
-// echo $_SERVER['DOCUMENT_ROOT'].' ';
-// echo __DIR__.' ';
-// echo PATH;exit;
+
 $servername = "localhost";
 $username = "root";
 $password = "";

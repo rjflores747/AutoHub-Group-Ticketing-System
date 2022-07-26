@@ -7,15 +7,19 @@ if (!isset($_SESSION["email"])) {
 		exit();
 	}
 use LDAP\Result;
+if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
     $date = date('d-m-y h:i:s');
-  
-    $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln'];
-    $user_id = $_SESSION['user_id'];
+    $departmentType = $_POST['var_department'];
+    $sortdiscription = $_POST['var_subject'];
+    $discription = $_POST['var_message'];
+    $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
+    // $user_id = $_SESSION['user_id'];
     $employee_id = $_SESSION['id'];
-    $sortdiscription = $_POST['inputSubject'];
-    $discription = $_POST['inputMessage'];
-    $departmentType = $_POST['inputeparment'];
-
+    // $sortdiscription = $_POST['inputSubject'];
+    // $discription = $_POST['inputMessage'];
+    // $departmentType = $_POST['inputeparment'];
+    $return_arr = array();
+   
         $sql = "INSERT INTO ticket_incident(
         id,
         u_id,
@@ -67,15 +71,26 @@ use LDAP\Result;
             $ticket_number = "ATK_".$code."_".$last_id;
             $query = "UPDATE ticket_incident SET ticket_number = '".$ticket_number."', u_id = '".$employee_id."'  WHERE id = '".$last_id."'";      
             $res = mysqli_query($conn,$query);
-           
+            $return_arr['id'] = $last_id; // success
             }
             
+        }
+        if($result > 0)
+        {
+          $return_arr['status'] = 1;
+         
+        }
+        else
+        {
+            // echo '<script> alert("Data Not Deleted"); </script>';
+            $return_arr['status'] = 0;
         } 
+        
          // Insert visitor activity log into database 
             $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['id']."','You have successfully add new ticket' ,NOW())");
       
-        
-        header("location: ../admin/ticket_details_container.php?id=".$last_id);
+            echo json_encode($return_arr);
+        // header("location: ../admin/ticket_details_container.php?id=".$last_id);
        
-    
+}
 ?>

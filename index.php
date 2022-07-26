@@ -1,6 +1,9 @@
 <?php 
     require_once './connect.php';
-//   if (!isset($_SESSION['username'])) {
+  if (isset($_SESSION['id'])) {
+	header('Location: ./admin/ticket_incident.php');
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +19,7 @@
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
 	 <div class="w-400 p-5 shadow rounded">
-	 	<form method="post" action="function_login.php">
+	 	<!-- <form method="post" action="function_login.php"> -->
 	 		<div class="d-flex justify-content-center align-items-center flex-column">
 
 	 		<img src="img/autohub-logo.png" class="rounded-circle" style="width: 130px;" alt="Cinque Terre">
@@ -41,29 +44,107 @@
 	 </div>
 	 <?php include  './link-required-scripts-end.php';?>
 	 <script>
-		$('#button-logIn-details').on('click', function(){ 
-	// alert ($('#inputemail').val());
-	// alert(1);
-	// return;
-		//variable
-		variable_email = $('#inputemail').val();
-   		variable_passowrd = $('#inputpassowrd').val();
+		 var Toast = null;
+  		// global variable
+		$(function() {
+			Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 3000
+			});
+			$('#button-logIn-details').on('click', function(){ 
+		// alert ($('#inputemail').val());
+		// alert(1);
+		// return;
+			//variable
+			 var variable_email = $('#inputemail').val();
+			 var variable_passowrd = $('#inputpassowrd').val();
 
-    // REQUIREMENTS
-    if(variable_email == ""){
-        toastr.remove();
-        toastr.error("Email Address cannot be empty", "Incomplete data");
+		// REQUIREMENTS
+		if(variable_email == ""){
+			toastr.remove();
+			toastr.error("Email Address cannot be empty", "Incomplete data");
 
-        return;
-    }
-    if(variable_passowrd == ""){
-        toastr.remove();
-        toastr.error("Password cannot be empty", "Incomplete data");
+			return;
+		}
+		if(variable_passowrd == ""){
+			toastr.remove();
+			toastr.error("Password cannot be empty", "Incomplete data");
 
-        return;
-    }
+			return;
+		}
+		 // Login Validation
+		 $.ajax({
+        url:"function_login.php",  
+        type:"POST", 
+        dataType:"json",
+        data: {
+            var_email: variable_email, 
+            var_password: variable_passowrd, 
+            type: 1 // login status
+        },
+        beforeSend: function(){
+            // $('#loading-view').attr('hidden', false);
+            $('.el-log').attr('disabled', true);
+        },
+            
+        success: function(result){
+			// alert(result.status);
+            if(result.status == 1){ // success
+                toastr.remove();
+                toastr.success("Login successfully");
+				window.location.href='./admin/ticket_incident.php';
+                // $('#modal-finance-add-fni').modal('hide');
+                // $('#loading-view').attr('hidden', true);
+                // $('.el-add').attr('disabled', false);
 
+                // refreshFinanceTable();
+                // detailsCount();
+                // clearElements();
+            } 
+            else if(result.status == 0){ // failed add
+                // $('#loading-view').attr('hidden', true);
+                // $('.el-add').attr('disabled', false);
 
+                toastr.remove();
+                toastr.error("No Record Found");
+				return;
+            } 
+            else if(result.status == 2){ // dealer validation error
+                // $('#loading-view').attr('hidden', true);
+                // $('.el-add').attr('disabled', false);
+
+                toastr.remove();
+                toastr.error("Wrong Credentials");
+				return;
+            } 
+            // else if(result.status == 3){ // duplicate
+            //     toastr.remove();
+            //     toastr.warning("Duplicate record");
+            //     // var duplicate_id = result.duplicate_id;
+            //     // var duplicate_plate_cs_number = result.duplicate_plate_cs_number;
+
+            //     // alertDuplicate(duplicate_id, duplicate_plate_cs_number);
+
+            //     $('#loading-view').attr('hidden', true);
+            //     $('#button-add-fni-details').attr('disabled', false);
+
+            //     return;
+            // }
+            // else if(result.status == 4){ // invalid email
+            //     $('#loading-view').attr('hidden', true);
+            //     $('.el-add').attr('disabled', false);
+
+            //     toastr.remove();
+            //     toastr.error("Invalid email");
+
+            //     return;
+            // }
+        }
+    })
+
+	});
 })
 </script>
 </body>

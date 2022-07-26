@@ -31,10 +31,10 @@
             </div>
           </div>
           <div class="col-7">
-            <form action="../admin/function_create_ticket_incident.php" method="POST">
+            <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
-                   <select class="form-control select2bs4"  name="inputeparment" style="width: 100%;" require>
+                   <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
                               <option value="" require>----- NONE -----</option>
                               <?php
                              
@@ -56,9 +56,9 @@
                   <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="submit" class="btn btn-primary" name="submit" value="Send message">
+                  <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">
                 </div>
-            </form>
+            <!-- </form> -->
           </div>
         </div>
         </div>
