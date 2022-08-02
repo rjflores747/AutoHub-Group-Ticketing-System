@@ -2,13 +2,96 @@
 	require_once './connect.php';
 // echo $_POST['var_email'];
 // exit;
-    if (isset($_POST["var_email"]) && isset($_POST["var_password"])) {
+	
+    if (isset($_POST["var_user"]) && isset($_POST["var_password"])) {
+		$userid = $conn->real_escape_string($_POST["var_user"]);
+		$password = $conn->real_escape_string($_POST["var_password"]);
 
-		$email = $conn->real_escape_string($_POST["var_email"]);
+		$array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
+		$array_data['parameters'] = http_build_query(array(
+			'key'=>'99797807845605376',
+			'username'=> $userid,
+			'password'=>$password,
+
+
+		));
+		 $array_data['headers'] = array('Content-Type'=>'application/json; charset=utf-8');
+		  $result = Utility::curl($array_data);
+		  $user_array = json_decode($result,true);
+		
+		if($user_array ['status'] == 1){ //success
+			$SQLuserinsert = "INSERT INTO `ticket_user`(
+				`u_id`,  
+				`ticket_fn`, 
+				`ticket_ln`, 
+				`ticket_employee_id`, 
+				`ticket_email`, 
+				`ticket_password`, 
+				`ticket_status`, 
+				`ticket_user_department`, 
+				`ticket_user_url`, 
+				`ticket_user_role`) VALUES 
+				('".$user_array['u_id']."',
+				'".$user_array['u_fname']."',
+				'".$user_array['u_lname']."',
+				'".$user_array['employee_id']."',
+				'".$user_array['email']."',
+				'".$user_array['u_password']."',
+				'1',
+				'".$user_array['dept_id']."',
+				'ibro.png',
+				'3'
+				) ON DUPLICATE KEY UPDATE 
+				  
+				`ticket_fn`= VALUES(ticket_fn), 
+				`ticket_ln`= VALUES(ticket_ln), 
+				`ticket_employee_id`= VALUES(ticket_employee_id), 
+				`ticket_email`= VALUES(ticket_email), 
+				`ticket_password`= VALUES(ticket_password), 
+				`ticket_user_department`= VALUES(ticket_user_department) 
+			
+				";
+				$return_arr['status'] = 1; 
+				mysqli_query($conn,$SQLuserinsert);
+
+				$SQLDepartmentinsert = "INSERT INTO `ticket_deparment`(
+				
+					`ticket_dept_source_id`, 
+					`ticket_dept_name`, 
+					`ticket_dept_tnd`
+					) VALUES 
+					(
+					'".$user_array['dept_id']."',
+					'".$user_array['dept_name']."',
+					NOW()
+					) ON DUPLICATE KEY UPDATE 
+					`ticket_dept_name`= VALUES(ticket_dept_name)
+					";
+					$return_arr['status'] = 1; 
+					mysqli_query($conn,$SQLDepartmentinsert);
+
+				$query = "SELECT * FROM ticket_user WHERE u_id='".$user_array['u_id']."'"; 
+			
+				$result=mysqli_query($conn,$query);
+              
+				while ($row = mysqli_fetch_assoc($result)) {
+					$_SESSION = $row;
+					
+					} 
+
+					// print_r($_SESSION['id']);exit;
+			
+		}else{
+			$return_arr['status'] = 2; //wrong email and password
+		}
+	
+		echo json_encode($return_arr);
+		exit;
+		$email = $conn->real_escape_string($_POST["var_user"]);
 		$password = sha1($conn->real_escape_string($_POST["var_password"])); //password
 
 		$return_arr = array();
-		
+	
 		$ticketemail='';
 
 		$checkUser = $conn->query("SELECT ticket_email FROM ticket_user WHERE ticket_email='$email'");
@@ -45,7 +128,7 @@
 					$_SESSION['ticket_user_url'] = $ticket_user_url;
 					$_SESSION['ticket_user_role'] = $ticket_user_role;
 					$_SESSION['u_id'] = $employee_id;
-					$_SESSION['ROLE']=$row['ticket_user_role'];
+					$_SESSION['ticket_user_role']=$row['ticket_user_role'];
 					$_SESSION['IS_LOGIN']='yes';
 					
 					$return_arr['status'] = 1; // success

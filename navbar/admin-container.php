@@ -1,8 +1,8 @@
 <?php 
-  //  if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
+  //  if(isset($_SESSION['ticket_user_role']) && $_SESSION['ticket_user_role']!='1'){
   //   header('location: index.php');
   //   die();
-    if (!isset($_SESSION["email"])) {
+    if (!isset($_SESSION["id"])) {
       header("Location: index.php");
       exit();
     }
@@ -35,18 +35,28 @@
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
                    <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
-                              <option value="" require>----- NONE -----</option>
+                              <option value="" require>----- Select Department -----</option>
                               <?php
-                             
-                                $querydeparment = "SELECT * FROM `ticket_deparment`";
-                                $resultdeparment = mysqli_query($conn,$querydeparment);
-                                    while ($row1 = mysqli_fetch_array($resultdeparment)):;?>
-                                    <option value="<?php echo $row1['id']?>"><?php echo $row1['ticket_dept_name'];?></option>
-                                    <?php endwhile; ?>
-                             
+                              $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
+                              $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
+                               
+                                $result = Utility::curl($array_data);
+                                $department_array = json_decode($result,true);
+                                foreach($department_array as $row1)
+                                {
+                                  ?>
+
+                                  <option value="<?php echo $row1['id']?>">
+                                  <?php echo $row1['dept_name'];?>
+                                </option>
+                                  <?php 
+
+                                }
+                                   ?>
                               </select>
                   <!-- <input type="text" id="inputeparment" name="inputeparment" class="form-control" /> -->
                 </div>
+                
                 <div class="form-group">
                   <label for="inputSubject">Subject</label>
                   <input type="text" id="inputSubject" name="inputSubject" class="form-control"require />

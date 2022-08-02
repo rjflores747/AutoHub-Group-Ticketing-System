@@ -1,5 +1,10 @@
 <?php
 require_once '../connect.php';
+if (!isset($_SESSION["id"])) {
+  header("Location: index.php");
+  exit();
+ 
+}
 if(count($_POST)>0) {
 mysqli_query($conn,"UPDATE ticket_incident set
  id='" . $_POST['update_id'] . "', 
@@ -14,8 +19,8 @@ mysqli_query($conn,"UPDATE ticket_incident set
  ticket_imapact='" . $_POST['inputImpact'] . "', 
  ticket_urgent='" . $_POST['inputurgent'] . "' ,
  ticket_priority='" . $_POST['inputPriority'] . "', 
- ticket_assign_group='" . $_POST['deptgroup'] . "', 
- ticket_assign_to='' ,
+ ticket_assign_group='', 
+ ticket_assign_to='" . $_POST['deptgroup'] . "' ,
  ticket_department_id='" . $_POST['tkdepart'] . "'WHERE id='" . $_POST['update_id'] . "'");
 
 
@@ -70,7 +75,7 @@ $row= mysqli_fetch_array($result);
                                   </div>
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                      <label for="inputstate" class="col-sm-2 col-form-label">State</label>
+                                      <label for="inputstate" class="col-sm-2 col-form-label">Status</label>
                                       <div class="col-sm-10">
                                         <input type="text" class="form-control" id="inputstate"  name="inputstate"value="<?php echo $row['ticket_status']; ?>" placeholder="State">
                                       </div>
@@ -177,32 +182,37 @@ $row= mysqli_fetch_array($result);
                                   </div>
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                      <label for="tkdepart" class="col-sm-2 col-form-label">Deparment</label>
+                                      <label for="tkdepart" class="col-sm-2 col-form-label">Department</label>
                                       <div class="col-sm-10">
                                          <div class="select2-purple">
-                                          <select class="form-control select2bs4" id="tkdepart" name="tkdepart" style="width: 100%;">
-                                            <option>----- NONE DEPARMENT -----</option>
-                                              <?php 
+                                          <select class="form-control select2bs4" id="tkdepart" name="tkdepart" style="width: 100%;" >
+                                            <?php
+                                              $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
+                                              $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
                                               
-                                                $query= "select * from ticket_deparment order by ticket_dept_name ASC";
-                                                $result1= mysqli_query($conn,$query);
-                                                
-                                                while ($departmentrow= mysqli_fetch_array($result1)) { 
-
-                                                  if($row['ticket_department_id'] == $departmentrow['id'] ){
-                                                  ?>  
-                                                  <option selected value="<?php echo $departmentrow['id']; ?>"><?php echo $departmentrow['ticket_dept_name'] ?></option>
+                                                $result = Utility::curl($array_data);
+                                                $department_array = json_decode($result,true);
+                                                foreach($department_array as $row1) {
+                                                  if($row1['id'] == $row1['dept_name'] ){
+                                                    ?>  
+                                                <!-- // foreach($department_array as $row1) -->
+                                                <!-- { -->
+                                                  <option  value="<?php echo $row1['id']?>" selected>
+                                                  <?php echo $row1['dept_name'];?>
                                                   <?php
                                                   
-                                                  }
-                                                  else
-                                                  {
-                                                    ?>  
-                                                  <option  value="<?php echo $departmentrow['id']; ?>"><?php echo $departmentrow['ticket_dept_name'] ?></option>
-                                                  <?php
-                                                  }?>
-                                              
-                                              <?php } ?>
+                                                }
+                                                else
+                                                {
+                                                  ?>  
+                                                  <option  value="<?php echo $row1['id']?>" >
+                                                  <?php echo $row1['dept_name'];?>
+                                                </option>
+                                                  <?php 
+
+                                                }
+                                                  ?>
+                                                  <?php } ?>
                                             </select>
                                           </div>
                                         </div>
@@ -224,25 +234,25 @@ $row= mysqli_fetch_array($result);
                                   <div class="col-sm-6">
                                
                                     <div class="form-group row">
-                                      <label for="inputPriority" class="col-sm-2 col-form-label">Assignment Group</label>
+                                      <label for="inputPriority" class="col-sm-2 col-form-label">Assignment To</label>
                                       <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputdepartment" name="inputdepartment" value="<?php echo $row['ticket_assign_group']; ?>" /> -->
                                       <div class="select2-purple">
                                       <select class="select2" id="deptgroup" name="deptgroup" multiple="multiple" data-placeholder="Select a Assignment" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                        <option >----- NONE DEPARMENT -----</option>
                                   
-                                  </select>
+                                       </select>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label for="inputSubject">Subject</label>
-                                    <input type="text"class="form-control" id="inputSubject" name="inputSubject" value="<?php echo $row['ticket_short_discrip']; ?>" class="form-control" />
+                                    <input type="text"class="form-control" style="background: transparent;" id="inputSubject" name="inputSubject" value="<?php echo $row['ticket_short_discrip']; ?>" class="form-control" readonly/>
                                   </div>
                                   <div class="form-group">
-                                    <label for="inputMessage">Message</label>
-                                    <textarea id="inputMessage" class="form-control" name="inputMessage"  rows="4"><?php echo $row['ticket_discription']; ?></textarea>
+                                    <label for="inputMessage">Discription</label>
+                                    <textarea id="inputMessage" class="form-control"style="background: transparent;"  name="inputMessage"  rows="4"readonly><?php echo $row['ticket_discription']; ?></textarea>
                                   </div>
                                 </div>
                                 <div class="modal-footer">

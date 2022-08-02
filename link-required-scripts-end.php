@@ -16,9 +16,9 @@
 <script src="<?=APP_URL?>/app/plugins/raphael/raphael.min.js"></script>
 <script src="<?=APP_URL?>/app/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="<?=APP_URL?>/app/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<!-- <script src="<?=APP_URL?>/app/plugins/chart.js/Chart.min.js"></script> -->
 
+<!-- AdminLTE App -->
+<script src="<?=APP_URL?>/app/plugins/dist/js/adminlte.min.js"></script>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?=APP_URL?>/app/dist/js/pages/dashboard2.js"></script>
@@ -50,52 +50,9 @@
 <script src="<?=APP_URL?>/app/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="<?=APP_URL?>/app/plugins/toastr/toastr.min.js"></script>
+<!-- ChartJS -->
+<script src="<?=APP_URL?>/app/plugins/chart.js/Chart.min.js"></script>
 
-<!-- for rating star of user -->
-    
-<!-- <script>
-	$(document).ready(function(){
-      
-      // Search
-       $("#searchText").on("input", function(){
-       	 var searchText = $(this).val();
-         if(searchText == "") return;
-         $.post('../app/ajax/search.php', 
-         	     {
-         	     	key: searchText
-         	     },
-         	   function(data, status){
-                  $("#chatList").html(data);
-         	   });
-       });
-
-       // Search using the button
-       $("#serachBtn").on("click", function(){
-       	 var searchText = $("#searchText").val();
-         if(searchText == "") return;
-         $.post('../app/ajax/search.php', 
-         	     {
-         	     	key: searchText
-         	     },
-         	   function(data, status){
-                  $("#chatList").html(data);
-         	   });
-       });
-
-
-      /** 
-      auto update last seen 
-      for logged in user
-      **/
-      let lastSeenUpdate = function(){
-      	$.get("../app/ajax/update_last_seen.php");
-      }
-      lastSeenUpdate();
-      /** 
-      auto update last seen 
-      every 10 sec
-      **/
-      setInterval(lastSeenUpdate, 10000);
-
-    });
-</script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >

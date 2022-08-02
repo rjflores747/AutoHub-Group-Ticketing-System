@@ -1,7 +1,7 @@
 <?php
 require_once '../connect.php';
 
-if (!isset($_SESSION["email"])) {
+if (!isset($_SESSION["id"])) {
   header("Location: index.php");
   exit();
  

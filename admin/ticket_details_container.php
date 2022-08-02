@@ -5,7 +5,7 @@ require_once '../connect.php';
     exit;
   }
   $ticket_id =intval($_GET['id']); 
-  if (!isset($_SESSION["email"])) {
+  if (!isset($_SESSION["id"])) {
     header("Location: index.php");
     exit();
    
@@ -78,9 +78,10 @@ require_once '../connect.php';
                   url: "function_rating_star_insert.php",
                   type: "POST",
                   data: {
-                    // 
+                    // variable
                     ticket_id: ticket_id, 
                     rating: data.rating,
+                    // user_id: user_id,
                   },
                   cache: false,
                   success: function(result1){     

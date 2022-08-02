@@ -2,13 +2,13 @@
 <?php
 
 require_once '../connect.php';
-if (!isset($_SESSION["email"])) {
+if (!isset($_SESSION["id"])) {
 		header("Location: index.php");
-		exit();
+		exit(); 
 	}
 use LDAP\Result;
 if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
-    $date = date('d-m-y h:i:s');
+    $date = date('yyyy-m-d h:i:s');
     $departmentType = $_POST['var_department'];
     $sortdiscription = $_POST['var_subject'];
     $discription = $_POST['var_message'];
@@ -60,7 +60,7 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
         '',
         '',
         '$departmentType',
-        '$date',
+        NOW(),
         '');";
        
         $result = mysqli_query($conn,$sql);

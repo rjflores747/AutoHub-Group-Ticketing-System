@@ -1,13 +1,10 @@
 <?php 
-require_once '../connect.php';
+require_once '../connect.php'; 
 
-
-if (!isset($_SESSION["email"])) {
-  header("Location: index.php");
+if (!isset($_SESSION["id"])) {
+  header("Location: index.php"); 
   exit();
-}
-
-
+} 
 
 ?>
 <!DOCTYPE html>
@@ -65,6 +62,13 @@ if (!isset($_SESSION["email"])) {
               showConfirmButton: false,
               timer: 3000
             });
+               //Initialize Select2 Elements
+    $('.select2').select2()
+
+//Initialize Select2 Elements
+$('.select2bs4').select2({
+  theme: 'bootstrap4'
+})
             $('#button-send-message-details').on('click', function(){ 
           // alert ($('#inputSubject').val());
           // // alert(1);
@@ -114,7 +118,8 @@ if (!isset($_SESSION["email"])) {
             // alert(result.status);
                   if(result.status == 1){ // success
                       toastr.remove();
-                      toastr.success("Login successfully");
+                      toastr.error("Add successfully","Incomplete data");
+                      
                       window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
                       // $('#loading-view').attr('hidden', true);

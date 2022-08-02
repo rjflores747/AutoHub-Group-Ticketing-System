@@ -3,11 +3,11 @@
                 
                   require_once '../connect.php';
                   $ticketwhere = '';
-                  if($_SESSION['ROLE'] == 1){
+                  if($_SESSION['ticket_user_role'] == 1){
                    $ticketwhere = '';
-                  }elseif($_SESSION['ROLE'] == 2){
+                  }elseif($_SESSION['ticket_user_role'] == 2){
                    $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
-                  }elseif($_SESSION['ROLE'] == 3){
+                  }elseif($_SESSION['ticket_user_role'] == 3){
                    $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
                   }
                      // $refeshtablenew = $_POST["refeshtablenew"];

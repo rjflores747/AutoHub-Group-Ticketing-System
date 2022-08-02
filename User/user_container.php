@@ -4,7 +4,7 @@ include '../connect.php';
 
 
 
-if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='2'){
+if(isset($_SESSION['ticket_user_role']) && $_SESSION['ticket_user_role']!='2'){
   header('location: index.php');
   die();
 

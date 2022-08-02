@@ -28,8 +28,8 @@
 	 		</div>
 	 		
 		  <div class="mb-3">
-		    <label class="form-label"> Email</label>
-		    <input type="email"class="form-control" id="inputemail" name="email" require>
+		    <label class="form-label"> User ID</label>
+		    <input type="text"class="form-control" id="inputuser" name="user" require>
 		  </div>
 
 		  <div class="mb-3">
@@ -58,13 +58,13 @@
 		// alert(1);
 		// return;
 			//variable
-			 var variable_email = $('#inputemail').val();
+			 var variable_user = $('#inputuser').val();
 			 var variable_passowrd = $('#inputpassowrd').val();
 
 		// REQUIREMENTS
-		if(variable_email == ""){
+		if(variable_user == ""){
 			toastr.remove();
-			toastr.error("Email Address cannot be empty", "Incomplete data");
+			toastr.error("User ID cannot be empty", "Incomplete data");
 
 			return;
 		}
@@ -80,7 +80,7 @@
         type:"POST", 
         dataType:"json",
         data: {
-            var_email: variable_email, 
+            var_user: variable_user, 
             var_password: variable_passowrd, 
             type: 1 // login status
         },

@@ -4,7 +4,7 @@ require_once '../connect.php';
 
 
 
-if (!isset($_SESSION["email"])) {
+if (!isset($_SESSION["id"])) {
   header("Location: index.php");
   exit();
 }
@@ -91,7 +91,7 @@ if (!isset($_SESSION["email"])) {
       "responsive": true, "lengthChange": false, "autoWidth": false,
       // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    })
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

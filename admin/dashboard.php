@@ -20,7 +20,7 @@ require_once '../connect.php';
               </div> -->
               
               <?php
-                require_once '../connect.php';
+   
                 $sql="select count(*) as total from ticket_incident";
                 $result=mysqli_query($conn,$sql);
                 $data=mysqli_fetch_assoc($result);
@@ -82,17 +82,28 @@ require_once '../connect.php';
             <!-- small card -->
             <div class="small-box bg-success">
               <!-- Loading (remove the following to stop the loading)-->
-              <div class="overlay dark">
+              <!-- <div class="overlay dark">
                 <i class="fas fa-3x fa-sync-alt"></i>
-              </div>
+              </div> -->
               <!-- end loading -->
+              <?php
+                // require_once '../connect.php';
+                $sql="select count(*) as total from ticket_deparment ";
+                $result=mysqli_query($conn,$sql);
+                $data=mysqli_fetch_assoc($result);
+              
+                ?>
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>  <?php 
+                 echo $data['total'];
+               
+                  ?><sup style="font-size: 20px">%</sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Department</p>
               </div>
               <div class="icon">
-              <i class="fas fa-user-plus"></i>
+              
+              <i class="fas fa-building"></i>
               </div>
               <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
@@ -125,8 +136,60 @@ require_once '../connect.php';
           <!-- ./col -->
         </div>
         <!-- /.row -->
-     
+        <div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card mt-4">
+						<div class="card-header">Pie Chart</div>
+						<div class="card-body">
+							<div class="chart-container pie-chart">
+								<canvas id="pie_chart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mt-4">
+						<div class="card-header">Doughnut Chart</div>
+						<div class="card-body">
+							<div class="chart-container pie-chart">
+								<canvas id="doughnut_chart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mt-4 mb-4">
+						<div class="card-header">Bar Chart</div>
+						<div class="card-body">
+							<div class="chart-container pie-chart">
+								<canvas id="bar_chart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ <!-- DONUT CHART -->
+ <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Donut Chart</h3>
 
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+<??>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -895,3 +958,4 @@ require_once '../connect.php';
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
+    

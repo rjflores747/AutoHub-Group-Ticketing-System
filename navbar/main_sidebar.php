@@ -1,12 +1,11 @@
 <?php
-//  require_once '../connect.php'; 
-// //  print_r($_SESSION);
-// //  exit;
-// if (!isset($_SESSION["email"])) {
-//   header("Location: index.php");
-//   exit();
+ require_once '../connect.php'; 
+
+if (!isset($_SESSION["id"])) {
+  header("Location: index.php");
+  exit();
  
-// }
+}
 
 ?>
 <!-- Main Sidebar Container -->
@@ -119,7 +118,7 @@
           </li>
                  
           <?php 
-          if($_SESSION['ROLE'] == '1'){?>
+          if($_SESSION['ticket_user_role'] == '1'){?>
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="fas fa-tools"></i>

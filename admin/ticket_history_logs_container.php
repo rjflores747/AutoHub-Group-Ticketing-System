@@ -51,27 +51,7 @@ require_once '../connect.php';
 </html>
 <!-- Page specific script -->
 <script>
-  //for the deparment to deparment assignment
-//   $(document).ready(function(){
-//     $("#tkdepart").change()
-//       $("#tkdepart").change(function(){
-//         // alert (   $("#tkdepart").val());
-//         var tkdepart_id = this.value;
-//         $.ajax({
-//         url: "function_update_ticket_incident_ajax.php",
-//         type: "POST",
-//         data: {
-//           tkdepart_id: $("#tkdepart").val()
-//           // tkdepart_id: tkdepart_id
-//         },
-//         cache: false,
-//         success: function(result1){     
-//           $("#deptgroup").html(result1);
-    
-//         }
-//         });    
-//       });  
-//     });
+ 
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()

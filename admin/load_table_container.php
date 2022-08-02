@@ -8,12 +8,12 @@
                   if($role == 1){
                     $ticketwhere = '';
                   }else{
-                    $ticketwhere = 'AND ticket_department_id = '.$_SESSION['id'];
+                    $ticketwhere = 'AND ticket_department_id = '.$_SESSION['ticket_user_department'];
                   }
                   
                  }elseif($type == 2){
                   $ticketwhere = 'AND u_id = '.$_SESSION['id'];
-                  
+                 
                  }elseif($type == 3){
                   $ticketwhere = 'AND ticket_assign_to = '.$_SESSION['id'];
                  
@@ -26,16 +26,7 @@
                  $columnName = $_GET['columns'][$columnIndex]['data']; // Column name
                  $columnSortOrder = $_GET['order'][0]['dir']; // asc or desc
                  $searchValue = mysqli_real_escape_string($conn,$_GET['search']['value']); // Search value
-               ## Total number of records without filtering
-                // $sel = mysqli_query($conn,"select count(*) as allcount from ticket_incident");
-                // $records = mysqli_fetch_assoc($sel);
-                // $totalRecords = $records['allcount'];
-                ## Total number of records with filtering
-                // $sel = mysqli_query($conn,"select count(*) as allcount from ticket_incident WHERE 1 ".$searchValue);
-                // echo$sel;
-                // exit;
-                // $records = mysqli_fetch_assoc($sel);
-                // $totalRecordwithFilter = $records['allcount'];
+           
                 $search='';
                 if(isset($searchValue)){
 

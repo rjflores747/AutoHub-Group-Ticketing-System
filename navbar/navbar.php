@@ -2,7 +2,7 @@
  require_once '../connect.php'; 
 //  print_r($_SESSION);
 //  exit;
-if (!isset($_SESSION["email"])) {
+if (!isset($_SESSION["id"])) {
   header("Location: index.php");
   exit();
  
@@ -73,7 +73,7 @@ if (!isset($_SESSION["email"])) {
       border-left:solid 3px #dddddd;
       border-right:solid 3px #dddddd;
       border-bottom:solid 3px #dddddd;" ></center>
-           <p><h1><?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?></h1><br>
+           <p><?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?><br>
            <?php 
           //  echo $_SESSION['ticket_user_department']?>
            

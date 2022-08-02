@@ -4,7 +4,7 @@ use function PHPSTORM_META\sql_injection_subst;
 
 require_once '../connect.php';
 
-if (!isset($_SESSION["email"])) {
+if (!isset($_SESSION["id"])) {
   header("Location: index.php");
   exit();
 }

@@ -7,7 +7,7 @@
   $query_run = mysqli_query($conn,$creatTk);
   $row = mysqli_fetch_array($query_run);
     // echo'last number <h1>'.$lastId. '</h1> ';
-  if (!isset($_SESSION["email"])) {
+  if (!isset($_SESSION["id"])) {
   header("Location: index.php");
   exit();
  
@@ -18,15 +18,23 @@
 if(count($_POST)>0) {
 mysqli_query($conn,"UPDATE ticket_incident set
  id='" . $_POST['update_status_id'] . "', 
- ticket_status ='" . $_POST['statusText'] . "'WHERE id='" . $_POST['update_status_id'] . "'");
+ ticket_timeofdate_end =NOW(), 
+ ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
  // Insert visitor activity log into database 
  $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully updated' ,NOW())");
 
  $message = "Record Modified Successfully";
 }
+// getting data into id of table
 $result = mysqli_query($conn,"SELECT * FROM ticket_incident WHERE id='" . $_GET['id'] . "'");
 $row= mysqli_fetch_array($result);
 
+// // getting data into id of table
+// $ticketDeptAssign = mysqli_query($conn,"SELECT * FROM ticket_department_assig WHERE id='" . $_GET['id'] . "'");
+// $rowticketDeptAssign= mysqli_fetch_array($result);
+
+
+// rating for the users
 $resultrating = mysqli_query($conn,"SELECT * FROM ticket_rating WHERE rating_ticket_id ='" . $_GET['id'] . "'");
  $ticket_rating='0';
 
@@ -88,10 +96,11 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     
                     <span class="info-box-number text-left  mb-0">TicketNo#: <?php echo $row['ticket_number'];?>
                     </span>
-                    <span class="info-box-number text-left  mb-0">State: <?php echo $row['ticket_status'];?> </span>
+                    <span class="info-box-number text-left  mb-0">Status: <?php echo $row['ticket_status'];?> </span>
                     <span class="info-box-number text-left  mb-0">Priority: <?php echo $row['ticket_priority'];?> </span>
+                    <!-- <span class="info-box-number text-left  mb-0">Assginee: <?php echo $rowticketDeptAssign[''];?></span> -->
                     <span class="info-box-number text-left  mb-0">Created: <?php echo $row['ticket_timeofdate'];?></span>
-
+                    <span class="info-box-number text-left  mb-0">Date End: <?php echo $row['ticket_timeofdate_end'];?></span>
                     <hr>
                     <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_short_discrip'];?></h6>
                     <form name="updatestatus" method="post" action="">
@@ -108,11 +117,11 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
 
                     <?php 
-                      if($_SESSION['ROLE'] == '1'||$_SESSION['ROLE'] == '2'){?>
+                      if($_SESSION['ticket_user_role'] == '1'||$_SESSION['ticket_user_role'] == '2'){?>
                        <span class="info-box-number text-left  mb-0">Status#:
                           <div class="select2-purple">
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
-                                <option value="" style="text-align:center">---------- STATUS ----------</option>
+                                <option value="" style="text-align:center">----- SELECT STATUS -----</option>
                                     <?php 
                                       
                                         $query= "SELECT * from ticket_status 
