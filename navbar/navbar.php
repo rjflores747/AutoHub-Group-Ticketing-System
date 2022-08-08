@@ -47,7 +47,43 @@ if (!isset($_SESSION["id"])) {
           </form>
         </div>
       </li>
-
+<!-- Notifications Dropdown Menu -->
+<li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="../admin/ticket_support_table_container.php" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i>New Ticket <?php
+                // require_once '../connect.php';
+                $sql="select  count(*) as total from ticket_incident where ticket_status = 'New' ";
+                $result=mysqli_query($conn,$sql);
+                $data=mysqli_fetch_assoc($result);
+              
+                ?>
+              
+            <span class="float-right text-muted text-sm"><?php 
+                 echo $data['total'];
+               
+                  ?></span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -58,6 +94,7 @@ if (!isset($_SESSION["id"])) {
          3
           </span> -->
         </a>
+        
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <ul id="chatList"
     		    class="list-group mvh-50 overflow-auto">
@@ -92,11 +129,6 @@ if (!isset($_SESSION["id"])) {
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->
-     
-            
-      
-
-      
     </ul>
   </nav>
   <!-- /.navbar -->

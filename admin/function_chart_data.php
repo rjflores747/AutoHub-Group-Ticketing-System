@@ -6,23 +6,23 @@ $connect = new PDO("mysql:host=localhost;dbname=autohub-ticketing", "root", "");
 
 if(isset($_POST["action"]))
 {
-	if($_POST["action"] == 'insert')
-	{
-		$data = array(
-			':language'		=>	$_POST["language"]
-		);
+	// if($_POST["action"] == 'insert')
+	// {
+	// 	$data = array(
+	// 		':language'		=>	$_POST["language"]
+	// 	);
 
-		$query = "
-		INSERT INTO survey_table 
-		(language) VALUES (:language)
-		";
+	// 	$query = "
+	// 	INSERT INTO survey_table 
+	// 	(language) VALUES (:language)
+	// 	";
 
-		$statement = $connect->prepare($query);
+	// 	$statement = $connect->prepare($query);
 
-		$statement->execute($data);
+	// 	$statement->execute($data);
 
-		echo 'done';
-	}
+	// 	echo 'done';
+	// }
 
 	if($_POST["action"] == 'fetch')
 	{

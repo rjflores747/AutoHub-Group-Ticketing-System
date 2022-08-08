@@ -109,7 +109,8 @@ $(document).ready(function(){
 							backgroundColor:color,
 							color:'#fff',
 							data:total
-						}
+						},
+						
 					]
 				};
 

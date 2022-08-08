@@ -97,7 +97,8 @@ require_once '../connect.php';
                 <h3>  <?php 
                  echo $data['total'];
                
-                  ?><sup style="font-size: 20px">%</sup></h3>
+                  ?>
+                  <sup style="font-size: 20px">%</sup></h3>
 
                 <p>Department</p>
               </div>

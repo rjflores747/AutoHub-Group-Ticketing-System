@@ -30,8 +30,8 @@ $result = mysqli_query($conn,"SELECT * FROM ticket_incident WHERE id='" . $_GET[
 $row= mysqli_fetch_array($result);
 
 // // getting data into id of table
-// $ticketDeptAssign = mysqli_query($conn,"SELECT * FROM ticket_department_assig WHERE id='" . $_GET['id'] . "'");
-// $rowticketDeptAssign= mysqli_fetch_array($result);
+
+
 
 
 // rating for the users
@@ -67,7 +67,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                   <div class="info-box-content">
 
                     <?php include '../admin/ticket_chat_time_line.php'; ?>
-                    
+                    <!-- SEND MESSAGE  -->
                     <div class="input-group ">
                         <input type="text"
                               placeholder="Type Message..."
@@ -96,9 +96,44 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     
                     <span class="info-box-number text-left  mb-0">TicketNo#: <?php echo $row['ticket_number'];?>
                     </span>
-                    <span class="info-box-number text-left  mb-0">Status: <?php echo $row['ticket_status'];?> </span>
+                    <span class="info-box-number text-left  mb-0">Status:
+                    <?php 
+                           if($row['ticket_status'] == 'Open'){
+
+                            echo '<span class="badge badge-info">Open</span>';
+                          }else if($row['ticket_status'] == '2' ){
+    
+                            echo'<span class="badge badge-danger">Close</span>' ;
+                          }else if($row['ticket_status'] == '3' ){
+    
+                            echo '<span class="badge badge-success">New</span>' ;
+                          }else if($row['ticket_status'] == 'Pending'){
+    
+                            echo '<span class="badge badge-warning">Pending</span> ';
+                          }else if($row['ticket_status'] == 'Success' ){
+                            echo '<span class="badge badge-success">Success</span>';
+    
+                          }else if($row['ticket_status'] == '1' ){
+    
+                            echo '<span class="badge badge-primary">In Progress</span>';
+                          }
+                    ?> </span>
+              
                     <span class="info-box-number text-left  mb-0">Priority: <?php echo $row['ticket_priority'];?> </span>
-                    <!-- <span class="info-box-number text-left  mb-0">Assginee: <?php echo $rowticketDeptAssign[''];?></span> -->
+                    <span class="info-box-number text-left  mb-0">Assginee :
+                       <?php  
+                                        $assignto =  $row['ticket_assign_to'];
+                                      
+                                        $ticketDeptAssign = mysqli_query($conn,"SELECT * FROM  ticket_user WHERE id='" .$assignto. "'");
+                                        $rowticketDeptAssign= mysqli_fetch_array($ticketDeptAssign);
+                                         
+                                        if(!empty($rowticketDeptAssign)){
+                                          echo $rowticketDeptAssign['ticket_fn']." ".$rowticketDeptAssign['ticket_ln'];
+                                        }else{
+                                          echo 'Unassigned';
+                                        }
+               
+                    ?></span>
                     <span class="info-box-number text-left  mb-0">Created: <?php echo $row['ticket_timeofdate'];?></span>
                     <span class="info-box-number text-left  mb-0">Date End: <?php echo $row['ticket_timeofdate_end'];?></span>
                     <hr>
@@ -106,7 +141,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
                   <!-- star rating -->
-                  <?php if($row['ticket_status'] == 'Close'){?>
+                  <?php if($row['ticket_status'] == '2'){?>
                     <div class="rateYo" id= "rateYo"
                       data-rateyo-num-stars="5"> 
                       </div>
@@ -132,14 +167,14 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                                           if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
                                           ?>  
-                                          <option selected value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <option selected value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
                                           <?php
                                           
                                           }
                                           else
                                           {
                                             ?>  
-                                          <option  value="<?php echo $statusrow['ticket_status_name']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <option  value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
                                           <?php
                                           }?>
                          

@@ -18,7 +18,7 @@
 <script src="<?=APP_URL?>/app/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 
 <!-- AdminLTE App -->
-<script src="<?=APP_URL?>/app/plugins/dist/js/adminlte.min.js"></script>
+<!-- <script src="<?=APP_URL?>/app/plugins/dist/js/adminlte.min.js"></script> -->
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?=APP_URL?>/app/dist/js/pages/dashboard2.js"></script>
@@ -52,7 +52,7 @@
 <script src="<?=APP_URL?>/app/plugins/toastr/toastr.min.js"></script>
 <!-- ChartJS -->
 <script src="<?=APP_URL?>/app/plugins/chart.js/Chart.min.js"></script>
-
+<!-- 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" > -->

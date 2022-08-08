@@ -37,7 +37,7 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
         ticket_urgent, 
         ticket_priority, 
         ticket_assign_group, 
-        ticket_assign_to, 
+        
         ticket_department_id, 
         ticket_timeofdate, 
         ticket_timeofdate_end) 
@@ -53,12 +53,12 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
         '$sortdiscription',
         '$discription',
         '',
-        'New',
+        '3',
         '',
         '',
         '',
         '',
-        '',
+        
         '$departmentType',
         NOW(),
         '');";

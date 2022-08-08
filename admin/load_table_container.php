@@ -5,11 +5,12 @@
                  $ticketwhere = '';
                  $role = $_SESSION['ticket_user_role'];
                  if($type == 1){
-                  if($role == 1){
-                    $ticketwhere = '';
-                  }else{
+                  // if($role == 1){
+                  //   $ticketwhere = '';
+                    
+                  // }else{
                     $ticketwhere = 'AND ticket_department_id = '.$_SESSION['ticket_user_department'];
-                  }
+                  // }
                   
                  }elseif($type == 2){
                   $ticketwhere = 'AND u_id = '.$_SESSION['id'];

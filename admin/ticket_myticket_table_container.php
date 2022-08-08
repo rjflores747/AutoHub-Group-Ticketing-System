@@ -116,10 +116,10 @@ if (!isset($_SESSION["id"])) {
                       if(row['ticket_status'] == 'Open'){
 
                         return '<span class="badge badge-info">Open</span>';
-                      }else if(row['ticket_status'] == 'Close' ){
+                      }else if(row['ticket_status'] == '2' ){
 
                         return '<span class="badge badge-danger">Close</span>' ;
-                      }else if(row['ticket_status'] == 'New' ){
+                      }else if(row['ticket_status'] == '3' ){
 
                       return '<span class="badge badge-success">New</span>' ;
                       }else if(row['ticket_status'] == 'Pending'){
@@ -128,7 +128,7 @@ if (!isset($_SESSION["id"])) {
                       }else if(row['ticket_status'] == 'Success' ){
                         return '<span class="badge badge-success">Success</span>';
 
-                      }else if(row['ticket_status'] == 'In Progress' ){
+                      }else if(row['ticket_status'] == '1' ){
 
                         return '<span class="badge badge-primary">In Progress</span>';
                       }

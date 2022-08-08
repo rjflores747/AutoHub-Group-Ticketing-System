@@ -76,8 +76,36 @@ $row= mysqli_fetch_array($result);
                                   <div class="col-sm-6">
                                     <div class="form-group row">
                                       <label for="inputstate" class="col-sm-2 col-form-label">Status</label>
+                                      <!-- <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputstate"  name="inputstate" value="<?php echo $row['ticket_status']; ?>" placeholder="State"> -->
+                                      <!-- </div> -->
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputstate"  name="inputstate"value="<?php echo $row['ticket_status']; ?>" placeholder="State">
+                                      <div class="select2-pur ple">
+                                          <select class="form-control select2bs4" id="inputstate" name="inputstate" style="width: 100%;">
+                                            <option>----- Select CATEGORY -----</option>
+                                              <?php 
+                                              
+                                                $querycategory= "SELECT * FROM `ticket_status`
+                                                order by ticket_status_name";
+                                                $resultStatus1= mysqli_query($conn,$querycategory);
+                                                
+                                                while ($Statusrow= mysqli_fetch_array($resultStatus1)) { 
+                                                  if($row['ticket_status'] == $Statusrow['ticket_status_id'] ){
+                                                  ?>  
+                                                  <option selected value="<?php echo $Statusrow['ticket_status_id']; ?>"><?php echo $Statusrow['ticket_status_name'] ?></option>
+                                                  <?php
+                                                  
+                                                  }
+                                                  else
+                                                  {
+                                                    ?>  
+                                                  <option  value="<?php echo $Statusrow['ticket_status_id']; ?>"><?php echo $Statusrow['ticket_status_name'] ?></option>
+                                                  <?php
+                                                  }?>
+                                              
+                                              <?php } ?>
+                                            </select>
+                                          </div>
                                       </div>
                                     </div>
                                   </div>
@@ -89,7 +117,7 @@ $row= mysqli_fetch_array($result);
                                     <label for="variable_ticket_category" class="col-sm-2 col-form-label">Category</label>
                                     <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputcategory" placeholder="Category"> -->
-                                      <div class="select2-purple">
+                                        <div class="select2-purple">
                                           <select class="form-control select2bs4" id="inputcategory" name="inputcategory" style="width: 100%;">
                                             <option>----- NONE CATEGORY -----</option>
                                               <?php 

@@ -70,9 +70,7 @@ $('.select2bs4').select2({
   theme: 'bootstrap4'
 })
             $('#button-send-message-details').on('click', function(){ 
-          // alert ($('#inputSubject').val());
-          // // alert(1);
-          // return;
+         
             //variable
             var variable_department = $('#inputeparment').val();
             var variable_subject = $('#inputSubject').val();

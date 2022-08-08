@@ -116,10 +116,10 @@ if (!isset($_SESSION["id"])) {
                       if(row['ticket_status'] == 'Open'){
 
                         return '<span class="badge badge-info">Open</span>';
-                      }else if(row['ticket_status'] == 'Close' ){
+                      }else if(row['ticket_status'] == '2' ){
 
                         return '<span class="badge badge-danger">Close</span>' ;
-                      }else if(row['ticket_status'] == 'New' ){
+                      }else if(row['ticket_status'] == '3' ){
 
                       return '<span class="badge badge-success">New</span>' ;
                       }else if(row['ticket_status'] == 'Pending'){
@@ -128,7 +128,7 @@ if (!isset($_SESSION["id"])) {
                       }else if(row['ticket_status'] == 'Success' ){
                         return '<span class="badge badge-success">Success</span>';
 
-                      }else if(row['ticket_status'] == 'In Progress' ){
+                      }else if(row['ticket_status'] == '1' ){
 
                         return '<span class="badge badge-primary">In Progress</span>';
                       }
@@ -146,6 +146,10 @@ if (!isset($_SESSION["id"])) {
                       var view = `<a href="../admin/ticket_details_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
+                         // Insert visitor activity log into database 
+                      
+                    <?php   $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','View User ' ,NOW())");?>
+
                       var update = `<a href="../admin/ticket_update_incident_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
