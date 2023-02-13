@@ -28,15 +28,24 @@ $message = "Record Modified Successfully";
 $result = mysqli_query($conn,"SELECT * FROM ticket_user WHERE id='" . $_GET['id'] . "'");
 $row= mysqli_fetch_array($result);
 
+
+// $query= "select * from ticket_deparment order by ticket_dept_name ASC";
+// $result1= mysqli_query($conn,$query);
+// while ($row= mysqli_fetch_array($result1)) {
+    
+// }
 ?>
 <section class="content">
 
                 <div class="container-fluid">
 
                     <div class="card card-primary card-outline card-tabs no-border-card mb-0">
+                             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button> -->
 
                         <div class="card-header p-0 pt-1 border-bottom-0">
-                        <h1>Profile</h1>
+                        <h1> Profile information</h1>
                             <!-- <div id="app" class=" border-bottom"> -->
 
                             <div id="app" class="">
@@ -49,11 +58,11 @@ $row= mysqli_fetch_array($result);
                                     <div class="collapse navbar-collapse" id="navbarNav">
                                         <!-- <ul  class=" nav nav-tabs navbar-nav mr-auto" id="custom-tabs-three-tab" role="tablist"  style="border-bottom: 0px solid #ffffff;"> -->
                                         <ul class=" nav nav-tabs navbar-nav mr-auto" id="custom-tabs-three-tab" role="tablist">
-                                            <li class="nav-item ">
-                                                <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Information</a>
-                                            </li>
+                                            <!-- <li class="nav-item ">
+                                                <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Profile Information</a>
+                                            </li> -->
                                             <li class="nav-item" id="customer-family-tab">
-                                                <a class="nav-link " id="custom-tabs-three-family-tab" data-toggle="pill" href="#custom-tabs-three-family" role="tab" aria-controls="custom-tabs-three-family" aria-selected="false">Password</a>
+                                                <!-- <a class="nav-link " id="custom-tabs-three-family-tab" data-toggle="pill" href="#custom-tabs-three-family" role="tab" aria-controls="custom-tabs-three-family" aria-selected="false">Password</a> -->
                                             </li>
                                             <li class="nav-item" hidden="">
                                                 <a class="nav-link" id="custom-tabs-three-hobbies-tab" data-toggle="pill" href="#custom-tabs-three-hobbies" role="tab" aria-controls="custom-tabs-three-hobbies" aria-selected="false">Affiliations</a>
@@ -109,7 +118,7 @@ $row= mysqli_fetch_array($result);
                                                             <div class="form-group text-center" style="position: relative;">
                                                                 <span class="img-div">
                                                                     <div class="text-center img-placeholder" onclick="triggerClick()">
-                                                                        <h4>Update image</h4>
+                                                                        <!-- <h4>Update image</h4>   -->
                                                                     </div>
                                                                     <img class="profile-user-img img-fluid img-circle" src="../uploads/<?=$_SESSION['ticket_user_url']?>" onclick="triggerClick()" id="profileDisplay">
                                                                 </span>
@@ -125,11 +134,17 @@ $row= mysqli_fetch_array($result);
                                                         <?php echo $_SESSION['ticket_fn'].' '.$_SESSION['ticket_ln']?></h3>
 
                                                         <p class="text-muted text-center mb-1" id="position-display">
-                                                        <?php echo $_SESSION['ticket_user_department']?></p>
+                                                            
+                                                        <?php
+                                                        
+                                                       
+                                                        
+                                                        
+                                                        ?></p>
 
                                                         <a class="email-click">
                                                             <p id="main_email" style="font-size: 14px; color:#007bff;" class="customer-data-side text-center">
-                                                            <?php echo $_SESSION['u_id']?></p>
+                                                           </p>
                                                         </a>
 
                                                         <ul class="list-group list-group-unbordered mb-3">
@@ -138,14 +153,25 @@ $row= mysqli_fetch_array($result);
                                                                     <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Employee
                                                                             ID</strong>
                                                                         <span class="float-right">:</span></span>
-                                                                    <span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="main_category"><a class=""><?php echo $_SESSION['u_id']?></a></span>
+                                                                    <span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="main_category"><a class=""><?php echo $_SESSION['ticket_employee_id']?></a></span>
                                                                 </div>
                                                             </li>
                                                             <li class="list-group-item">
                                                                 <div class="form-group row my-0">
                                                                     <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Username</strong>
                                                                         <span class="float-right">:</span></span>
-                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class=""><?php echo $_SESSION['u_id']?></a></span>
+                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class="">
+                                                                        <?php echo $_SESSION['ticket_employee_id']?>
+                                                                    </a></span>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="form-group row my-0">
+                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Email</strong>
+                                                                        <span class="float-right">:</span></span>
+                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class="">
+                                                                        <?php echo $_SESSION['ticket_email']?>
+                                                                    </a></span>
                                                                 </div>
                                                             </li>
                                                             <!-- <li class="list-group-item">
@@ -161,34 +187,33 @@ $row= mysqli_fetch_array($result);
                                             </li> -->
                                                             <li class="list-group-item">
                                                                 <div class="form-group row my-0">
-                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Mobile
-
-                                                                        </strong><span class="float-right">:</span></span>
-                                                                    <a class="contact2-click"><span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="main_customer_mobile_2">+639618191459</span></a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="list-group-item" hidden="">
-                                                                <div class="form-group row my-0">
-                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Department
-                                                                        </strong><span class="float-right">:</span></span>
-                                                                    <a class="residential-click"> <span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="main_customer_home_mobile">
-                                                                            APPLICATION &amp; DATABASE DEPARTMENT</span></a>
+                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Mobile</strong>
+                                                                        <span class="float-right">:</span></span>
+                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class="">
+                                                                        <?php echo $_SESSION['ticket_mobile']?>
+                                                                    </a></span>
                                                                 </div>
                                                             </li>
                                                             <li class="list-group-item">
                                                                 <div class="form-group row my-0">
-                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Company
-                                                                        </strong><span class="float-right">:</span></span>
-                                                                    <a class="residential-click"> <span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="company_main">AHG</span></a>
+                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Company</strong>
+                                                                        <span class="float-right">:</span></span>
+                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class="">
+                                                                        <?php echo $_SESSION['ticket_comp_name']?>
+                                                                    </a></span>
                                                                 </div>
                                                             </li>
                                                             <li class="list-group-item">
                                                                 <div class="form-group row my-0">
-                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Dealer
-                                                                        </strong><span class="float-right">:</span></span>
-                                                                    <a class="business-click"> <span class="customer-data-side col-sm-7 lbl-forms-sm-customer-main" id="dealer_main">AHGI</span></a>
+                                                                    <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Dealer </strong>
+                                                                        <span class="float-right">:</span></span>
+                                                                    <span class="col-sm-7 lbl-forms-sm-customer-main" id="main_customer_status"> <a class="">
+                                                                        <?php echo $_SESSION['ticket_deal_name']?>
+                                                                    </a></span>
                                                                 </div>
                                                             </li>
+                                                         
+                                                            
                                                             <li class="list-group-item">
                                                                 <div class="form-group row my-0">
                                                                     <span class="col-sm-5 lbl-forms-sm-customer-main"><strong>Gender
@@ -368,24 +393,39 @@ $row= mysqli_fetch_array($result);
                                                             <span><strong>Department</strong></span>
                                                             <div class="form-group mb-2 dropdown-input mr-2" id="department_div">
                                                                 <label class="dropdown" hidden="">Department</label>
-                                                                <select name="department" id="department" class="form-control form-control-sm select2-hidden-accessible" style="width: 100%;" data-select2-id="department" tabindex="-1" aria-hidden="true">
-                                                                    <option value="545" data-select2-id="10">ACCOUNTING DEPARTMENT</option>
-                                                                    <option value="546" data-select2-id="14">APPLICATION &amp; DATABASE DEPARTMENT</option>
-                                                                    <option value="465">CUSTOMER RELATIONSHIP MANAGEMENT&nbsp;</option>
-                                                                    <option value="468">DEALER CUSTOMER RELATION CENTER</option>
-                                                                    <option value="1">DEFAULT</option><option value="472">EXECUTIVE</option>
-                                                                    <option value="476">FINANCING &amp; INSURANCE</option>
-                                                                    <option value="484">HUMAN RESOURCE&nbsp;</option>
-                                                                    <option value="489">INFORMATION TECHNOLOGY</option>
-                                                                    <option value="549">LAND TRANSPORTATION OFFICE</option>
-                                                                    <option value="517">PARTS</option><option value="525">SALES AND MARKETING</option>
-                                                                    <option value="527">SERVICE</option><option value="547">SYSTEM DEPARTMENT</option>
-                                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-department-container"><span class="select2-selection__rendered" id="select2-department-container" role="textbox" aria-readonly="true" title="APPLICATION &amp; DATABASE DEPARTMENT"><span class="select2-selection__clear" title="Remove all items" data-select2-id="15">×</span>APPLICATION &amp; DATABASE DEPARTMENT</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                                <select class="form-control select2bs4" id="inputstate" name="inputstate" style="width: 100%;" disabled>
+
+                                                                <option>----- Select CATEGORY -----</option>
+                                                                    <?php 
+                                                                    
+                                                                        $querycategory= "SELECT * FROM `ticket_deparment` 
+                                                                        order by ticket_dept_name";
+                                                                        $resultStatus1= mysqli_query($conn,$querycategory);
+                                                                        while ($Statusrow= mysqli_fetch_array($resultStatus1)) { 
+                                                                        if($_SESSION['ticket_user_department'] == $Statusrow['ticket_dept_source_id'] ){
+                                                                        ?>  
+                                                                        <option selected value="<?php echo $Statusrow['ticket_dept_source_id']; ?>"><?php echo $Statusrow['ticket_dept_name'] ?></option>
+                                                                        <?php
+                                                                        
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            ?>  
+                                                                        <option  value="<?php echo $Statusrow['ticket_dept_source_id']; ?>"><?php echo $Statusrow['ticket_dept_name'] ?></option>
+                                                                        <?php
+                                                                        }?>
+                                                                    
+                                                                    <?php } ?>
+                                                                    </select>
                                                             </div>
                                                             <span><strong>Position</strong></span>
                                                             <div class="form-group mb-2 dropdown-input mr-2" id="position_div">
                                                                 <label class="dropdown" hidden="">Position</label>
-                                                                <select name="position" id="position" class="form-control form-control-sm select2-hidden-accessible" style="width: 100%;" data-select2-id="position" tabindex="-1" aria-hidden="true"><option value="67" data-select2-id="18">ADD Manager</option><option value="66">Database Assistant</option><option value="68">Database Specialist</option><option value="54" data-select2-id="24">Programmer</option><option value="55">Project Coordinator</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="12" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-position-container"><span class="select2-selection__rendered" id="select2-position-container" role="textbox" aria-readonly="true" title="Programmer"><span class="select2-selection__clear" title="Remove all items" data-select2-id="25">×</span>Programmer</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                                <input type="text" name="business" id="business" maxlength="15" class="form-control form-control-sm" placeholder="" value="<?php echo $_SESSION['ticket_position']?>" disabled>
+
+   
+                                                                
+                                                               
                                                             </div>
 
 
@@ -400,7 +440,8 @@ $row= mysqli_fetch_array($result);
                                                                         <span class="">+63</span>
                                                                     </div>
                                                                 </div>
-                                                                <input oninput="this.value=this.value.slice(0,this.maxLength)" type="number" maxlength="10" name="contactno2" id="contactno2" class="form-control form-control-sm" placeholder="" value="">
+                                                                <input type="text" name="business" id="business" maxlength="15" class="form-control form-control-sm" placeholder="" value="<?php echo $_SESSION['ticket_mobile']?>" disabled>
+
                                                                 <div class="input-group-append mr-2">
                                                                     <div class="input-group-text" style="height:31px;">
                                                                         <span class="fas fa-phone"></span>
@@ -456,7 +497,7 @@ $row= mysqli_fetch_array($result);
 
 
 
-                                                            <span><strong>Other Email
+                                                            <!-- <span><strong>Other Email
                                                                     Address</strong></span>
                                                             <div class="input-group mb-2">
                                                                 <span id="validate-email2" style="width: 100%;  margin-top: .25rem; font-size: 80%; color: #dc3545; display:none;"></span>
@@ -466,9 +507,9 @@ $row= mysqli_fetch_array($result);
                                                                         <span class="fas fa-envelope"></span>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
 
-                                                            <span><strong>Address</strong></span>
+                                                            <!-- <span><strong>Address</strong></span>
                                                             <div class="input-group mb-2">
                                                                 <input maxlength="100" type="text" name="address" id="address" class="form-control form-control-sm" placeholder="" value="#34 A CAPT. E SANTOS, ST. TND VILLAGE, TUKTUKAN">
                                                                 <div class="input-group-append mr-2 ">
@@ -476,9 +517,9 @@ $row= mysqli_fetch_array($result);
                                                                         <span class="fa fa-map-marker "></span>
                                                                     </div><strong style="color:red;">*</strong>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
 
-                                                            <span><strong>State</strong></span>
+                                                            <!-- <span><strong>State</strong></span>
                                                             <div class="form-group mb-2 dropdown-input mr-2" id="state_div">
                                                                 <label class="dropdown" hidden="">State</label>
                                                                 <select name="state" id="state" class="form-control form-control-sm select2-hidden-accessible" style="width: 100%;" data-select2-id="state" tabindex="-1" aria-hidden="true">
@@ -493,18 +534,18 @@ $row= mysqli_fetch_array($result);
                                                             <div class="form-group mb-2 dropdown-input mr-2" id="city_div">
                                                                 <label class="dropdown" hidden="">City</label>
                                                                 <select name="city" id="city" class="form-control form-control-sm select2-hidden-accessible" style="width: 100%;" data-select2-id="city" tabindex="-1" aria-hidden="true"><option value="0" selected="" data-select2-id="20">Select City</option><option value="1373">CITY OF LAS PIÑAS</option><option value="1374">CITY OF MAKATI</option><option value="1375">CITY OF MUNTINLUPA</option><option value="1376">CITY OF PARAÑAQUE</option><option value="1377">PASAY CITY</option><option value="1378">PATEROS</option><option value="1379" data-select2-id="22">TAGUIG CITY</option>	</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="8" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-city-container"><span class="select2-selection__rendered" id="select2-city-container" role="textbox" aria-readonly="true" title="TAGUIG CITY">TAGUIG CITY</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                            </div>
+                                                            </div> -->
 
-                                                            <span><strong>Postal
-                                                                    Code</strong></span>
-                                                            <div class="input-group mb-2">
-                                                                <input oninput="this.value=this.value.slice(0,this.maxLength)" type="number" maxlength="6" name="postal" id="postal" class="form-control form-control-sm" placeholder="" value="1634">
-                                                                <div class="input-group-append mr-2">
-                                                                    <div class="input-group-text">
-                                                                        <span class="fa fa-map-marker "></span>
+                                                                <!-- <span><strong>Postal
+                                                                        Code</strong></span>
+                                                                <div class="input-group mb-2">
+                                                                    <input oninput="this.value=this.value.slice(0,this.maxLength)" type="number" maxlength="6" name="postal" id="postal" class="form-control form-control-sm" placeholder="" value="1634">
+                                                                    <div class="input-group-append mr-2">
+                                                                        <div class="input-group-text">
+                                                                            <span class="fa fa-map-marker "></span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
+                                                                </div> -->
 
 
 
@@ -521,11 +562,11 @@ $row= mysqli_fetch_array($result);
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-12">
+                                                                <!-- <div class="col-12">
                                                                     <div class="form-group mr-2">
                                                                         <input type="submit" name="submit" id="submit" value="Update" class="btn btn-success float-right">
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
 
                                                             </div>
                                                             
@@ -558,7 +599,7 @@ $row= mysqli_fetch_array($result);
                                 </div>
 
 
-                                <div class="tab-pane fade" id="custom-tabs-three-family" role="tabpanel" aria-labelledby="custom-tabs-three-family-tab">
+                                <!-- <div class="tab-pane fade" id="custom-tabs-three-family" role="tabpanel" aria-labelledby="custom-tabs-three-family-tab">
                                     <div class="tab-pane" id="password">
 
                                         <form id="update_form_password" class="form-horizontal">
@@ -623,7 +664,7 @@ $row= mysqli_fetch_array($result);
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
 

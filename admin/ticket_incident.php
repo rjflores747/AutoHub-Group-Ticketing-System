@@ -15,8 +15,19 @@ if (!isset($_SESSION["id"])) {
   <title>AutoHubGroup | TicketingSystem</title>
 
   <?php include '../link-required-start.php';?>
-
-</head>
+          <style>  
+       
+           .ul-main{  
+                
+                background-color:#eee;  
+                cursor:pointer;  
+                
+                overflow: scroll;
+           }  
+           .li-main{  
+                padding:12px;  
+           }  
+           </style> 
 <body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
@@ -35,6 +46,7 @@ if (!isset($_SESSION["id"])) {
   <!-- <php include '../navbar/content-header.php';> -->
             <!-- Main Content-->
   <?php include '../navbar/admin-Container.php';?>
+  <?php include '../admin/function_suggesstion.php';?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -44,7 +56,8 @@ if (!isset($_SESSION["id"])) {
   </aside>
   <!-- /.control-sidebar -->
 
-  <?php include '../navbar/footer.php';?>
+  <?php include '../navbar/footer.php';
+  ?>
 </div>
 <!-- ./wrapper -->
 <!-- link required scripts -->
@@ -65,10 +78,10 @@ if (!isset($_SESSION["id"])) {
                //Initialize Select2 Elements
     $('.select2').select2()
 
-//Initialize Select2 Elements
-$('.select2bs4').select2({
-  theme: 'bootstrap4'
-})
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+              theme: 'bootstrap4'
+            })
             $('#button-send-message-details').on('click', function(){ 
          
             //variable
@@ -115,7 +128,7 @@ $('.select2bs4').select2({
               success: function(result){
             // alert(result.status);
                   if(result.status == 1){ // success
-                      toastr.remove();
+                      toastr.success();
                       toastr.error("Add successfully","Incomplete data");
                       
                       window.location.href='ticket_details_container.php?id='+result.id;
@@ -127,9 +140,9 @@ $('.select2bs4').select2({
                       // detailsCount();
                       // clearElements();
                   } 
-                  // else if(result.status == 0){ // failed add
-                      // $('#loading-view').attr('hidden', true);
-                      // $('.el-add').attr('disabled', false);
+              //     else if(result.status == 0){ // failed add
+              //         $('#loading-view').attr('hidden', true);
+              //         $('.el-add').attr('disabled', false);
 
               //         toastr.remove();
               //         toastr.error("No Record Found");
@@ -150,3 +163,27 @@ $('.select2bs4').select2({
         });
       })
 </script>
+<script>  
+ $(document).ready(function(){  
+      $('#inputSubject').keyup(function(){  
+           var query = $(this).val();  
+           if(query != '')  
+           {  
+                $.ajax({  
+                     url:"../admin/testing/search.php",  
+                     method:"POST",  
+                     data:{query:query},  
+                     success:function(data)  
+                     {  
+                          $('#subjectList').fadeIn();  
+                          $('#subjectList').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', 'li', function(){  
+           $('#inputSubject').val($(this).text());  
+           $('#subjectList').fadeOut();  
+      });  
+ });  
+ </script>  

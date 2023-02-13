@@ -5,7 +5,10 @@ if (!isset($_SESSION["id"])) {
   exit();
  
 }
+$message = '';
+
 if(count($_POST)>0) {
+  
 mysqli_query($conn,"UPDATE ticket_incident set
  id='" . $_POST['update_id'] . "', 
  ticket_category='" . $_POST['inputcategory'] . "' ,
@@ -27,17 +30,20 @@ mysqli_query($conn,"UPDATE ticket_incident set
  // Insert visitor activity log into database 
 $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");
 
-$message = "Record Modified Successfully";
+
+// $message = "Record Modified Successfully";
 
 }
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 $result = mysqli_query($conn,"SELECT * FROM ticket_incident WHERE id='" . $_GET['id'] . "'");
 $row= mysqli_fetch_array($result);
 
 ?>
 
 <form name="frmUser" method="post" action="">
-<div><?php if(isset($message)) { echo $message; } 
-?>
+<div>
+  
 </div>
 <div style="padding-bottom:5px;">
 <!-- <a href="retrieve.php">Employee List</a> -->
@@ -67,7 +73,7 @@ $row= mysqli_fetch_array($result);
                                   <div class="row">
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                    <label for="variable_ticket_caller" class="col-sm-2 col-form-label">Caller</label>
+                                    <label for="variable_ticket_caller" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                       <input type="text" class="form-control" id="variable_ticket_caller" name="variable_ticket_caller"value="<?php echo $row['ticket_caller']; ?>" placeholder="Caller" disabled>
                                     </div>
@@ -266,7 +272,9 @@ $row= mysqli_fetch_array($result);
                                       <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputdepartment" name="inputdepartment" value="<?php echo $row['ticket_assign_group']; ?>" /> -->
                                       <div class="select2-purple">
-                                      <select class="select2" id="deptgroup" name="deptgroup" multiple="multiple" data-placeholder="Select a Assignment" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                          <select class="form-control select2bs4" id="deptgroup" name="deptgroup" style="width: 100%;">
+
+                                      <!-- <select class="select2" id="deptgroup" name="deptgroup" multiple="multiple" data-placeholder="Select a Assignment" data-dropdown-css-class="select2-purple" style="width: 100%;"> -->
                                        <option >----- NONE DEPARMENT -----</option>
                                   
                                        </select>

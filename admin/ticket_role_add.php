@@ -8,12 +8,12 @@
 			<table id="example1" class="table table-bordered table-striped">
                  
 				
-				<!-- <thead>
+				<thead>
 					<tr>
-						<th>id</th>
+						<!-- <th>id12</th>
 						<th>Role Name</th>
 						<th>Role Status</th>
-						<th>action</th>
+						<th>action</th> -->
 
 					</tr>
 				</thead>
@@ -25,15 +25,15 @@
 						// while ($roledata=mysqli_fetch_assoc($rolelistres)) {
 						// ?>
 						<tr>
-							<td><php echo $roledata['id'];?></td>
+							<!-- <td><php echo $roledata['id'];?></td>
 							<td><php echo $roledata['role_name'];?></td>
 							<td><php echo $roledata['role_status'];?></td>
-							</tr>
+							</tr> -->
 						<php
 						}
 						?>
 					
-				</tbody> -->
+				</tbody>
 			</table>
 		</div>
 

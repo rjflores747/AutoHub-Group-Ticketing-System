@@ -197,36 +197,91 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               </div>
             <br>
             <div class="text-muted">
-              <p class="text-sm">Client Company
+              <!-- <p class="text-sm">Client Company
                 <b class="d-block">Deveint Inc</b>
-              </p>
+              </p> -->
               <p class="text-sm">Project Leader
-                <b class="d-block">Tony Chicken</b>
+                <b class="d-block"> <?php echo $row['ticket_caller'];?> </b>
               </p>
             </div>
 
             <h5 class="mt-5 text-muted">Project files</h5>
-            <ul class="list-unstyled">
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-              </li>
-            </ul>
-            <div class="text-center mt-5 mb-3">
-              <a href="#" class="btn btn-sm btn-primary">Add files</a>
-              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-            </div>
+             <?php
+                $conn = mysqli_connect('localhost','root','','autohub-ticketing');
+                // require_once '../connect.php';
+                if(isset($_POST['submit'])){
+                    // $fileName = basename($_FILES['file']['name']);
+                    // $fileTmpName = $_FILES['file']['tmp_name'];
+                    // $path = "../uploads/".$fileName;
+                    
+                    // if(file_exists($fileName))
+                    // {
+                    //   echo "Unable to locate folder";
+                    //   exit();
+              
+                    // }
+                    // else
+                    // {
+                      // $old_file = $_FILES['file']['name'];
+                      // $new_file = substr($_FILES['file']['name'], 0,40);
+                      // if(@move_uploaded_file($_FILES['file']['name'], $fileName.'-'.$new_file))
+                      // {
+                     
+                          
+                      // }
+                      // else{
+                      //     echo "Unable to Uploaded file! ";
+                         
+                      //     exit();
+                      // }
+                      $temp = explode(".", $_FILES["file"]["name"]);
+                      $newfilename = round(microtime(true)) . '.' . end($temp);
+                      move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
+                          $query = "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())";
+                          $run = mysqli_query($conn,$query);   
+                  
+                   
+                    // print_r($query);
+                    // exit();
+
+                    if($run){
+                      // move_uploaded_file($newfilename,$path);
+                      echo "success";
+                        }
+                        else{
+                            echo "error".mysqli_error($conn);
+                        }
+                    
+                }
+                
+                ?>
+              
+              <table border="1px" align="center">
+                  <tr>
+                      <td>
+                          <form action="../uploads/" method="post" enctype="multipart/form-data">
+                          <br>
+                                <input type="file" class="btn btn-warning"  name="file"><br><br>
+
+                                <button type="submit" class="btn btn-success" name="submit"><i class="fa fa-upload"></i> Upload</button>
+                            </form>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <?php
+                          $query2 = "SELECT * FROM `ticket_files` WHERE ticket_number ='" . $lastId . "'";
+                          $run2 = mysqli_query($conn,$query2);
+                          
+                          while($rows = mysqli_fetch_assoc($run2)){
+                              ?>
+                          <a href="download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br>
+                          <?php
+                          }
+                          ?>
+                      </td>
+                  </tr>
+              </table>
           </div>
         </div>
       </div>

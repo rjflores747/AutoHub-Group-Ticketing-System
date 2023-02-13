@@ -5,7 +5,7 @@ require_once '../connect.php';
     
       
     
-    $queryView = mysqli_query($conn,"select * from ticket_incident") ;
+    $queryView = mysqli_query($conn,"SELECT * from ticket_incident") ;
     $resultCheck = mysqli_num_rows($queryView);
     if ($resultCheck > 0){
         while ($row= mysqli_fetch_array($queryView)) {

@@ -12,7 +12,13 @@ require_once '../connect.php';
   <title>AutoHubGroup | TicketingSystem</title>
 
   <?php include '../link-required-start.php';?>
+  <style>
+    .p1 {
+        font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        }
 
+  </style>
+  
 </head>
 <body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -69,7 +75,7 @@ $(function() {
       $("#tkdepart").change(function(){
         var tkdepart_id = this.value;
         $.ajax({
-        url: "function_ticket_incident_ajax.php",
+        url: "ticket_role_add_container.php",
         type: "POST",
         data: {
           tkdepart_id: tkdepart_id
@@ -100,41 +106,35 @@ $(function() {
         width: "1%",
       },
       {
-        title: "Role Name	",
-        data: "role_name",
+        title: "Employee",
+        data: "ticket_employee_id",
+        className: "",
+        // orderable: true,
+        width: "1%",
+      },
+      {
+        title: "Firts Name	",
+        data: "ticket_fn",
         className: "",
         // orderable: true,
         width: "1%",
       },
       
-      
       {
         title: "Status",
-        data: "role_status",
+        data: "ticket_status",
         className: "",
         
         render: function (data, type, row, meta) {
           //  alert(row['ticket_status']);
-          if(row['role_status'] == '1'){
+          if(row['ticket_status'] == '1'){
 
             return '<span class="badge badge-info">Active</span>';
-          }else if(row['role_status'] == '0' ){
+          }else if(row['ticket_status'] == '0' ){
 
             return '<span class="badge badge-danger">Deactive</span>' ;
           }
-          // else if(row['ticket_status'] == 'New' ){
-
-          // return '<span class="badge badge-success">New</span>' ;
-          // }else if(row['ticket_status'] == 'Pending'){
-
-          //   return '<span class="badge badge-warning">Pending</span> ';
-          // }else if(row['ticket_status'] == 'Success' ){
-          //   return '<span class="badge badge-success">Success</span>';
-
-          // }else if(row['ticket_status'] == 'In Progress' ){
-
-          //   return '<span class="badge badge-primary">In Progress</span>';
-          // }
+       
         },
         // orderable: true,
         width: "1%",
@@ -151,13 +151,13 @@ $(function() {
           var view = `<a href="../admin/ticket_permission_select_container.php?id=`+
             row.id +
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
-          var update = `         <a href="../admin/ticket_update_incident_container.php?id=`+
+          var update = `         <a href="../admin/ticket_update_role_container.php?id=`+
             row.id +  
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
           var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
           
       
-          if(row['role_status'] == '1' ){
+          if(row['ticket_status'] == '1' ){
             return (
             `
                    <div class="row justify-content-center">
@@ -166,21 +166,7 @@ $(function() {
                    `
           );
           }
-          // else if(row['ticket_user_role'] == '2'){
-          //   return(`
-          //   <div class="row justify-content-center">
-          //          `+view+update+` 
-          //          </div>
-                   
-          //   `);
-          // }else if(row['ticket_user_role'] == '3'){
-          //   return(`
-          //   <div class="row justify-content-center">
-          //          `+view+` 
-          //          </div>
-                   
-          //   `);
-          // }
+         
         },
       },
     ];

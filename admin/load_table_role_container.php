@@ -11,20 +11,22 @@
                    $ticketwhere = 'AND u_id = '.$_SESSION['u_id'];
                   }
                      // $refeshtablenew = $_POST["refeshtablenew"];
-                     $sqltable="SELECT * FROM ticket_role  where 1 ".$ticketwhere;
+                     $sqltable="SELECT * FROM ticket_user  where 1 ".$ticketwhere;
                      $resultsqltable = mysqli_query($conn,$sqltable);
                      $ticket['data'] = array();
                      while ($rowsqltable = mysqli_fetch_assoc($resultsqltable)){
                          $ticket['data'][] = array(
                            'id'=>$rowsqltable['id'],
-                           'role_name'=>$rowsqltable['role_name'],
-                           'role_status'=>$rowsqltable['role_status'],
+                           'ticket_employee_id'=>$rowsqltable['ticket_employee_id'],
+                           'ticket_fn'=>$rowsqltable['ticket_fn'],
+                           'ticket_ln'=>$rowsqltable['ticket_ln'],
+                           'ticket_status'=>$rowsqltable['ticket_status'],
                            
                          );
                          
                          
                      }
-                     $sqltablecount="SELECT count(*) AS TOTAL FROM ticket_role ";
+                     $sqltablecount="SELECT count(*) AS TOTAL FROM ticket_user ";
                      $resultsqltablecount = mysqli_query($conn,$sqltablecount);
                      $ticket['recordsTotal']=0;
                      $ticket['recordsFiltered']=0;

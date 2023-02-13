@@ -23,15 +23,16 @@
               <img class="animation__shake" src="../img/autohub-logo.png" alt="AdminLTELogo" height="60" width="60">
             </div>
               <h1><b>AutoHub<strong></b></strong></h1>
-              <h1>Ticketing<strong>System</strong></h1>
+              <h1>Ticketing<strong> System</strong></h1>
               <p class="lead mb-5">THE SOLUTION OF YOUR PROBLEMS 
                 <!-- Ford, Blk 15, Rizal Dr, Crescent Park West, Taguig, 1634 Metro Manila<br>
                 Phone: +63 917 528 4442  -->
               </p>  
             </div>
           </div>
-          <div class="col-7">
-            <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
+          <div class="col-7"> 
+             <form method="post">
+                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
                    <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
@@ -59,15 +60,21 @@
                 
                 <div class="form-group">
                   <label for="inputSubject">Subject</label>
-                  <input type="text" id="inputSubject" name="inputSubject" class="form-control"require />
+                  <!-- <input type="text" id="inputSubject" name="inputSubject" class="form-control"require /> -->
+                  <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject" />  
+                  <div id="subjectList"></div>  
+           
                 </div>
-                <div class="form-group">
+             
+                  <div class="form-group">
                   <label for="inputMessage">Discription</label>
                   <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
                 </div>
                 <div class="form-group">
                   <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">
                 </div>
+                </form>
+              
             <!-- </form> -->
           </div>
         </div>
