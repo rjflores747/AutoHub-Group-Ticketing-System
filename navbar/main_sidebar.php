@@ -131,7 +131,9 @@ if (!isset($_SESSION["id"])) {
                 </a>
               </li>
               <li class="nav-item">
+
                 <a href="../admin/ticket_report_user_container.php" class="nav-link ">
+
                 <i class="fas fa-file-pdf"></i>
                   <p>User Reports List</p>
                 </a>

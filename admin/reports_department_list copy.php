@@ -16,6 +16,7 @@ $document = new Dompdf($options);
 //initialize dompdf class
 
 $document = new Dompdf();
+
 require_once '../connect.php';
 
 // $connect = mysqli_connect("localhost", "root", "", "autohub-ticketing");
@@ -39,7 +40,9 @@ WHERE
 
 ticket_dept_tnd BETWEEN '$from_date' AND '$to_date' 
 ";
+
 $result = mysqli_query($conn, $query);
+
 
 $output = '
 <!DOCTYPE html>

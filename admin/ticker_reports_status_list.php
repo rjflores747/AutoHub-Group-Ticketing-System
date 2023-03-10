@@ -55,13 +55,11 @@
 									<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control">
 								</div>
 							</div>
-						</div>
-						<div class="row">
-
 							<div class="col-md-4">
 								<div class="form-group">
-									<!-- <label>Click to Filter</label> <br> -->
-								  <button type="submit" class="btn btn-primary">Submit</button>
+									<label>Click to Filter</label> <br>
+								  <button type="submit" class="btn btn-primary">Filter</button>
+
 								</div>
 							</div>
 						</div>

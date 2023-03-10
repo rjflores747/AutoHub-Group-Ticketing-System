@@ -14,6 +14,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
   
+
+  <!-- CSS FOR LOGIN  -->
+  <link rel="stylesheet" type="text/css" href="./style.css">
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -23,11 +27,22 @@
       <a href="index2.html" class="h1"><b>AUTOHUB </b>TICKETING</a>
     </div>
     <div class="card-body">
+
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="index3.html" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
+
+      <p class="login-box-msg">   <?php if (isset($_GET['error'])) {?>
+          <p class="error"><?php echo $_GET['error'];?></p>
+        <?php } ?></p>
+
+      <form action="./function_login.php" method="post"> 
+     
+        <div class="input-group mb-3">
+          <input type="email" class="form-control"  name="uname" placeholder="Email">
+
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -35,7 +50,9 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+
+          <input type="password" class="form-control"name="pass" placeholder="Password">
+
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

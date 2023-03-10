@@ -1,11 +1,14 @@
 <?php  
- $conn = mysqli_connect("localhost", "root", "", "autohub-ticketing");  
-// require_once './connect.php';
+require_once '../connect.php';
+
+
  if(isset($_POST["query"]))  
  {  
       $output = '';  
       $query = "SELECT * FROM ticket_suggestions WHERE suggestions_name LIKE '%".$_POST["query"]."%'";  
+
       $result = mysqli_query($conn, $query);  
+
       $output = '<ul class="list-unstyled">';  
       if(mysqli_num_rows($result) > 0)  
       {  

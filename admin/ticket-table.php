@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require '../connect.php';
@@ -29,7 +30,8 @@ require '../connect.php';
 <div class="wrapper">
             <!-- Modal start -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open modal</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Incident <i class="fa fa-User"></i></button>
+
 
                 <!-- Modal -->
                <!-- The Modal -->
@@ -242,23 +244,37 @@ require '../connect.php';
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Ticke #</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Status</th>
-                    <th></th>
+
+                    <th>id #</th>
+                    <th>Ticket Number</th>
+                    <th>Short Discription</th>
+                    <th>Discription</th>
+                    <th>Option</th>
+                   
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="bi bi-ticket">view</i></button></td>
-                  </tr>
+                 
+                  <?php                                   
+                      $querytable =mysqli_query($conn,"select * from ticket_incident") ;
+                      while ($row= mysqli_fetch_array($querytable)) {
+                        echo"<tr>";
+                        echo"<td>"; echo $row["id"];echo"</td>";
+                        echo"<td>"; echo $row["ticket_number"];echo"</td>";
+                        echo"<td>"; echo $row["ticket_short_discrip"];echo"</td>";
+                        echo"<td>"; echo $row["ticket_discription"];echo"</td>";
+                     
+                        echo"<td>"; ?> <a href=""> <button type="button" class="btn btn-success"><i class="fa fa-search"></i></button></a>
+                         <a href=""> <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></a> 
+                        <?php  
+                        
+                        echo"</td>";
+                        echo"</tr>";
+                      }  
+                      ?>
+
+                    <!-- <td><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="bi bi-ticket">view</i></button></td> -->
+
 
                   </tbody>
                   <tfoot>
@@ -284,6 +300,7 @@ require '../connect.php';
     </section>
     <!-- /.content -->
   </div>
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -323,6 +340,7 @@ require '../connect.php';
 <script src="../dist/js/demo.js"></script>
 <!-- Select2 -->
 <script src="../plugins/select2/js/select2.full.min.js"></script>
+
 
 <!-- Page specific script -->
 <script>
