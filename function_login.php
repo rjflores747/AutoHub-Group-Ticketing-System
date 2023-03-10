@@ -35,7 +35,8 @@
 				`ticket_dob`, 
 				`ticket_mobile`, 
 				`ticket_user_url`, 
-				`ticket_user_role`) VALUES 
+				`ticket_user_role`,
+				`ticket_createdAt`) VALUES 
 				('".$user_array['u_id']."',
 				'".$user_array['u_fname']."',
 				'".$user_array['u_lname']."',
