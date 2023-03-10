@@ -2,8 +2,7 @@
 
 @session_start();
 // change the url if you have a local 
-define('APP_URL','http://192.168.8.187/AutoHub-Group-Ticketing-System');
-
+define('APP_URL','http://192.168.8.187/AutoHub-Ticketing/');
 require_once 'utility.php';
 // $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
 // $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));

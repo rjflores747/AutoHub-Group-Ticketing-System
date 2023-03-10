@@ -12,6 +12,8 @@ $options->set('chroot', realpath(''));
 $document = new Dompdf($options);
 
 //initialize dompdf class
+require_once '../connect.php';
+// $connect = mysqli_connect("localhost", "root", "", "autohub-ticketing");
 
 if(isset($_GET['from_date']) && isset($_GET['to_date']))
 {
@@ -20,32 +22,34 @@ if(isset($_GET['from_date']) && isset($_GET['to_date']))
 
 $query = "
 SELECT
-
-`id`,
-`ticket_number`,
-`u_id`,
-`ticket_caller`,
-`ticket_category`,
-`ticket_subcategory`,
-`ticket_service`,
-`ticket_config_item`,
-`ticket_short_discrip`,
-`ticket_discription`,
-`ticket_filedownload`,
-`ticket_contact_type`,
-`ticket_status`,
-`ticket_imapact`,
-`ticket_urgent`,
-`ticket_priority`,
-`ticket_assign_group`,
-`ticket_assign_to`,
-`ticket_department_id`,
-`ticket_timeofdate`,
-`ticket_timeofdate_end`
+ticket_incident.`id`,
+ticket_incident.`ticket_number`,
+ticket_incident.`u_id`,
+ticket_incident.`ticket_caller`,
+ticket_incident.`ticket_category`,
+ticket_incident.`ticket_subcategory`,
+ticket_incident.`ticket_service`,
+ticket_incident.`ticket_config_item`,
+ticket_incident.`ticket_short_discrip`,
+ticket_incident.`ticket_discription`,
+ticket_incident.`ticket_filedownload`,
+ticket_incident.`ticket_contact_type`,
+ticket_incident.`ticket_status`,
+ticket_incident.`ticket_imapact`,
+ticket_incident.`ticket_urgent`,
+ticket_incident.`ticket_priority`,
+ticket_incident.`ticket_assign_group`,
+ticket_incident.`ticket_assign_to`,
+ticket_incident.`ticket_department_id`,
+ticket_incident.`ticket_timeofdate`,
+ticket_incident.`ticket_timeofdate_end`,
+    ticket_status.`ticket_status_name`
 FROM
-`ticket_incident`
+    ticket_incident
+INNER JOIN ticket_status ON ticket_incident.ticket_status = ticket_status.ticket_status_id
 WHERE
-ticket_timeofdate  BETWEEN '$from_date' AND '$to_date' 
+    ticket_incident.ticket_number = ticket_status.ticket_status_id 
+    AND ticket_timeofdate  BETWEEN '$from_date' AND '$to_date'
 ";
 $result = mysqli_query($conn, $query);
 
@@ -91,9 +95,7 @@ $output = '
             }
 	
 				.invoice-box table,.item-box table {
-
 					width: 100%;
-
 					line-height: inherit;
 					text-align: left;
 				}
@@ -257,15 +259,13 @@ $output = '
                 
                 $output .= '
                 <tr>
-
-                    <td>'.$row["ticket_number"].'</td>
-                    <td>'.$row["ticket_caller"].'</td>
-                    <td>'.$row["ticket_short_discrip"].'</td>
-                    <td>'.$row["ticket_discription"].'</td>
-                    <td>'.$row['ticket_status'].'</td>
-                    <td>'.$row["ticket_timeofdate"].'</td>
-                    <td>'.$row["ticket_timeofdate_end"].'</td>
-
+                    <td>'.$row["ticket_incident.ticket_number"].'</td>
+                    <td>'.$row["ticket_incident.ticket_caller"].'</td>
+                    <td>'.$row["ticket_incident.ticket_short_discrip"].'</td>
+                    <td>'.$row["ticket_incident.ticket_discription"].'</td>
+                    <td>'.$row['ticket_status.ticket_status_name'].'</td>
+                    <td>'.$row["ticket_incident.ticket_timeofdate"].'</td>
+                    <td>'.$row["ticket_incident.ticket_timeofdate_end"].'</td>
                     </tr>
                 ';
             }

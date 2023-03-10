@@ -169,9 +169,7 @@ require_once '../connect.php';
 						</div>
 					</div>
 				</div>
-
 			</div> -->
-
  <!-- DONUT CHART
  <div class="card card-danger">
               <div class="card-header">

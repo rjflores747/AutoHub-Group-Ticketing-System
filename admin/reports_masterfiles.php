@@ -3,7 +3,6 @@
  //include autoloader
  use Dompdf\Dompdf;
  use Dompdf\Options;
-
  require_once '../connect.php';
 
  require_once '../dompdf/vendor/autoload.php';
@@ -15,6 +14,7 @@ $document = new Dompdf($options);
 
 //initialize dompdf class
 
+// $connect = mysqli_connect("localhost", "root", "", "autohub-ticketing");
 
 if(isset($_GET['from_date']) && isset($_GET['to_date']))
 {
@@ -50,7 +50,6 @@ FROM
 WHERE
 ticket_timeofdate  BETWEEN '$from_date' AND '$to_date' 
 ";
-
 $result = mysqli_query($conn, $query);
 
 $output = '
@@ -95,9 +94,7 @@ $output = '
             }
 	
 				.invoice-box table,.item-box table {
-
 					width: 100%;
-
 					line-height: inherit;
 					text-align: left;
 				}
