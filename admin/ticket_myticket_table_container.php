@@ -53,6 +53,7 @@ if (!isset($_SESSION["id"])) {
 
 </body>
 </html>
+
 <!-- Page specific script -->
 <script>
   var ticketlist = null;
@@ -65,8 +66,8 @@ if (!isset($_SESSION["id"])) {
         showConfirmButton: false,
         timer: 3000
       });
-      
-  
+
+
     //for the deparment to deparment assignment
     $(document).ready(function(){
         $("#tkdepart").change(function(){
@@ -80,9 +81,9 @@ if (!isset($_SESSION["id"])) {
           cache: false,
           success: function(result1){     
             $("#deptgroup").html(result1);
-      
+
           }
-          
+
           });    
         });  
       });
@@ -94,10 +95,10 @@ if (!isset($_SESSION["id"])) {
                 'processing': true,
                 'serverSide': true,
                 'serverMethod': 'get',
-                
+
                  ajax: {
                     'url':'load_table_container.php',
-                  
+
                     data: function (d) {
                     return $.extend({}, d, {
                         'type': 2,
@@ -138,20 +139,24 @@ if (!isset($_SESSION["id"])) {
                     data: null,
                     orderable: true,
                     width: "3%",
-                   
-                   
+
+
 
                     render: function (data, type, row, meta) {
 
                       var view = `<a href="../admin/ticket_details_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-warning btn-icon" title="View"><i class="fas fa-eye"></i></a> `;
+                         // Insert visitor activity log into database 
+
+                    <?php   $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','View User ' ,NOW())");?>
+
                       var update = `<a href="../admin/ticket_update_incident_container.php?id=`+
                         row.id +
                         `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
                       var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
-                      
-                  
+
+
                       if(row['ticket_user_role'] == '1' ){
                         return (
                         `
@@ -182,17 +187,11 @@ if (!isset($_SESSION["id"])) {
 
                 ]
             });
-            
+
         });
                 function initActionRemove() {
                   $("[data-action-remove]").each(function () {
                     $(this).on("click", function () {
-                      // const product_id =   $("#example1").DataTable().row(row).data().id;
-                      //  //$(this).attr('data-action-remove');
-                      // alert (product_id);
-
-                      // return false;
-                      // var row = $(this).closest("tr");
                       var ticket_id = $(this).attr('data-action-remove');
 
                         Swal.fire({
@@ -228,7 +227,7 @@ if (!isset($_SESSION["id"])) {
                                 icon: 'success',
                                 title: 'SucesssFul Deleted.'
                               }); 
-                              
+
                               $("#empTable").DataTable().ajax.reload();
                             },
                             error: function () {
@@ -240,11 +239,11 @@ if (!isset($_SESSION["id"])) {
 
 
                       return false;
-                    
+
                     });
                   });
-                  
+
                 } 
       });
-        
+
 </script>

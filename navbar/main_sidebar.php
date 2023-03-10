@@ -11,7 +11,7 @@ if (!isset($_SESSION["id"])) {
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../img/autohub-logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AutoHub Group</span>
 
@@ -87,38 +87,10 @@ if (!isset($_SESSION["id"])) {
               </li>
             </ul>
           </li>
-         
-     
-         
-            <!-- <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class='fas fa-ticket-alt'></i>
-                <p> Ticket Incident</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../admin/ticket_table_container.php" class="nav-link">
-              <i class='fas fa-ticket-alt'></i>
-              <p> Ticket Table </p> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../admin/ticket_details_container.php" class="nav-link">
-              <i class='fas fa-ticket-alt'></i>
-              <p> Create Ticket </p> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../admin/ticket_details_container.php" class="nav-link">
-              <i class='fas fa-ticket-alt'></i>
-              <p> Department Assig </p> 
-              </a>
-            </li> -->
-
           </li>
                  
           <?php 
-          if($_SESSION['ticket_user_role'] == '1'){?>
+          if($_SESSION['ticket_user_role'] == '1' || $_SESSION['ticket_user_role'] == '2'){?>
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="fas fa-tools"></i>
@@ -134,24 +106,49 @@ if (!isset($_SESSION["id"])) {
                   <p>Role Add </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="../admin/ticket_permistion_add_container.php" class="nav-link ">
                   <i class="fas fa-users-cog"></i>
                   <p>Permission Add</p>
                 </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="../admin/ticket_suggesstion_add_container.php" class="nav-link ">
+                  <i class="fas fa-users-cog"></i>
+                  <p> Subject masterfile</p>
+                </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/ticket_permission_container.php" class="nav-link ">
-                <i class="fas fa-cogs"></i>
-                  <p>Settings</p>
+                <i class="fas fa-file-pdf"></i>
+                  <p>Incident Masterfile Reports</p>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a href="../admin/ticket_department_report_container.php" class="nav-link ">
+                <i class="fas fa-file-pdf"></i>
+                  <p>Department Reports List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/ticket_report_user_container.php" class="nav-link ">
+                <i class="fas fa-file-pdf"></i>
+                  <p>User Reports List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/ticker_reports_status_list_container.php" class="nav-link ">
+                <i class="fas fa-file-pdf"></i>
+                  <p>Ticker Reports  Per Status</p>
+                </a>
+              </li>
             </ul>
           </li>
           
          <?php } ?>
 
+         <?php 
+          if($_SESSION['ticket_user_role'] == '1'){?>
          <li class="nav-item menu-open">
             
             <ul class="nav nav-treeview">
@@ -165,6 +162,7 @@ if (!isset($_SESSION["id"])) {
               
             </ul>
           </li>
+          <?php } ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

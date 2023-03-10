@@ -254,7 +254,7 @@ if (!isset($_SESSION["id"])) {
               
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">TICKETING</h3>
+                <h3 class="card-title"> TICKETS</h3>
               </div>
               
               <!-- /.card-header -->

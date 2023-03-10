@@ -6,7 +6,7 @@
     if (isset($_POST["var_user"]) && isset($_POST["var_password"])) {
 		$userid = $conn->real_escape_string($_POST["var_user"]);
 		$password = $conn->real_escape_string($_POST["var_password"]);
-
+// connection for the asa account 
 		$array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
 		$array_data['parameters'] = http_build_query(array(
 			'key'=>'99797807845605376',
@@ -29,6 +29,11 @@
 				`ticket_password`, 
 				`ticket_status`, 
 				`ticket_user_department`, 
+				`ticket_comp_name`, 
+				`ticket_deal_name`, 
+				`ticket_position`, 
+				`ticket_dob`, 
+				`ticket_mobile`, 
 				`ticket_user_url`, 
 				`ticket_user_role`) VALUES 
 				('".$user_array['u_id']."',
@@ -39,14 +44,23 @@
 				'".$user_array['u_password']."',
 				'1',
 				'".$user_array['dept_id']."',
+				'".$user_array['comp_name']."',
+				'".$user_array['deal_name']."',
+				'".$user_array['u_position']."',
+				'',
+				'".$user_array['usr_mobile']."',
 				'ibro.png',
-				'3'
+				'3',NOW()
 				) ON DUPLICATE KEY UPDATE 
-				  
 				`ticket_fn`= VALUES(ticket_fn), 
 				`ticket_ln`= VALUES(ticket_ln), 
 				`ticket_employee_id`= VALUES(ticket_employee_id), 
 				`ticket_email`= VALUES(ticket_email), 
+				`ticket_comp_name`= VALUES(ticket_comp_name), 
+				`ticket_deal_name`= VALUES(ticket_deal_name), 
+				`ticket_position`= VALUES(ticket_position), 
+				`ticket_dob`= VALUES(ticket_dob), 
+				`ticket_mobile`= VALUES(ticket_mobile), 
 				`ticket_password`= VALUES(ticket_password), 
 				`ticket_user_department`= VALUES(ticket_user_department) 
 			

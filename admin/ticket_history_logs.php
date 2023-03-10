@@ -17,7 +17,7 @@
             <tbody>
                     <?php
                     require_once '../connect.php';
-                    $rolelistqry="SELECT * FROM ticket_activity_logs";
+                    $rolelistqry="SELECT * FROM `ticket_activity_logs` ORDER BY `id`DESC;";
                     $rolelistres=mysqli_query($conn,$rolelistqry);
                     while ($roledata=mysqli_fetch_assoc($rolelistres)) {
                     ?>

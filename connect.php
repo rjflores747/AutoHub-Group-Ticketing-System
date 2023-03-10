@@ -1,7 +1,8 @@
 <?php
-@session_start();
 
-define('APP_URL','http://localhost/AutoHub-Group-Ticketing-System');
+@session_start();
+// change the url if you have a local 
+define('APP_URL','http://192.168.8.187/AutoHub-Ticketing/');
 require_once 'utility.php';
 // $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
 // $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
@@ -10,10 +11,12 @@ require_once 'utility.php';
 
 
 // exit;
-
+    
 
   $servername = "localhost";
   $username = "root";
+  // $username = "autoph_helpdesk";
+  // $password = "AGc@2023#$@help@";
   $password = "";
   $db ="autohub-ticketing";
 
@@ -25,4 +28,5 @@ require_once 'utility.php';
     die("Connection failed: " . $conn->connect_error);
   }
   // echo "Connected successfully";
+
 ?>
