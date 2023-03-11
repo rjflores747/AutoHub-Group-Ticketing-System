@@ -45,7 +45,7 @@ if (!isset($_SESSION["id"])) {
        <!-- Content Header (Page header) -->
   <!-- <php include '../navbar/content-header.php';> -->
             <!-- Main Content-->
-            <section class="content">
+  <section class="content">
       <div class="container-fluid">
         
         <!-- Info boxes -->
