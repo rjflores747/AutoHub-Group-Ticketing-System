@@ -75,4 +75,6 @@ require_once '../connect.php';
       "responsive": true,
     });
   });
+
+  
 </script>

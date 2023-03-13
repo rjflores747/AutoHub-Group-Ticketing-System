@@ -4,10 +4,10 @@ use function PHPSTORM_META\sql_injection_subst;
 
 require_once '../connect.php';
 
-if (!isset($_SESSION["id"])) {
-  header("Location: index.php");
-  exit();
-}
+// if (!isset($_SESSION["id"])) {
+//   header("Location: index.php");
+//   exit();
+// }
 ?>
  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Incident <i class='fas fa-ticket-alt'></i> <i class="fa fa-User"></i></button> -->
 <div class="wrapper" >

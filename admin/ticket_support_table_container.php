@@ -92,7 +92,7 @@ require_once '../connect.php';
                 'serverMethod': 'get',
 
                  ajax: {
-                    'url':'load_table_container.php',
+                    'url':'../admin/load_table_container.php',
 
                     data: function (d) {
                     return $.extend({}, d, {
