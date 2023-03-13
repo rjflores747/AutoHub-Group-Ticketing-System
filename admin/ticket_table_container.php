@@ -72,7 +72,7 @@ if (!isset($_SESSION["id"])) {
         $("#tkdepart").change(function(){
           var tkdepart_id = this.value;
           $.ajax({
-          url: "function_ticket_incident_ajax.php",
+          url: "../admin/function_ticket_incident_ajax.php",
           type: "POST",
           data: {
             tkdepart_id: tkdepart_id
@@ -96,7 +96,7 @@ if (!isset($_SESSION["id"])) {
                 'serverMethod': 'get',
                 
                  ajax: {
-                    'url':'load_table_container.php',
+                    'url':'../admin/load_table_container.php',
                   
                     data: function (d) {
                     return $.extend({}, d, {
