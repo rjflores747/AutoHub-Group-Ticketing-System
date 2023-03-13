@@ -1,22 +1,18 @@
-
 <?php 
+
 require_once '../connect.php';
 
-
-if (!isset($_SESSION["id"])) {
-  header("Location: index.php");
-  exit();
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AutoHubGroup | TicketingSystem</title>
-  
+
   <?php include '../link-required-start.php';?>
-  
+
 </head>
 <body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -33,7 +29,7 @@ if (!isset($_SESSION["id"])) {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  testing
+  <?php include '../admin/ticket_table_all_incident.php';?>
   </div>
   <!-- /.content-wrapper -->
 
