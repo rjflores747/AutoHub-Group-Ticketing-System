@@ -29,7 +29,7 @@ require_once '../connect.php';
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  <?php include '../admin/ticket_myticket_table_container.php';?>
+  <?php include '../admin/ticket_myticket_table.php';?>
   </div>
   <!-- /.content-wrapper -->
 
