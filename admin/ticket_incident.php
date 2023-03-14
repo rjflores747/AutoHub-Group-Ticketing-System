@@ -1,10 +1,10 @@
 <?php 
 require_once '../connect.php'; 
 
-if (!isset($_SESSION["id"])) {
-  header("Location: index.php"); 
-  exit();
-}
+// if (!isset($_SESSION["id"])) {
+//   header("Location: index.php"); 
+//   exit();
+// }
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,6 @@ if (!isset($_SESSION["id"])) {
             <!-- Main Content-->
   <?php include '../navbar/admin-Container.php';?>
   <?php include '../admin/function_suggesstion.php';?>
-  <?php include '../admin/function_create_ticket_incident.php'?>
   </div>
   <!-- /.content-wrapper -->
 

@@ -2,10 +2,10 @@
   //  if(isset($_SESSION['ticket_user_role']) && $_SESSION['ticket_user_role']!='1'){
   //   header('location: index.php');
   //   die();
-    if (!isset($_SESSION["id"])) {
-      header("Location: index.php");
-      exit();
-    }
+    // if (!isset($_SESSION["id"])) {
+    //   header("Location: index.php");
+    //   exit();
+    // }
 // }
  ?>
   <!-- Main content -->

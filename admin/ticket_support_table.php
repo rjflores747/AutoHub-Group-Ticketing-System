@@ -19,7 +19,7 @@
       <?php
       require_once '../connect.php';
     
-      $rolelistqry="SELECT * FROM ticket_incident";
+      $rolelistqry="SELECT * FROM ticket_incident where ticket_assign_to ='".$_SESSION['id']."'";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
       ?>
