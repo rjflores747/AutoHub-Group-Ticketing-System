@@ -4,7 +4,7 @@ require_once '../connect.php';
 // if (!isset($_SESSION["id"])) {
 //   header("Location: index.php"); 
 //   exit();
-// }
+// } 
 
 ?>
 <!DOCTYPE html>
@@ -45,10 +45,6 @@ require_once '../connect.php';
        <!-- Content Header (Page header) -->
   <!-- <php include '../navbar/content-header.php';> -->
             <!-- Main Content-->
-
-
-  <!-- Main content -->
-  <!-- Main content -->
   <section class="content">
       <div class="container-fluid">
         
@@ -190,7 +186,7 @@ require_once '../connect.php';
           }
           // Login Validation
           $.ajax({
-              url:"../admin/function_create_ticket_incident.php",  
+              url:"function_create_ticket_incident.php",  
               type:"POST", 
               dataType:"json",
               data: {

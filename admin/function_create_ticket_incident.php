@@ -2,10 +2,10 @@
 <?php
 
 require_once '../connect.php';
-if (!isset($_SESSION["id"])) {
-		header("Location: index.php");
-		exit(); 
-	}
+// if (!isset($_SESSION["id"])) {
+// 		header("Location: index.php");
+// 		exit(); 
+// 	}
 use LDAP\Result;
 if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
     $date = date('yyyy-m-d h:i:s');
