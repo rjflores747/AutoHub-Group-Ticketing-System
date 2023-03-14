@@ -1,5 +1,9 @@
+<?php 
 
-<?php require_once '../connect.php';?>
+require_once '../connect.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AutoHubGroup | TicketingSystem</title>
 
-  <?php include '../link-required-start.php'?>
+  <?php include '../link-required-start.php';?>
 
 </head>
 <body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -24,9 +28,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-       <!-- Content Header (Page header) -->
-  <?php include '../navbar/content-header.php';?>
-            <!-- Main Content-->
+  <br>
   <?php include '../admin/dashboard.php';?>
   </div>
   <!-- /.content-wrapper -->
@@ -42,114 +44,37 @@
 <!-- ./wrapper -->
 <!-- link required scripts -->
 <?php include '../link-required-scripts-end.php';?>
+
+
+
 </body>
 </html>
+<!-- Page specific script -->
 <script>
-	
-$(document).ready(function(){
+ 
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
-	$('#submit_data').click(function(){
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 
-		var language = $('input[name=programming_language]:checked').val();
-
-		$.ajax({
-			url:"data.php",
-			method:"POST",
-			data:{action:'insert', language:language},
-			beforeSend:function()
-			{
-				$('#submit_data').attr('disabled', 'disabled');
-			},
-			success:function(data)
-			{
-				$('#submit_data').attr('disabled', false);
-
-				$('#programming_language_1').prop('checked', 'checked');
-
-				$('#programming_language_2').prop('checked', false);
-
-				$('#programming_language_3').prop('checked', false);
-
-				alert("Your Feedback has been send...");
-
-				makechart();
-			}
-		})
-
-	});
-
-	makechart();
-
-	function makechart()
-	{
-		$.ajax({
-			url:"function_chart_data.php",
-			method:"POST",
-			data:{action:'fetch'},
-			dataType:"JSON",
-			success:function(data)
-			{
-				var language = [];
-        
-				var total = [];
-				var color = [];
-
-				for(var count = 0; count < data.length; count++)
-				{
-					language.push(data[count].language);
-					total.push(data[count].total);
-					color.push(data[count].color);
-				}
-
-				var chart_data = {
-					labels:language,
-					datasets:[
-						{
-							label:'Vote',
-							backgroundColor:color,
-							color:'#fff',
-							data:total
-						},
-						
-					]
-				};
-
-				var options = {
-					responsive:true,
-					scales:{
-						yAxes:[{
-							ticks:{
-								min:0
-							}
-						}]
-					}
-				};
-
-				var group_chart1 = $('#pie_chart');
-
-				var graph1 = new Chart(group_chart1, {
-					type:"pie",
-					data:chart_data
-				});
-
-				var group_chart2 = $('#doughnut_chart');
-
-				var graph2 = new Chart(group_chart2, {
-					type:"doughnut",
-					data:chart_data
-				});
-
-				var group_chart3 = $('#bar_chart');
-
-				var graph3 = new Chart(group_chart3, {
-					type:'bar',
-					data:chart_data,
-					options:options
-				});
-			}
-		})
-	}
-
-});
-
+  
 </script>
