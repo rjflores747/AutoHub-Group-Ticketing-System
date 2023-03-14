@@ -1,6 +1,6 @@
 <div class="container">
    
-<h4>All Ticket Incident</h4>
+<h4>Support </h4>
 <hr>
 <table id="example1" class="table table-bordered">
   <thead>
@@ -19,7 +19,7 @@
       <?php
       require_once '../connect.php';
     
-      $rolelistqry="SELECT * FROM ticket_incident where ticket_assign_to ='".$_SESSION['id']."'";
+      $rolelistqry="SELECT * FROM ticket_incident";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
       ?>
