@@ -1,10 +1,6 @@
   <?
 require_once '../connect.php';
-  if (!isset($_SESSION["id"])) {
-    header("Location: index.php");
-    exit();
-   
-  }
+
   ?>
   <!-- Main content -->
   <section class="content">
@@ -38,7 +34,7 @@ require_once '../connect.php';
               <div class="icon">
                 <i class="fas fa-ticket-alt"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="../admin/ticket_incident.php" class="small-box-footer">
                 More info 
                 <i class="fas fa-arrow-circle-right"></i>
               </a>
