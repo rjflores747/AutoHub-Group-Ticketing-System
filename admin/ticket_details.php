@@ -7,11 +7,11 @@
   $query_run = mysqli_query($conn,$creatTk);
   $row = mysqli_fetch_array($query_run);
     // echo'last number <h1>'.$lastId. '</h1> ';
-  if (!isset($_SESSION["id"])) {
-  header("Location: index.php");
-  exit();
+  // if (!isset($_SESSION["id"])) {
+  // header("Location: index.php");
+  // exit();
  
-}
+// }
 }
 
 
