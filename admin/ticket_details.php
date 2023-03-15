@@ -207,7 +207,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
             <h5 class="mt-5 text-muted">Project files</h5>
              <?php
-                $conn = mysqli_connect('localhost','root','','autohub-ticketing');
+                // $conn = mysqli_connect('localhost','root','','autohub-ticketing');
                 // require_once '../connect.php';
                 if(isset($_POST['submit'])){
                     // $fileName = basename($_FILES['file']['name']);

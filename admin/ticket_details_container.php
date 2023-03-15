@@ -4,12 +4,12 @@ require_once '../connect.php';
   //   header('Location: ticket_incident.php');
   //   exit;
   // }
-  // $ticket_id =intval($_GET['id']); 
-  // if (!isset($_SESSION["id"])) {
-  //   header("Location: index.php");
-  //   exit();
+  $ticket_id =intval($_GET['id']); 
+  if (!isset($_SESSION["id"])) {
+    header("Location: index.php");
+    exit();
    
-  // }
+  }
 
 ?>
 <!DOCTYPE html>
@@ -226,107 +226,3 @@ $('#Updatestatu').on('click',function(){
   });
 </script>
 </html>
- <script>
-		 var Toast = null;
-  		// global variable
-		$(function() {
-			Toast = Swal.mixin({
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				timer: 3000
-			});
-			$('#button-logIn-details').on('click', function(){ 
-		// alert ($('#inputemail').val());
-		// alert(1);
-		// return;
-			//variable
-			 var variable_user = $('#inputuser').val();
-			 var variable_passowrd = $('#inputpassowrd').val();
-
-		// REQUIREMENTS
-		if(variable_user == ""){
-			toastr.remove();
-			toastr.error("User ID cannot be empty", "Incomplete data");
-
-			return;
-		}
-		if(variable_passowrd == ""){
-			toastr.remove();
-			toastr.error("Password cannot be empty", "Incomplete data");
-
-			return;
-		}
-		 // Login Validation
-		 $.ajax({
-        url:"function_login.php",  
-        type:"POST", 
-        dataType:"json",
-        data: {
-            var_user: variable_user, 
-            var_password: variable_passowrd, 
-            type: 1 // login status
-        },
-        beforeSend: function(){
-            // $('#loading-view').attr('hidden', false);
-            $('.el-log').attr('disabled', true);
-        },
-            
-        success: function(result){
-			// alert(result.status);
-            if(result.status == 1){ // success
-                toastr.remove();
-                toastr.success("Login successfully");
-				window.location.href='./admin/ticket_incident.php';
-                // $('#modal-finance-add-fni').modal('hide');
-                // $('#loading-view').attr('hidden', true);
-                // $('.el-add').attr('disabled', false);
-
-                // refreshFinanceTable();
-                // detailsCount();
-                // clearElements();
-            } 
-            else if(result.status == 0){ // failed add
-                // $('#loading-view').attr('hidden', true);
-                // $('.el-add').attr('disabled', false);
-
-                toastr.remove();
-                toastr.error("No Record Found");
-				return;
-            } 
-            else if(result.status == 2){ // dealer validation error
-                // $('#loading-view').attr('hidden', true);
-                // $('.el-add').attr('disabled', false);
-
-                toastr.remove();
-                toastr.error("Wrong Credentials");
-				return;
-            } 
-            // else if(result.status == 3){ // duplicate
-            //     toastr.remove();
-            //     toastr.warning("Duplicate record");
-            //     // var duplicate_id = result.duplicate_id;
-            //     // var duplicate_plate_cs_number = result.duplicate_plate_cs_number;
-
-            //     // alertDuplicate(duplicate_id, duplicate_plate_cs_number);
-
-            //     $('#loading-view').attr('hidden', true);
-            //     $('#button-add-fni-details').attr('disabled', false);
-
-            //     return;
-            // }
-            // else if(result.status == 4){ // invalid email
-            //     $('#loading-view').attr('hidden', true);
-            //     $('.el-add').attr('disabled', false);
-
-            //     toastr.remove();
-            //     toastr.error("Invalid email");
-
-            //     return;
-            // }
-        }
-    })
-
-	});
-})
-</script>

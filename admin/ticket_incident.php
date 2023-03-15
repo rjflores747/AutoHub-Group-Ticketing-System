@@ -67,7 +67,7 @@ require_once '../connect.php';
             </div>
           </div>
           <div class="col-7"> 
-             <form method="post">
+             <form action="../admin/ticket_details_container.php" method="post">
                 <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
