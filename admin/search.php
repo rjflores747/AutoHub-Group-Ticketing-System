@@ -1,5 +1,6 @@
 <?php  
- $conn = mysqli_connect("localhost", "root", "", "autohub-ticketing");  
+//  $conn = mysqli_connect("localhost", "root", "", "autohub-ticketing");  
+require_once './connect.php';
 // require_once './connect.php';
  if(isset($_POST["query"]))  
  {  
