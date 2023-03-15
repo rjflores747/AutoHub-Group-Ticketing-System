@@ -1,27 +1,27 @@
 <?php 
 require_once '../connect.php';
 
-if (!isset($_SESSION["id"])) {
-  header("Location: index.php");
-  exit();
+// if (!isset($_SESSION["id"])) {
+//   header("Location: index.php");
+//   exit();
  
-}
-  	if (!isset($_GET['user'])) {
-  		header("Location: home.php");
-  		exit;
-  	}
+// }
+//   	if (!isset($_GET['user'])) {
+//   		header("Location: home.php");
+//   		exit;
+//   	}
 
-  	# Getting User data data
-  	$chatWith = getUser($_GET['user'], $conn);
+//   	# Getting User data data
+//   	$chatWith = getUser($_GET['user'], $conn);
 
-  	if (empty($chatWith)) {
-  		header("Location: home.php");
-  		exit;
-  	}
+//   	if (empty($chatWith)) {
+//   		header("Location: home.php");
+//   		exit;
+//   	}
 
-  	$chats = getChats($_SESSION['user_id'], $chatWith['user_id'], $conn);
+//   	$chats = getChats($_SESSION['user_id'], $chatWith['user_id'], $conn);
 
-  	opened($chatWith['user_id'], $conn, $chats);
+//   	opened($chatWith['user_id'], $conn, $chats);
 ?>
 <!DOCTYPE html>
 <html lang="en">
