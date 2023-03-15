@@ -1,11 +1,11 @@
 <?php 
 require_once '../connect.php';
 
-if (!isset($_SESSION["id"])) {
-  header("Location: index.php");
-  exit();
+// if (!isset($_SESSION["id"])) {
+//   header("Location: index.php");
+//   exit();
  
-}
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
