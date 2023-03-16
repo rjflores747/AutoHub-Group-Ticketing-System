@@ -63,7 +63,6 @@
 				`ticket_position`= VALUES(ticket_position), 
 				`ticket_mobile`= VALUES(ticket_mobile), 
 				`ticket_password`= VALUES(ticket_password), 
-				`ticket_user_role`= VALUE(ticket_user_role),
 				`ticket_user_department`= VALUES(ticket_user_department) 
 			
 				";
