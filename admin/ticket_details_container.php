@@ -5,11 +5,11 @@ require_once '../connect.php';
   //   exit;
   // }
   $ticket_id =intval($_GET['id']); 
-  if (!isset($_SESSION["id"])) {
-    header("Location: index.php");
-    exit();
+  // if (!isset($_SESSION["id"])) {
+  //   header("Location: index.php");
+  //   exit();
    
-  }
+  // }
 
 ?>
 <!DOCTYPE html>
