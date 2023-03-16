@@ -61,9 +61,9 @@
 				`ticket_comp_name`= VALUES(ticket_comp_name), 
 				`ticket_deal_name`= VALUES(ticket_deal_name), 
 				`ticket_position`= VALUES(ticket_position), 
-				`ticket_dob`= VALUES(ticket_dob), 
 				`ticket_mobile`= VALUES(ticket_mobile), 
 				`ticket_password`= VALUES(ticket_password), 
+				`ticket_user_role`= VALUE(ticket_user_role),
 				`ticket_user_department`= VALUES(ticket_user_department) 
 			
 				";
