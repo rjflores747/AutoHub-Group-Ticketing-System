@@ -103,7 +103,7 @@ require_once '../connect.php';
                 </div>
              
                   <div class="form-group">
-                  <label for="inputMessage">Discription</label>
+                  <label for="inputMessage">Description</label>
                   <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
                 </div>
                 <div class="form-group">
@@ -203,7 +203,7 @@ require_once '../connect.php';
               success: function(result){
             // alert(result.status);
                   if(result.status == 1){ // success
-                      toastr.success();
+                      toastr.success(); 
                       toastr.error("Add successfully","Incomplete data");
                       
                       // window.location.href='ticket_details_container.php?id='+result.id;

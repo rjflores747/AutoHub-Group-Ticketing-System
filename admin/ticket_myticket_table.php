@@ -1,16 +1,18 @@
 <div class="container">
    
-<h4>My Ticket </h4>
+<h4>My active tickets </h4>
+
 <hr>
 <table id="example1" class="table table-bordered">
   <thead>
     <tr>
-      <th>Id</th>
+    <th>Id</th>
       <th>Ticket Number</th>
-      <th>Short Discription</th>
-      <th>Discription</th>
+      <th>Subject</th>
+      <th>Description</th>
       <th>Status</th>
       <th>Action </th>
+
 
 
     </tr>

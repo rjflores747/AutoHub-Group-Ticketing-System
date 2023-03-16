@@ -56,7 +56,7 @@ if (!isset($_SESSION["id"])) {
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-ticket-alt"></i>
               <p>
-              Ticket
+              Navigation Menu
               <i class="right fas fa-angle-left text-md"></i>
               </p>
             </a>
@@ -67,22 +67,23 @@ if (!isset($_SESSION["id"])) {
                   <p> Create </p>
                 </a>
               </li>
+                <li class="nav-item">
+                <a href="../admin/ticket_myticket_table_container.php" class="nav-link">
+                <i class='fas fa-ticket-alt'></i>
+                  <p>My active tickets</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../admin/ticket_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
-                  <p> All Tickets </p>
+                  <p> Department tickets </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../admin/ticket_myticket_table_container.php" class="nav-link">
-                <i class='fas fa-ticket-alt'></i>
-                  <p> My Tickets</p>
-                </a>
-              </li>
+            
               <li class="nav-item">
                 <a href="../admin/ticket_support_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
-                  <p> Support Tickets</p>
+                  <p> Assigned Tickets</p>
                 </a>
               </li>
             </ul>
@@ -103,21 +104,32 @@ if (!isset($_SESSION["id"])) {
               <li class="nav-item">
                 <a href="../admin/ticket_role_add_container.php" class="nav-link">
                   <i class="fas fa-user-cog"></i>
-                  <p>Role Add </p>
+                  <p>Employees </p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="../admin/ticket_permistion_add_container.php" class="nav-link ">
-                  <i class="fas fa-users-cog"></i>
-                  <p>Permission Add</p>
-                </a>
-              </li> -->
               <li class="nav-item">
                 <a href="../admin/ticket_suggesstion_add_container.php" class="nav-link ">
                   <i class="fas fa-users-cog"></i>
                   <p> Subject masterfile</p>
                 </a>
               </li>
+            </ul> 
+          </li>
+          
+         <?php } ?>
+         <?php 
+          if($_SESSION['ticket_user_role'] == '1' || $_SESSION['ticket_user_role'] == '2'){?>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="fas fa-file-excel"></i>
+              <p>
+                 Reports
+                 <i class="right fas fa-angle-left text-md"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+           
               <li class="nav-item">
                 <a href="../admin/ticket_permission_container.php" class="nav-link ">
                 <i class="fas fa-file-pdf"></i>
@@ -142,11 +154,10 @@ if (!isset($_SESSION["id"])) {
                   <p>Ticker Reports  Per Status</p>
                 </a>
               </li>
-            </ul>
+            </ul> 
           </li>
           
          <?php } ?>
-
          <?php 
           if($_SESSION['ticket_user_role'] == '1'){?>
          <li class="nav-item menu-open">

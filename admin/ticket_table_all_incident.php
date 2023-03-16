@@ -1,14 +1,14 @@
 <div class="container">
    
-<h4>All Ticket Incident</h4>
+<h4>Department tickets</h4>
 <hr>
 <table id="example1" class="table table-bordered">
   <thead>
     <tr>
       <th>Id</th>
       <th>Ticket Number</th>
-      <th>Short Discription</th>
-      <th>Discription</th>
+      <th>Subject</th>
+      <th>Description</th>
       <th>Status</th>
       <th>Action </th>
 
