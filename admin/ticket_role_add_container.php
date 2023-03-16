@@ -110,14 +110,21 @@ $(function() {
         data: "ticket_employee_id",
         className: "",
         // orderable: true,
-        width: "1%",
+        width: "2%",
       },
       {
-        title: "Name	",
-        data: ("ticket_fn","ticket_ln"),
+        title: "Firstname",
+        data: "ticket_fn",
         className: "",
         // orderable: true,
-        width: "1%",
+        width: "5%",
+      },
+      {
+        title: "Lastname",
+        data: "ticket_ln",
+        className: "",
+        // orderable: true,
+        width: "5%",
       },
       
       {
