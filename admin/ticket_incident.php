@@ -67,7 +67,7 @@ require_once '../connect.php';
             </div>
           </div>
           <div class="col-7"> 
-             <form action="" method="post">
+             <form method="post">
                 <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
@@ -186,7 +186,7 @@ require_once '../connect.php';
           }
           // Login Validation
           $.ajax({
-              url:"function_create_ticket_incident.php",  
+              url:"../admin/function_create_ticket_incident.php",  
               type:"POST", 
               dataType:"json",
               data: {

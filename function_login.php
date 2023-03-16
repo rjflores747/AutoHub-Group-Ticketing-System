@@ -48,7 +48,7 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['deal_name']."',
 				'".$user_array['u_position']."',
-				'',
+				NULL,
 				'".$user_array['usr_mobile']."',
 				'ibro.png',
 				'3',
