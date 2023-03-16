@@ -1,9 +1,9 @@
 <?php 
 require_once '../connect.php';
-  if (!isset($_GET['id'])) {
-    header('Location: ticket_incident.php');
-    exit;
-  }
+  // if (!isset($_GET['id'])) {
+  //   header('Location: ticket_incident.php');
+  //   exit;
+  // }
   $ticket_id =intval($_GET['id']); 
   if (!isset($_SESSION["id"])) {
     header("Location: index.php");
