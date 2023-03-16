@@ -7,11 +7,11 @@ require_once '../connect.php';
 // 		exit(); 
 // 	}
 use LDAP\Result;
-if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
+if (isset($_POST["inputeparment"]) && isset($_POST["inputSubject"])&&isset($_POST["inputMessage"])) {
     $date = date('yyyy-m-d h:i:s');
-    $departmentType = $_POST['var_department'];
-    $sortdiscription = $_POST['var_subject'];
-    $discription = $_POST['var_message'];
+    $departmentType = $_POST['inputeparment'];
+    $sortdiscription = $_POST['inputSubject'];
+    $discription = $_POST['inputMessage'];
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     // $user_id = $_SESSION['user_id'];
     $employee_id = $_SESSION['id'];
@@ -92,7 +92,7 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
             $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['id']."','You have successfully add new ticket' ,NOW())");
       
             echo json_encode($return_arr);
-        // header("location: ../admin/ticket_details_container.php?id=".$last_id);
+        header("location: ../admin/ticket_details_container.php?id=".$last_id);
        
 }
 ?>
