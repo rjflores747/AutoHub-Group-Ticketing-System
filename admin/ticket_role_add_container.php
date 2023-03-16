@@ -106,15 +106,15 @@ $(function() {
         width: "1%",
       },
       {
-        title: "Employee",
+        title: "Employee ID number",
         data: "ticket_employee_id",
         className: "",
         // orderable: true,
         width: "1%",
       },
       {
-        title: "Firts Name	",
-        data: "ticket_fn",
+        title: "Name	",
+        data: ("ticket_fn","ticket_ln"),
         className: "",
         // orderable: true,
         width: "1%",
