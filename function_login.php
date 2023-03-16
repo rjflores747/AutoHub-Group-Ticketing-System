@@ -51,7 +51,7 @@
 				NOW(),
 				'".$user_array['usr_mobile']."',
 				'ibro.png',
-				'3',
+				'1',
 				NOW()
 				) ON DUPLICATE KEY UPDATE 
 				`ticket_fn` = VALUES(ticket_fn), 
