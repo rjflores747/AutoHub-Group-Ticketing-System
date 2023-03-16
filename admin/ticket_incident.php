@@ -67,7 +67,7 @@ require_once '../connect.php';
             </div>
           </div>
           <div class="col-7"> 
-             <form method="post">
+             <form action="" method="post">
                 <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                 <div class="form-group">
                   <label for="inputeparment">Department</label>
@@ -206,7 +206,7 @@ require_once '../connect.php';
                       toastr.success();
                       toastr.error("Add successfully","Incomplete data");
                       
-                      window.location.href='ticket_details_container.php?id='+result.id;
+                      // window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
                       // $('#loading-view').attr('hidden', true);
                       // $('.el-add').attr('disabled', false);
