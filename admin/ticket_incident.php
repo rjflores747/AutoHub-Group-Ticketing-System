@@ -206,7 +206,7 @@ require_once '../connect.php';
                       toastr.success(); 
                       toastr.error("Add successfully","Incomplete data");
                       
-                      // window.location.href='../admin/ticket_details_container.php?id='+result.id;
+                      window.location.href='../admin/ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
                       // $('#loading-view').attr('hidden', true);
                       // $('.el-add').attr('disabled', false);
