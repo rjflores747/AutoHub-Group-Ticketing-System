@@ -69,46 +69,46 @@ require_once '../connect.php';
           <div class="col-7"> 
              <!-- <form action="" method="post"> -->
                 <form action="../admin/function_create_ticket_incident.php" method="POST">
-                <div class="form-group">
-                  <label for="inputeparment">Department</label>
-                   <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
-                              <option value="" require>----- Select Department -----</option>
-                              <?php
-                              $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
-                              $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
-                               
-                                $result = Utility::curl($array_data);
-                                $department_array = json_decode($result,true);
-                                foreach($department_array as $row1)
-                                {
-                                  ?>
-
-                                  <option value="<?php echo $row1['id']?>">
-                                  <?php echo $row1['dept_name'];?>
-                                </option>
-                                  <?php 
-
-                                }
-                                   ?>
-                              </select>
-                  <!-- <input type="text" id="inputeparment" name="inputeparment" class="form-control" /> -->
-                </div>
-                
-                <div class="form-group">
-                  <label for="inputSubject">Subject</label>
-                  <!-- <input type="text" id="inputSubject" name="inputSubject" class="form-control"require /> -->
-                  <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject" />  
-                  <div id="subjectList"></div>  
-           
-                </div>
-             
                   <div class="form-group">
-                  <label for="inputMessage">Description</label>
-                  <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
-                </div>
-                <div class="form-group">
-                  <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">
-                </div>
+                    <label for="inputeparment">Department</label>
+                    <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
+                                <option value="" require>----- Select Department -----</option>
+                                <?php
+                                $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
+                                $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
+                                
+                                  $result = Utility::curl($array_data);
+                                  $department_array = json_decode($result,true);
+                                  foreach($department_array as $row1)
+                                  {
+                                    ?>
+
+                                    <option value="<?php echo $row1['id']?>">
+                                    <?php echo $row1['dept_name'];?>
+                                  </option>
+                                    <?php 
+
+                                  }
+                                    ?>
+                                </select>
+                    <!-- <input type="text" id="inputeparment" name="inputeparment" class="form-control" /> -->
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="inputSubject">Subject</label>
+                    <!-- <input type="text" id="inputSubject" name="inputSubject" class="form-control"require /> -->
+                    <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject" />  
+                    <div id="subjectList"></div>  
+            
+                  </div>
+              
+                    <div class="form-group">
+                    <label for="inputMessage">Description</label>
+                    <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">
+                  </div>
                 </form>
               
             <!-- </form> -->

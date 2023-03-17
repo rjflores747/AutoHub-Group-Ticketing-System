@@ -84,7 +84,7 @@ if (isset($_POST["inputeparment"]) && isset($_POST["inputSubject"])&&isset($_POS
         }
         else
         {
-            // echo '<script> alert("Data Not Deleted"); </script>';
+            echo '<script> alert("Data Not Deleted"); </script>';
             $return_arr['status'] = 0;
         } 
         
