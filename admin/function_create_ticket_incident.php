@@ -6,7 +6,7 @@ require_once '../connect.php';
 // 		header("Location: index.php");
 // 		exit(); 
 // 	}
-use LDAP\Result;
+// use LDAP\Result;
 if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST["inputeparment"])) {
     $date = date('yyyy-m-d h:i:s');
     $departmentType = $_POST['inputSubject'];
@@ -18,7 +18,7 @@ if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST
     // $sortdiscription = $_POST['inputSubject'];
     // $discription = $_POST['inputMessage'];
     // $departmentType = $_POST['inputeparment'];
-    $return_arr = array();
+    $return_arrr = array();
    
         $sql = "INSERT INTO ticket_incident(
         id ,
@@ -73,10 +73,10 @@ if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST
             $ticket_number = "ATK_".$code."_".$last_id;
             $query = "UPDATE ticket_incident SET ticket_number = '".$ticket_number."', u_id = '".$employee_id."'  WHERE id = '".$last_id."'";      
             $res = mysqli_query($conn,$query);
-            $return_arr['id'] = $last_id; // success
+            $return_arrr['id'] = $last_id; // success
             }
             
-        }
+        }   
         if($result > 0)
         {
           $return_arr['status'] = 1;
