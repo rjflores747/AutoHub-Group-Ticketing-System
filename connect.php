@@ -15,16 +15,16 @@ require_once 'utility.php';
 
 // exit;
 
-$servername = "localhost";
-$username = "root";
+// $servername = "localhost";
+// $username = "root";
 // $username = "autoph_helpdesk";
 // $password = "AGc@2023#$@help@";
-$password = "";
-$db ="autohub-ticketing";
-  // $servername = "ticketing-system.adrianpusana.com";
-  // $username = "syofdjax_alberto_flores";
-  // $password = "v,O@0OngL;}g";
-  // $db ="syofdjax_ticketing";
+// $password = "";
+// $db ="autohub-ticketing";
+  $servername = "ticketing-system.adrianpusana.com";
+  $username = "syofdjax_alberto_flores";
+  $password = "v,O@0OngL;}g";
+  $db ="syofdjax_ticketing";
 
   // Create connection
   $conn = new mysqli($servername, $username, $password,$db);
