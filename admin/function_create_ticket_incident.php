@@ -45,9 +45,9 @@ if (isset($_POST["submit"])) {
         ticket_timeofdate_end ) 
         VALUES 
         ('',
-        '".$employee_id."',
+        '$employee_id',
         '',
-        '".$fn."',
+        '$fn',
         '',
         '',
         '',
@@ -80,12 +80,14 @@ if (isset($_POST["submit"])) {
         }   
         if($result){
             $_SESSION['status'] = 1;
+print_r($result);exit;
+
             echo '<script> alert(" Insert Successful"); </script>';
 
         }else{
             $_SESSION['status'] = 0;
             echo '<script> alert("Insert not Successful"); </script>';
-
+print_r($result);exit;
         }
         // if($result > 0)
         // {
