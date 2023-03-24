@@ -68,8 +68,8 @@ require_once '../connect.php';
             </div>
           </div>
           <div class="col-7"> 
-             <!-- <form action="" method="post"> -->
-                <form action="../admin/function_create_ticket_incident.php" method="POST">
+             <form action="" method="post">
+                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
