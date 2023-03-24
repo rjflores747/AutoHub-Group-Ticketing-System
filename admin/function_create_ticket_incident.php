@@ -7,7 +7,8 @@ require_once '../connect.php';
 // 		exit(); 
 // 	}
 // use LDAP\Result;
-if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST["inputeparment"])) {
+// if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST["inputeparment"])) {
+if (isset($_POST["submit"])) {
     $date = date('yyyy-m-d h:i:s');
     $departmentType = $_POST['inputSubject'];
     $sortdiscription = $_POST['inputMessage'];
@@ -77,21 +78,30 @@ if (isset($_POST["inputSubject"]) && isset($_POST["inputMessage"])&&isset($_POST
             }
             
         }   
-        if($result > 0)
-        {
-          $return_arr['status'] = 1;
-         
+        if($result){
+            $_SESSION['status'] = 1;
+            echo '<script> alert(" Insert Successful"); </script>';
+
+        }else{
+            $_SESSION['status'] = 0;
+            echo '<script> alert("Insert not Successful"); </script>';
+
         }
-        else
-        {
-            // echo '<script> alert("Data Not Deleted"); </script>';
-            $return_arr['status'] = 0;
-        } 
+        // if($result > 0)
+        // {
+        //   $return_arr['status'] = 1;
+         
+        // }
+        // else
+        // {
+        //     // echo '<script> alert("Data Not Deleted"); </script>';
+        //     $return_arr['status'] = 0;
+        // } 
         
          // Insert visitor activity log into database 
             $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['id']."','You have successfully add new ticket' ,NOW())");
       
-            echo json_encode($return_arr);
+            echo json_encode($result);
         header("location: ../admin/ticket_details_container.php?id=".$last_id);
        
 }
