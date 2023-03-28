@@ -74,16 +74,17 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
             }
             
         }
+        printf($result);
         if($result > 0)
         {
-            print_r($result);
+            
           $return_arr['status'] = 1;
          
         }
         else
         {
             
-            print_r($result);
+            
             // echo '<script> alert("Data Not Deleted"); </script>';
             $return_arr['status'] = 0;
         } 
