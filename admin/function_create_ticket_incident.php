@@ -7,11 +7,12 @@ require_once '../connect.php';
 // 		exit(); 
 // 	}
 use LDAP\Result;
-if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
+// if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
+    if (isset($_POST["submit"])) {
     $date = date('yyyy-m-d h:i:s');
-    $departmentType = $_POST['var_department'];
-    $sortdiscription = $_POST['var_subject'];
-    $discription = $_POST['var_message'];
+    $departmentType = $_POST['inputeparment'];
+    $sortdiscription = $_POST['inputSubject'];
+    $discription = $_POST['inputMessage'];
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     // $user_id = $_SESSION['user_id'];
     $employee_id = $_SESSION['id'];
@@ -63,7 +64,10 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
         '');";
        
         $result = mysqli_query($conn,$sql);
+        // print_r($result); 
+         
         if ($result) {
+            // print_r("testing");
             $last_id = mysqli_insert_id($conn);
             if($last_id){
             $code = rand(1,99999);
@@ -72,22 +76,18 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
             $res = mysqli_query($conn,$query);
             $return_arr['id'] = $last_id; // success
             }
-            
+            if($result > 0)
+            {
+              $return_arr['status'] = 1;
+             
+            }
+            else
+            {
+                // echo '<script> alert("Data Not Deleted"); </script>';
+                $return_arr['status'] = 0;
+            } 
         }
-        printf($result);
-        if($result > 0)
-        {
-            
-          $return_arr['status'] = 1;
-         
-        }
-        else
-        {
-            
-            
-            // echo '<script> alert("Data Not Deleted"); </script>';
-            $return_arr['status'] = 0;
-        } 
+      
         
          // Insert visitor activity log into database 
             $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['id']."','You have successfully add new ticket' ,NOW())");
