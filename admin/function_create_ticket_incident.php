@@ -7,12 +7,12 @@ require_once '../connect.php';
 // 		exit(); 
 // 	}
 use LDAP\Result;
-// if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
-    if (isset($_POST["submit"])) {
+if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) {
+    // if (isset($_POST["submit"])) {
     $date = date('yyyy-m-d h:i:s');
-    $departmentType = $_POST['inputeparment'];
-    $sortdiscription = $_POST['inputSubject'];
-    $discription = $_POST['inputMessage'];
+    $departmentType = $_POST['var_department'];
+    $sortdiscription = $_POST['var_subject'];
+    $discription = $_POST['var_message'];
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     // $user_id = $_SESSION['user_id'];
     $employee_id = $_SESSION['id'];
