@@ -93,7 +93,7 @@ use LDAP\Result;
             $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['id']."','You have successfully add new ticket' ,NOW())");
       
             echo json_encode($return_arr);
-        // header("location: ../admin/ticket_details_container.php?id=".$last_id);
+        header("location: ../admin/ticket_details_container.php?id=".$last_id);
        
 }
 ?>
