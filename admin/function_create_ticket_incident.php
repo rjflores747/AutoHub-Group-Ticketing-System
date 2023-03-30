@@ -8,13 +8,15 @@ require_once '../connect.php';
  
 // }
 // if(isset($_POST['ticket_id']))
-if(isset($_POST["submit"]))
+// if(isset($_POST["submit"]))
+if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) 
+
 {
-    $departmentType = $_POST['inputeparment'];
-    $sortdiscription = $_POST['inputSubject'];
+    $departmentType = $_POST['var_department'];
+    $sortdiscription = $_POST['var_subject'];
     // $user_id = $_SESSION['id'];
     // $id = $_POST['ticket_id'];
-    $message = addslashes($_POST['inputMessage']);  
+    $message = addslashes($_POST['var_message']);  
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     $employee_id = $_SESSION['id'];
 
@@ -86,7 +88,7 @@ if(isset($_POST["submit"]))
     }
 
     echo json_encode($return_arr);
-        header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
+        // header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
 
 }
 
