@@ -67,6 +67,9 @@ if(isset($_POST["submit"]))
     '')";
     $query_run = mysqli_query($conn, $queryMessage); // echo $query; exit;
     $insertedmessageid = mysqli_insert_id($conn);
+
+    var_dump($query_run);
+    exit;
     if($insertedmessageid){
     $code = rand(1,99999);
     $ticket_number = "ATK_".$code."_".$insertedmessageid;
