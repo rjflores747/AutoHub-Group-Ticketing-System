@@ -187,7 +187,7 @@ require_once '../connect.php';
           }
           // Login Validation
           $.ajax({
-              url:"../admin/function_create_ticket_incident.php",  
+              url:"function_create_ticket_incident.php",  
               type:"POST", 
               dataType:"json",
               data: {
@@ -207,7 +207,7 @@ require_once '../connect.php';
                       toastr.success(); 
                       toastr.error("Add successfully","Incomplete data");
                       
-                      window.location.href='../admin/ticket_details_container.php?id='+result.id;
+                      window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
                       // $('#loading-view').attr('hidden', true);
                       // $('.el-add').attr('disabled', false);
