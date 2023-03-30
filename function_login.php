@@ -48,7 +48,7 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['deal_name']."',
 				'".$user_array['u_position']."',
-				NOW(),
+				'',
 				'".$user_array['usr_mobile']."',
 				'ibro.png',
 				'1',
@@ -61,7 +61,7 @@
 				`ticket_comp_name` = VALUES(ticket_comp_name), 
 				`ticket_deal_name` = VALUES(ticket_deal_name), 
 				`ticket_position` = VALUES(ticket_position), 
-				`ticket_dob` = VALUES(ticket_dob), 
+				
 				`ticket_mobile` = VALUES(ticket_mobile), 
 				`ticket_password` = VALUES(ticket_password), 
 				`ticket_user_department` = VALUES(ticket_user_department) 
