@@ -8,18 +8,17 @@ require_once '../connect.php';
  
 // }
 // if(isset($_POST['ticket_id']))
-// if(isset($_POST["submit"]))
-if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) 
+if(isset($_POST["submit"]))
+// if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) 
 
 {
-    $departmentType = $_POST['var_department'];
-    $sortdiscription = $_POST['var_subject'];
+    $departmentType = $_POST['inputeparment'];
+    $sortdiscription = $_POST['inputSubject'];
     // $user_id = $_SESSION['id'];
     // $id = $_POST['ticket_id'];
-    $message = addslashes($_POST['var_message']);  
+    $message = addslashes($_POST['inputMessage']);  
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     $employee_id = $_SESSION['id'];
-
     $return_arr = array(); 
     // $queryMessage = "INSERT INTO `ticket_chat`(`ticket_id`, `ticket_user_id`, `ticket_date_time`, `ticket_message`, `ticket_status`) VALUES ('$id','$user_id',NOW(),'$message','1')"; 
    $queryMessage ="INSERT INTO `ticket_incident`(
@@ -68,7 +67,7 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
     '')";
     $query_run = mysqli_query($conn, $queryMessage); // echo $query; exit;
     $insertedmessageid = mysqli_insert_id($conn);
-    if($insertedmessageid){
+    // if($insertedmessageid){
     $code = rand(1,99999);
     $ticket_number = "ATK_".$code."_".$insertedmessageid;
     $query = "UPDATE ticket_incident SET ticket_number = '".$ticket_number."', u_id = '".$employee_id."'  WHERE id = '".$insertedmessageid."'";      
@@ -85,7 +84,7 @@ if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POS
         
         $return_arr['status'] = 0;
     }
-    }
+    // }
 
     echo json_encode($return_arr);
         // header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);

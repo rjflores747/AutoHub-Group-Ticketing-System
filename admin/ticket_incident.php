@@ -68,8 +68,8 @@ require_once '../connect.php';
             </div>
           </div>
           <div class="col-7"> 
-             <form  method="post">
-                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
+             <!-- <form method="post"> -->
+                <form action="../admin/function_create_ticket_incident.php" method="POST">
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
@@ -152,7 +152,7 @@ require_once '../connect.php';
               timer: 3000
             });
                //Initialize Select2 Elements
-    $('.select2').select2()
+             $('.select2').select2()
 
             //Initialize Select2 Elements
             $('.select2bs4').select2({
@@ -204,8 +204,9 @@ require_once '../connect.php';
               success: function(result){
             // alert(result.status);
                   if(result.status == 1){ // success
-                      toastr.success(); 
-                      toastr.error("Add successfully","Incomplete data");
+                     
+                      toastr.success();
+                      toastr.error("Add successfully", "Incomplete data");
                       
                       window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
