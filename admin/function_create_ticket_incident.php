@@ -64,10 +64,10 @@ use LDAP\Result;
         '');";
        
         $result = mysqli_query($conn,$sql);
-        print_r($result); 
+        // print_r($result); 
          
         if ($result) {
-            print_r("testing");
+            // print_r("testing");
             $last_id = mysqli_insert_id($conn);
             if($last_id){
             $code = rand(1,99999);
