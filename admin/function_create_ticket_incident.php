@@ -67,24 +67,24 @@ if(isset($_POST["submit"]))
     '')";
     $query_run = mysqli_query($conn, $queryMessage); // echo $query; exit;
     $insertedmessageid = mysqli_insert_id($conn);
-    // if($insertedmessageid){
+    if($insertedmessageid){
     $code = rand(1,99999);
     $ticket_number = "ATK_".$code."_".$insertedmessageid;
     $query = "UPDATE ticket_incident SET ticket_number = '".$ticket_number."', u_id = '".$employee_id."'  WHERE id = '".$insertedmessageid."'";      
     $res = mysqli_query($conn,$query);
     $return_arr['id'] = $insertedmessageid; // success
-    if($insertedmessageid )
-    {
-      $return_arr['status'] = 1;
-      
-     
-    }
-    else
-    {
+      if($insertedmessageid)
+      {
+        $return_arr['status'] = 1;
         
-        $return_arr['status'] = 0;
+      
+      }
+      else
+      {
+          
+          $return_arr['status'] = 0;
+      }
     }
-    // }
 
     echo json_encode($return_arr);
         // header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
