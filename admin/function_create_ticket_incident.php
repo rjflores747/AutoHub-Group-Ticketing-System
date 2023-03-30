@@ -55,7 +55,7 @@ if(isset($_POST["submit"]))
     '$message',
     '',
     '',
-    '',
+    '3',
     '',
     '',
     '',
@@ -86,7 +86,7 @@ if(isset($_POST["submit"]))
     }
 
     echo json_encode($return_arr);
-        header("location: ../admin/ticket_details_container.php?id=".$last_id);
+        header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
 
 }
 
