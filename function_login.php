@@ -48,7 +48,7 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['deal_name']."',
 				'".$user_array['u_position']."',
-				NOW(),
+				'',
 				'".$user_array['usr_mobile']."',
 				'ibro.png',
 				'1',
@@ -130,7 +130,7 @@
 					$ticket_user_url = $row['ticket_user_url'];
 					$ticket_user_role = $row['ticket_user_role'];
 					$employee_id = $row['u_id'];
-					$email = $row['u_id'];
+					$email = $row['ticket_email'];
 					
 				}
 				if($ticketfn != ""){
