@@ -88,8 +88,8 @@
 					";
 					$return_arr['status'] = 1; 
 					mysqli_query($conn,$SQLDepartmentinsert);
-				print_r($SQLuserinsert);
-				exit;
+				// print_r($SQLuserinsert);
+				// exit;
 				$query = "SELECT * FROM ticket_user WHERE u_id='".$user_array['u_id']."'"; 
 			
 				$result=mysqli_query($conn,$query);
