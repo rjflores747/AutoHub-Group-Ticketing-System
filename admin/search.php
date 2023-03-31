@@ -1,4 +1,5 @@
 <?php  
+//  $conn = mysqli_connect("localhost", "root", "", "autohub-ticketing");  
  $conn = mysqli_connect("ticketing-system.adrianpusana.com", "syofdjax_alberto_flores", "v,O@0OngL;}g", "syofdjax_ticketing");  
 // require_once './connect.php';
 // require_once './connect.php';
