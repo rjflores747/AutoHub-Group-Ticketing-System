@@ -55,7 +55,7 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['u_position']."',
 				'".$user_array['usr_mobile']."',
-				'',
+				NOW(),
 				'ibro.png',
 				'1',
 				NOW()
