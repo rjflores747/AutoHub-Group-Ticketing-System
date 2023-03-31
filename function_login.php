@@ -35,7 +35,8 @@
 					`ticket_deal_name`,
 					`ticket_comp_name`,
 					`ticket_position`,
-					`ti
+					`ticket_mobile`,
+					`ticket_dob`,
 					`ticket_user_url`,
 					`ticket_user_role`,
 					`ticket_createdAt`
@@ -54,6 +55,7 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['u_position']."',
 				'".$user_array['usr_mobile']."',
+				NOW(),
 				'ibro.png',
 				'1',
 				NOW()
@@ -70,8 +72,7 @@
 				";
 				$return_arr['status'] = 1; 
 				mysqli_query($conn,$SQLuserinsert);
-print_r($SQLuserinsert);
-exit;
+
 				$SQLDepartmentinsert = "INSERT INTO `ticket_deparment`(
 				
 					`ticket_dept_source_id`, 
