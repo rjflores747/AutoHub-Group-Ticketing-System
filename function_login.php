@@ -35,8 +35,7 @@
 					`ticket_deal_name`,
 					`ticket_comp_name`,
 					`ticket_position`,
-					`ticket_mobile`,
-					`ticket_dob`,
+					`ti
 					`ticket_user_url`,
 					`ticket_user_role`,
 					`ticket_createdAt`
@@ -55,7 +54,6 @@
 				'".$user_array['comp_name']."',
 				'".$user_array['u_position']."',
 				'".$user_array['usr_mobile']."',
-				NOW(),
 				'ibro.png',
 				'1',
 				NOW()
