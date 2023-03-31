@@ -1,8 +1,8 @@
 <?php 
     require_once './connect.php';
-  if (isset($_SESSION['id'])) {
-	header('Location: ./admin/ticket_incident.php');
-  }
+//   if (isset($_SESSION['id'])) {
+// 	header('Location: ./admin/ticket_incident.php');
+//   }
 
 ?>
 <!DOCTYPE html>
@@ -94,7 +94,7 @@
             if(result.status == 1){ // success
                 toastr.remove();
                 toastr.success("Login successfully");
-				window.location.href='../admin/ticket_incident.php';
+				window.location.href='./admin/ticket_incident.php';
                 // $('#modal-finance-add-fni').modal('hide');
                 // $('#loading-view').attr('hidden', true);
                 // $('.el-add').attr('disabled', false);

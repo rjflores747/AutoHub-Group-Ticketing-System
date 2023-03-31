@@ -1,6 +1,6 @@
 <?php 
 require_once '../connect.php'; 
-require_once './admin/';
+// require_once './admin/';
 // if (!isset($_SESSION["id"])) {
 //   header("Location: index.php"); 
 //   exit();
