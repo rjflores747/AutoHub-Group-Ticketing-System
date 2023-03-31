@@ -70,7 +70,8 @@
 				";
 				$return_arr['status'] = 1; 
 				mysqli_query($conn,$SQLuserinsert);
-
+print_r($SQLuserinsert);
+exit;
 				$SQLDepartmentinsert = "INSERT INTO `ticket_deparment`(
 				
 					`ticket_dept_source_id`, 
