@@ -38,7 +38,7 @@ else
       }
       else
       {
-          var_dump( $sql = "insert into ticket_incident(`id`, 
+          var_dump( $sql = "insert into ticket_incident(
           `ticket_number`, 
           `u_id`, 
           `ticket_caller`, 
@@ -57,10 +57,9 @@ else
           `ticket_assign_group`,
           `ticket_assign_to`, 
           `ticket_department_id`, 
-          `ticket_timeofdate`,
-          `ticket_timeofdate_end`
+          `ticket_timeofdate`
           )
-          VALUES('',
+          VALUES(
           '".$number."',
           '".$employee_id."',
           '".$fn."',
@@ -79,8 +78,8 @@ else
           '',
           '',
           '".$departmentType."',
-          NOW(),
-          '') ");
+          NOW()
+          ) ");
           if(mysqli_query($conn,$sql))
           {
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
