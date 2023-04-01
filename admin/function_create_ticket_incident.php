@@ -2,14 +2,14 @@
 <?php
 require_once '../connect.php';
 
-// if (!isset($_SESSION["id"])) {
-//   header("Location: index.php");
-//   exit();
+if (!isset($_SESSION["id"])) {
+  header("Location: index.php");
+  exit();
  
-// }
+}
 // if(isset($_POST['ticket_id']))
-if(isset($_POST["submit"]))
-// if (isset($_POST["var_department"]) && isset($_POST["var_subject"])&&isset($_POST["var_message"])) 
+// if(isset($_POST["submit"]))
+if (isset($_POST["inputeparment"]) && isset($_POST["inputSubject"])&&isset($_POST["inputMessage"])) 
 
 {
     $departmentType = $_POST['inputeparment'];
@@ -20,6 +20,7 @@ if(isset($_POST["submit"]))
     $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
     $employee_id = $_SESSION['id'];
     $return_arr = array(); 
+    
     // $queryMessage = "INSERT INTO `ticket_chat`(`ticket_id`, `ticket_user_id`, `ticket_date_time`, `ticket_message`, `ticket_status`) VALUES ('$id','$user_id',NOW(),'$message','1')"; 
    $queryMessage ="INSERT INTO `ticket_incident`(
     `id`, 
@@ -67,7 +68,9 @@ if(isset($_POST["submit"]))
     '')";
     $query_run = mysqli_query($conn, $queryMessage); // echo $query; exit;
     $insertedmessageid = mysqli_insert_id($conn);
-
+    $last_id = mysqli_insert_id($conn);
+    var_dump($insertedmessageid);
+    exit();
       if($insertedmessageid)
       {
         $return_arr['status'] = 1;
@@ -82,7 +85,7 @@ if(isset($_POST["submit"]))
 
 
     echo json_encode($return_arr);
-        // header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
+        header("location: ../admin/ticket_details_container.php?id=".$insertedmessageid);
 
 }
 
