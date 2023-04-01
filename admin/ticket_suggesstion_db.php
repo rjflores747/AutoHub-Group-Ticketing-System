@@ -11,6 +11,8 @@ if(isset($_POST['suggestions_submit']))
 	{
 		$insertqry="INSERT INTO  `ticket_suggestions`(`suggestions_name`, `suggestions_description`,`suggestions_status`)  VALUES ('$suggestions_name','$suggestions_description','1')";
 		$insertres=mysqli_query($conn,$insertqry);
+		var_dump($insertqry);
+		exit;
 	}
 }
 echo '<script>alert("added successfully.");

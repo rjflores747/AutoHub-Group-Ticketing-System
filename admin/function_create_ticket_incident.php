@@ -86,8 +86,7 @@ else
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
             $result = mysqli_query($conn,$query);
             $row = mysqli_fetch_array($result);
-            var_dump($result);
-            exit;
+            
             $lastid = $row['id'];
   
               if(empty($lastid))
@@ -106,6 +105,7 @@ else
           {
               echo "Record Faileddd";
           }
+          
         header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
 
