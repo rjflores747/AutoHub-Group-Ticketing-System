@@ -187,7 +187,7 @@ require_once '../connect.php';
           }
           // Login Validation
           $.ajax({
-              // url:"function_create_ticket_incident.php",  
+              url:"function_create_ticket_incident.php",  
               type:"POST", 
               dataType:"json",
               data: {

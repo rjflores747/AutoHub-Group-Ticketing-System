@@ -15,7 +15,7 @@
            {  
                  
                 
-               
+
                 $output .= '<ul class="ul-main">' .'<li class="li-main">'.$row["suggestions_name"] .'</li>' .$row["suggestions_description"] .'</ul>';  
                //  $output .= '<li>' . .'</li>';  
            }  
