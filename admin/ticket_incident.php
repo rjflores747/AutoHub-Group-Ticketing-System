@@ -1,12 +1,94 @@
-<?php 
-require_once '../connect.php'; 
+<?php
+require_once '../connect.php';
+$query = "SELECT id FROM ticket_incident ORDER BY id DESC";
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_array($result);
+$lastid = $row['id'];
 
-// if (!isset($_SESSION["id"])) {
-//   header("Location: index.php"); 
-//   exit();
-// } 
+if(empty($lastid))
+{
+    $number = "ATK-0000001";
+}
+else
+{
+    $idd = str_replace("ATK-", "", $lastid);
+    $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
+    $number = 'ATK-'.$id;
+}
 
 ?>
+
+<?php
+ 
+  if($_SERVER["REQUEST_METHOD"]== "POST")
+  {
+      // $invoiceid = $_POST['invoiceid'];
+      // $prodname = $_POST['prodname'];
+      // $price = $_POST['price'];
+      $departmentType = $_POST['inputeparment'];
+      $sortdiscription = $_POST['inputSubject'];
+      $message = addslashes($_POST['inputMessage']);  
+      $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
+      $employee_id = $_SESSION['id'];
+
+  
+      if(!$conn)
+      {
+          die("connection failed " . mysqli_connect_error());
+      }
+      else
+      {
+          $sql = "insert into ticket_incident(
+          `ticket_number`, 
+          `u_id`, 
+          `ticket_caller`, 
+          `ticket_short_discrip`, 
+          `ticket_discription`, 
+          `ticket_status`, 
+          `ticket_department_id`, 
+          `ticket_timeofdate`
+          )
+          VALUES(
+          '".$number."',
+          '".$employee_id."',
+          '".$fn."',
+          '".$sortdiscription."',
+          '".$message."',
+          '3',
+          '".$departmentType."',
+          NOW()
+          ) ";
+          if(mysqli_query($conn,$sql))
+          {
+            $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
+            $result = mysqli_query($conn,$query);
+            $row = mysqli_fetch_array($result);
+            // var_dump($result);
+            // exit;
+            $lastid = $row['id'];
+  
+              if(empty($lastid))
+              {
+                  $number = "ATK-0000001";
+              }
+              else
+              {
+                  $idd = str_replace("ATK-", "", $lastid);
+                  $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
+                  $number = 'ATK-'.$id;
+              }
+  
+          }
+          else
+          {
+              echo "Record Faileddd";
+          }
+        header("location: ../admin/ticket_details_container.php?id=".$lastid);
+        
+
+      }
+  }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +151,8 @@ require_once '../connect.php';
           </div>
           <div class="col-7"> 
              <!-- <form method="post"> -->
-                <form action="../admin/function_create_ticket_incident.php" method="POST">
+                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
+                <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
@@ -141,105 +224,7 @@ require_once '../connect.php';
 </body>
 </html>
 
-<script>
-          var Toast = null;
-            // global variable
-          $(function() {
-            Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
-            });
-               //Initialize Select2 Elements
-             $('.select2').select2()
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-              theme: 'bootstrap4'
-            })
-            $('#button-send-message-details').on('click', function(){ 
-         
-            //variable
-            var variable_department = $('#inputeparment').val();
-            var variable_subject = $('#inputSubject').val();
-            var variable_message = $('#inputMessage').val();
-
-
-          // REQUIREMENTS
-          if(variable_department == ""){
-            toastr.remove();
-            toastr.error("Department cannot be empty", "Incomplete data");
-
-            return;
-          }
-          if(variable_subject == ""){
-            toastr.remove();
-            toastr.error("Subject cannot be empty", "Incomplete data");
-
-            return;
-          }
-          if(variable_message == ""){
-            toastr.remove();
-            toastr.error("Message cannot be empty", "Incomplete data");
-
-            return;
-          }
-          // Login Validation
-          $.ajax({
-              // url:"function_create_ticket_incident.php",  
-              type:"POST", 
-              dataType:"json",
-              data: {
-                  var_department: variable_department, 
-                  var_subject: variable_subject, 
-                  var_message: variable_message, 
-                  type: 1 // login status
-              },
-              beforeSend: function(){
-                  // $('#loading-view').attr('hidden', false);
-                  $('.el-log').attr('disabled', true);
-              },
-                  
-              success: function(result){
-            // alert(result.status);
-                  if(result.status == 1){ // success
-                     
-                      toastr.success();
-                      toastr.error("Add successfully", "Incomplete data");
-                      
-                      window.location.href='ticket_details_container.php?id='+result.id;
-                      // $('#modal-finance-add-fni').modal('hide');
-                      // $('#loading-view').attr('hidden', true);
-                      // $('.el-add').attr('disabled', false);
-
-                      // refreshFinanceTable();
-                      // detailsCount();
-                      // clearElements();
-                  } 
-              //     else if(result.status == 0){ // failed add
-              //         $('#loading-view').attr('hidden', true);
-              //         $('.el-add').attr('disabled', false);
-
-              //         toastr.remove();
-              //         toastr.error("No Record Found");
-              // return;
-              //     } 
-              //     else if(result.status == 2){ // dealer validation error
-              //         // $('#loading-view').attr('hidden', true);
-              //         // $('.el-add').attr('disabled', false);
-
-              //         toastr.remove();
-              //         toastr.error("Wrong Credentials");
-              // return;
-              //     } 
-              
-              }
-          })
-
-        });
-      })
-</script>
 <script>  
  $(document).ready(function(){  
       $('#inputSubject').keyup(function(){  
