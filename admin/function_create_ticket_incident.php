@@ -4,6 +4,7 @@ $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_array($result);
 $lastid = $row['id'];
+
 if(empty($lastid))
 {
     $number = "ATK-0000001";

@@ -1,6 +1,11 @@
+<?php 
+require_once '../connect.php'; 
 
-<?php
-require_once '../connect.php';
+// if (!isset($_SESSION["id"])) {
+//   header("Location: index.php"); 
+//   exit();
+// } 
+
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +70,6 @@ require_once '../connect.php';
           <div class="col-7"> 
              <!-- <form method="post"> -->
                 <form action="../admin/function_create_ticket_incident.php" method="POST">
-                <!-- <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post"> -->
-
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
@@ -205,7 +208,7 @@ require_once '../connect.php';
                       toastr.success();
                       toastr.error("Add successfully", "Incomplete data");
                       
-                      window.location.href='../admin/ticket_details_container.php?id='+result.id;
+                      window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
                       // $('#loading-view').attr('hidden', true);
                       // $('.el-add').attr('disabled', false);
