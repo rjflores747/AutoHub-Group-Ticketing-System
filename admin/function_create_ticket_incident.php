@@ -1,7 +1,6 @@
-
 <?php
 require_once '../connect.php';
-$query = "SELECT ticket_number FROM ticket_incident ORDER BY ticket_number DESC";
+$query = "SELECT id FROM ticket_incident ORDER BY id DESC";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_array($result);
 $lastid = $row['id'];
@@ -61,7 +60,7 @@ else
           `ticket_timeofdate_end`
           )
           VALUES('',
-          '',
+          '".$number."',
           '".$employee_id."',
           '".$fn."',
           '',
@@ -83,14 +82,14 @@ else
           '') ";
           if(mysqli_query($conn,$sql))
           {
-            $query = "SELECT ticket_number FROM ticket_incident ORDER BY ticket_number DESC";
+            $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
             $result = mysqli_query($conn,$query);
             $row = mysqli_fetch_array($result);
             $lastid = $row['id'];
   
               if(empty($lastid))
               {
-                  $number = "E-0000001";
+                  $number = "ATK-0000001";
               }
               else
               {
@@ -104,6 +103,8 @@ else
           {
               echo "Record Faileddd";
           }
+        header("location: ../admin/ticket_details_container.php?id=".$lastid);
+
       }
   }
     ?>
