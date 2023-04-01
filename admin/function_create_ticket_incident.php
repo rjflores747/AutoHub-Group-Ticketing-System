@@ -38,7 +38,7 @@ else
       }
       else
       {
-          $sql = "insert into ticket_incident(`id`, 
+          var_dump( $sql = "insert into ticket_incident(`id`, 
           `ticket_number`, 
           `u_id`, 
           `ticket_caller`, 
@@ -80,12 +80,14 @@ else
           '',
           '".$departmentType."',
           NOW(),
-          '') ";
+          '') ");
           if(mysqli_query($conn,$sql))
           {
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
             $result = mysqli_query($conn,$query);
             $row = mysqli_fetch_array($result);
+            var_dump($result);
+            exit;
             $lastid = $row['id'];
   
               if(empty($lastid))
@@ -104,7 +106,8 @@ else
           {
               echo "Record Faileddd";
           }
-        header("location: ../admin/ticket_details_container.php?id=".$lastid);
+        // header("location: ../admin/ticket_details_container.php?id=".$lastid);
+        
 
       }
   }
