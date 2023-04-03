@@ -106,6 +106,8 @@ else
               echo "Record Faileddd";
           }
           
+
+
         header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
 

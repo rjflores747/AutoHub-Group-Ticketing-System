@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST")
 	}
 	else
 	{
-	$insertqry = "INSERT INTO  `ticket_suggestions`(`suggestions_name`, `suggestions_description`,`suggestions_status`)  VALUES ('$suggestions_name','$suggestions_description','1')";
+		$insertqry = "INSERT INTO  `ticket_suggestions`(`suggestions_name`, `suggestions_description`,`suggestions_status`)  VALUES ('$suggestions_name','$suggestions_description','1')";
 		if(mysqli_query($conn,$insertqry))
 		{
 			echo "Added successfully";	
