@@ -1,10 +1,7 @@
 <?php 
 require_once '../connect.php'; 
 
-// if (!isset($_SESSION["id"])) {
-//   header("Location: index.php"); 
-//   exit();
-// } 
+
 
 ?>
 
@@ -72,8 +69,8 @@ require_once '../connect.php';
                 <form action="../admin/function_create_ticket_incident.php" method="POST">
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
-                    <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" require>
-                                <option value="" require>----- Select Department -----</option>
+                    <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" required>
+                                <option value="" >----- Select Department -----</option>
                                 <?php
                                 $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
                                 $array_data['parameters'] = http_build_query(array('key'=>'99799116300681219'));
@@ -98,14 +95,14 @@ require_once '../connect.php';
                   <div class="form-group">
                     <label for="inputSubject">Subject</label>
                     <!-- <input type="text" id="inputSubject" name="inputSubject" class="form-control"require /> -->
-                    <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject" />  
+                    <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject"required />  
                     <div id="subjectList"></div>  
             
                   </div>
               
                     <div class="form-group">
                     <label for="inputMessage">Description</label>
-                    <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"require></textarea>
+                    <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"required></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">

@@ -11,18 +11,16 @@ if(isset($_POST['ticket_id']))
     if($query_run > 0)
     {
       $return_arr['status'] = 1;
-    header("location: ../admin/ticket_myticket_table_container.php");
-     
+  
     }
     else
     {
         // echo '<script> alert("Data Not Deleted"); </script>';
         $return_arr['status'] = 0;
     }
-
+   
     echo json_encode($return_arr);
-    
-        
+ 
 
 }
 

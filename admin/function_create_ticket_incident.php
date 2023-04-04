@@ -99,15 +99,15 @@ else
                   $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
                   $number = 'ATK-'.$id;
               }
-  
+         
+              header("location: ../admin/ticket_details_container.php?id=".$lastid);
+        
           }
           else
           {
               echo "Record Faileddd";
           }
           
-
-
         header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
 

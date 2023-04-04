@@ -134,7 +134,8 @@ function initActionRemove() {
               success: function (result) {
                 Toast.fire({
                   icon: 'success',
-                  title: 'SucesssFul Deleted.'
+                  title: 'SucesssFul Deleted.',
+                  url: 'ticket_myticket_table_container.php'
                 }); 
                 
                 $("#example1").DataTable().ajax.reload();
