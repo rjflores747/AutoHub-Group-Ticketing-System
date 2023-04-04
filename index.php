@@ -1,8 +1,8 @@
 <?php 
     require_once './connect.php';
-//   if (isset($_SESSION['id'])) {
-// 	header('Location: ./admin/ticket_incident.php');
-//   }
+  if (isset($_SESSION['id'])) {
+	header('Location: ./admin/ticket_incident.php');
+  }
 
 ?>
 <!DOCTYPE html>

@@ -11,6 +11,7 @@ if(isset($_POST['ticket_id']))
     if($query_run > 0)
     {
       $return_arr['status'] = 1;
+    header("location: ../admin/ticket_myticket_table_container.php");
      
     }
     else
@@ -20,6 +21,9 @@ if(isset($_POST['ticket_id']))
     }
 
     echo json_encode($return_arr);
+    
+        
+
 }
 
 ?>

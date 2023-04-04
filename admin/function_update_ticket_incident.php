@@ -32,6 +32,9 @@ $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_a
 
 
 // $message = "Record Modified Successfully";
+echo '<script>alert("Successfully Update.");
+		window.location="ticket_update_incident_container.php";
+</script>';
 
 }
 error_reporting(E_ALL);
