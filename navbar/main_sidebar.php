@@ -113,6 +113,12 @@ if (!isset($_SESSION["id"])) {
                   <p> Subject masterfile</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="../admin/ticket_status_add_container.php" class="nav-link ">
+                  <i class="fas fa-users-cog"></i>
+                  <p> Status masterfile</p>
+                </a>
+              </li>
             </ul> 
           </li>
           

@@ -10,7 +10,7 @@
 						<th>Id</th>
 						<th>Subject Name</th>
 						<th>Suggesstion Status</th>
-
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,7 +24,11 @@
 							<td><?php echo $roledata['id'];?></td>
 							<td><?php echo $roledata['suggestions_name'];?></td>
 							<td><?php echo $roledata['suggestions_description'];?></td>
-							
+							<td>  
+							<a href="../admin/ticket_details_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+        					<a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
+	  							<a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>
+</td>
 							</tr>
 						<?php
 						}

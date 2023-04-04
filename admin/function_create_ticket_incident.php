@@ -108,8 +108,8 @@ else
               echo "Record Faileddd";
           }
           
-        header("location: ../admin/ticket_details_container.php?id=".$lastid);
-        
+        header("location: ./admin/ticket_details_container.php?id=".$lastid);
+        // require_once "../admin/ticket_details_container.php?id".$lastid;
 
       }
   }

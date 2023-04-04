@@ -21,7 +21,7 @@
       <?php
       require_once '../connect.php';
     
-      $rolelistqry="SELECT * FROM ticket_incident where u_id ='".$_SESSION['id']."'";
+      $rolelistqry="SELECT * FROM ticket_incident  where u_id ='".$_SESSION['id']."' ";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
       ?>
@@ -49,7 +49,8 @@
           <a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
         
           <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>
-
+          <!-- <button type="button" class="btn btn-danger btn-icon" data-toggle="modal" data-target="#myModal" data-id="<?php echo $roledata['id'];?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button> -->
+          <!-- <button type="button" class="btn btn-danger" data-id="<?php echo $roledata['id']; ?>" onclick="confirmDelete(this);">Delete</button> -->
           
         </td>
         </tr>

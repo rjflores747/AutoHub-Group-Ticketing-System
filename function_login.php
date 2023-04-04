@@ -35,7 +35,8 @@
 				`ticket_dob`, 
 				`ticket_mobile`, 
 				`ticket_user_url`, 
-				`ticket_user_role`) VALUES 
+				`ticket_user_role`,
+				`ticket_createdAt`) VALUES 
 				('".$user_array['u_id']."',
 				'".$user_array['u_fname']."',
 				'".$user_array['u_lname']."',
@@ -50,7 +51,8 @@
 				'',
 				'".$user_array['usr_mobile']."',
 				'ibro.png',
-				'3',NOW()
+				'3',
+				NOW()
 				) ON DUPLICATE KEY UPDATE 
 				`ticket_fn`= VALUES(ticket_fn), 
 				`ticket_ln`= VALUES(ticket_ln), 
@@ -59,7 +61,7 @@
 				`ticket_comp_name`= VALUES(ticket_comp_name), 
 				`ticket_deal_name`= VALUES(ticket_deal_name), 
 				`ticket_position`= VALUES(ticket_position), 
-				`ticket_dob`= VALUES(ticket_dob), 
+				
 				`ticket_mobile`= VALUES(ticket_mobile), 
 				`ticket_password`= VALUES(ticket_password), 
 				`ticket_user_department`= VALUES(ticket_user_department) 

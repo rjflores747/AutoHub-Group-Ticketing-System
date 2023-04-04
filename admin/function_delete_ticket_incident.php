@@ -20,6 +20,7 @@ if(isset($_POST['ticket_id']))
     }
    
     echo json_encode($return_arr);
+    header("location: ../admin/ticket_myticket_table_container.php");
  
 
 }
