@@ -43,20 +43,9 @@ else
           `ticket_number`, 
           `u_id`, 
           `ticket_caller`, 
-          `ticket_category`, 
-          `ticket_subcategory`, 
-          `ticket_service`, 
-          `ticket_config_item`, 
           `ticket_short_discrip`, 
           `ticket_discription`, 
-          `ticket_filedownload`, 
-          `ticket_contact_type`, 
-          `ticket_status`, 
-          `ticket_imapact`, 
-          `ticket_urgent`,
-          `ticket_priority`, 
-          `ticket_assign_group`,
-          `ticket_assign_to`, 
+          `ticket_status`,
           `ticket_department_id`, 
           `ticket_timeofdate`
           )
@@ -64,20 +53,9 @@ else
           '".$number."',
           '".$employee_id."',
           '".$fn."',
-          '',
-          '',
-          '',
-          '',
           '".$sortdiscription."',
           '".$message."',
-          '',
-          '',
           '3',
-          '',
-          '',
-          '',
-          '',
-          '',
           '".$departmentType."',
           NOW()
           ) ";
@@ -100,7 +78,7 @@ else
                   $number = 'ATK-'.$id;
               }
          
-              header("location: ../admin/ticket_details_container.php?id=".$lastid);
+              // header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
           }
           else
