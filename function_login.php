@@ -51,20 +51,7 @@
 				'ibro.png',
 				'3',
 				NOW()
-				) ON DUPLICATE KEY UPDATE u_id = VALUES(u_id),
-                 ticket_fn = VALUES(ticket_fn),
-				 ticket_ln = VALUES(ticket_ln), 
-				 ticket_employee_id = VALUES(ticket_employee_id), 
-				 ticket_email = VALUES(ticket_email), 
-				 ticket_comp_name = VALUES(ticket_comp_name), 
-				 ticket_deal_name = VALUES(ticket_deal_name), 
-				 ticket_position = VALUES(ticket_position), 
-				 ticket_dob = VALUES(ticket_dob), 			
-				 ticket_mobile = VALUES(ticket_mobile), 
-				 ticket_password = VALUES(ticket_password), 
-				 ticket_user_department = VALUES(ticket_user_department) 
-			
-				";
+				)";
 				$return_arr['status'] = 1; 
 				mysqli_query($conn,$SQLuserinsert);
 
