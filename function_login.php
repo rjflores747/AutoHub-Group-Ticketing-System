@@ -21,22 +21,27 @@
 		
 		if($user_array ['status'] == 1){ //success
 			$SQLuserinsert = "INSERT INTO ticket_user(
-				u_id,  
-				ticket_fn, 
-				ticket_ln, 
-				ticket_employee_id, 
-				ticket_email, 
-				ticket_password, 
-				ticket_status, 
-				ticket_user_department, 
-				ticket_comp_name, 
-				ticket_deal_name, 
-				ticket_position, 
-				ticket_mobile, 
-				ticket_user_url, 
+				id,
+				u_id,
+				ticket_users,
+				ticket_fn,
+				ticket_ln,
+				ticket_employee_id,
+				ticket_email,
+				ticket_password,
+				ticket_status,
+				ticket_user_department,
+				ticket_deal_name,
+				ticket_comp_name,
+				ticket_position,
+				ticket_mobile,
+				ticket_dob,
+				ticket_user_url,
 				ticket_user_role,
 				ticket_createdAt) VALUES 
-				('".$user_array['u_id']."',
+				('',
+				'".$user_array['u_id']."',
+				'',
 				'".$user_array['u_fname']."',
 				'".$user_array['u_lname']."',
 				'".$user_array['employee_id']."',
@@ -44,14 +49,28 @@
 				'".$user_array['u_password']."',
 				'1',
 				'".$user_array['dept_id']."',
-				'".$user_array['comp_name']."',
 				'".$user_array['deal_name']."',
+				'".$user_array['comp_name']."',
 				'".$user_array['u_position']."',
 				'".$user_array['usr_mobile']."',
+				'',
 				'ibro.png',
 				'3',
 				NOW()
-				)";
+				) ON DUPLICATE KEY UPDATE u_id = VALUES(u_id),
+                 ticket_fn = VALUES(ticket_fn),
+				 ticket_ln = VALUES(ticket_ln), 
+				 ticket_employee_id = VALUES(ticket_employee_id), 
+				 ticket_email = VALUES(ticket_email), 
+				 ticket_comp_name = VALUES(ticket_comp_name), 
+				 ticket_deal_name = VALUES(ticket_deal_name), 
+				 ticket_position = VALUES(ticket_position), 
+				 ticket_dob = VALUES(ticket_dob), 			
+				 ticket_mobile = VALUES(ticket_mobile), 
+				 ticket_password = VALUES(ticket_password), 
+				 ticket_user_department = VALUES(ticket_user_department) 
+			
+				";
 				$return_arr['status'] = 1; 
 				mysqli_query($conn,$SQLuserinsert);
 
