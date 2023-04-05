@@ -11,6 +11,7 @@ if(empty($lastid))
 }
 else
 {
+  
     $idd = str_replace("ATK-", "", $lastid);
     $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
     $number = 'ATK-'.$id;
@@ -32,6 +33,8 @@ else
       $employee_id = $_SESSION['id'];
 
   
+
+
       if(!$conn)
       {
           die("connection failed " . mysqli_connect_error());
