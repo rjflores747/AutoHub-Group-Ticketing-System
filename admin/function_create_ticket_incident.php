@@ -26,9 +26,9 @@ else
       // $invoiceid = $_POST['invoiceid'];
       // $prodname = $_POST['prodname'];
       // $price = $_POST['price'];
-      $departmentType = $_POST['inputeparment'];
-      $sortdiscription = $_POST['inputSubject'];
-      $message = addslashes($_POST['inputMessage']);  
+      $departmentType = mysqli_real_escape_string($conn, $_POST['inputeparment']);
+      $sortdiscription = mysqli_real_escape_string($conn, $_POST['inputSubject']);
+      $message = mysqli_real_escape_string($conn, addslashes($_POST['inputMessage']));  
       $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
       $employee_id = $_SESSION['id'];
 
@@ -87,10 +87,11 @@ else
           else
           {
               echo "Record Faileddd";
+              echo "Error: " . $sql . "" . mysqli_error($conn);
           }
           
         header("location: ./admin/ticket_details_container.php?id=".$lastid);
-        // require_once "../admin/ticket_details_container.php?id".$lastid;
+
 
       }
   }
