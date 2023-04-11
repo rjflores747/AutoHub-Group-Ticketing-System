@@ -77,6 +77,8 @@ else
           '".$departmentType."',
           NOW()
           ) ";
+          var_dump($sql);
+          exit;
           if(mysqli_query($conn,$sql))
           {
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
