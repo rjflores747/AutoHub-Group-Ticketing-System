@@ -75,7 +75,8 @@ else
           '',
           '',
           '".$departmentType."',
-          NOW()
+          NOW(),
+          ''
           ) ";
           var_dump($sql);
           exit;
