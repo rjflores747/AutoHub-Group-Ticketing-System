@@ -34,7 +34,7 @@ else
       }
       else
       {
-          var_dump( 
+          // var_dump( 
            
               $sql = "insert into ticket_incident(
               `ticket_number`, 
@@ -55,8 +55,8 @@ else
               '3',
               '".$departmentType."',
               NOW()
-              ) ");
-              exit;
+              ) ";
+              // exit;
           if(mysqli_query($conn,$sql))
           {
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
