@@ -11,19 +11,19 @@ if(count($_POST)>0) {
   
 mysqli_query($conn,"UPDATE ticket_suggestions set
  id='" . $_POST['update_id'] . "', 
- suggestions_name='" . $_POST['inputcategory'] . "' ,
- suggestions_description='" . $_POST['inputsubcategory'] . "', 
- suggestions_status='" . $_POST['inputconfigitem'] . "' WHERE id='" . $_POST['update_id'] . "'");
+ suggestions_name='" . $_POST['suggestions_name'] . "' ,
+ suggestions_description='" . $_POST['suggestions_description'] . "', 
+ suggestions_status='1' WHERE id='" . $_POST['update_id'] . "'");
 
 
  // Insert visitor activity log into database 
 $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");
 
 
-// $message = "Record Modified Successfully";
-echo '<script>alert("Successfully Update.");
-		window.location="ticket_update_incident_container.php";
-</script>';
+$message = "Record Modified Successfully";
+// echo '<script>alert("Successfully Update.");
+// 		window.location="ticket_update_suggestion_container.php";
+// </script>';
 
 }
 error_reporting(E_ALL);
@@ -45,9 +45,9 @@ $row= mysqli_fetch_array($result);
                                 <div class="row">
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                    <label for="variable_ticket_number" class="col-sm-2 col-form-label">Id</label>
+                                    <label for="id" class="col-sm-2 col-form-label">Id</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="variable_ticket_number" name="variable_ticket_number" value="<?php echo $row['id']; ?>" placeholder="TicketNo" disabled>
+                                      <input type="text" class="form-control" id="id" name="id" value="<?php echo $row['id']; ?>" placeholder="TicketNo" disabled>
                                     </div>
                                   </div>
                                   </div>
@@ -56,17 +56,17 @@ $row= mysqli_fetch_array($result);
                                 <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                      <label for="variable_ticket_contact_type" class="col-sm-2 col-form-label">Suggesstion Name</label>
+                                      <label for="suggestions_name" class="col-sm-2 col-form-label">Suggesstion Name</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="contacttype" name="contacttype"value="<?php echo $row['suggestions_name']; ?>" placeholder="Suggestions Name">
+                                        <input type="text" class="form-control" id="suggestions_name" name="suggestions_name"value="<?php echo $row['suggestions_name']; ?>" placeholder="Suggestions Name">
                                       </div>
                                     </div>
                                   </div>
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                      <label for="variable_ticket_contact_type" class="col-sm-2 col-form-label">Description</label>
+                                      <label for="suggestions_description" class="col-sm-2 col-form-label">Description</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="contacttype" name="contacttype"value="<?php echo $row['suggestions_description']; ?>" placeholder="Description">
+                                        <input type="text" class="form-control" id="suggestions_description" name="suggestions_description"value="<?php echo $row['suggestions_description']; ?>" placeholder="Description">
                                       </div>
                                     </div>
                                   </div>

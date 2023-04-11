@@ -24,7 +24,8 @@ include '../connect.php';
 		'1'
 		) ";
 		mysqli_query($conn,$sql);
-
+var_dump($sql);
+exit;
 }
 echo '<script>alert("added successfully.");
 		window.location="ticket_suggesstion_add_container.php";

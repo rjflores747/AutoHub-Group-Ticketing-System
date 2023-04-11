@@ -34,51 +34,29 @@ else
       }
       else
       {
-          // var_dump( 
-            $sql = "insert into ticket_incident(
-          `ticket_number`, 
-          `u_id`, 
-          `ticket_caller`, 
-          `ticket_category`, 
-          `ticket_subcategory`, 
-          `ticket_service`, 
-          `ticket_config_item`, 
-          `ticket_short_discrip`, 
-          `ticket_discription`, 
-          `ticket_filedownload`, 
-          `ticket_contact_type`, 
-          `ticket_status`, 
-          `ticket_imapact`, 
-          `ticket_urgent`,
-          `ticket_priority`, 
-          `ticket_assign_group`,
-          `ticket_assign_to`, 
-          `ticket_department_id`, 
-          `ticket_timeofdate`
-          )
-          VALUES(
-          '".$number."',
-          '".$employee_id."',
-          '".$fn."',
-          '',
-          '',
-          '',
-          '',
-          '".$sortdiscription."',
-          '".$message."',
-          '',
-          '',
-          '3',
-          '',
-          '',
-          '',
-          '',
-          '',
-          '".$departmentType."',
-          NOW(),
-          ''
-          ) ";
-         
+          var_dump( 
+           
+              $sql = "insert into ticket_incident(
+              `ticket_number`, 
+              `u_id`, 
+              `ticket_caller`, 
+              `ticket_short_discrip`, 
+              `ticket_discription`, 
+              `ticket_status`, 
+              `ticket_department_id`, 
+              `ticket_timeofdate`
+              )
+              VALUES(
+              '".$number."',
+              '".$employee_id."',
+              '".$fn."',
+              '".$sortdiscription."',
+              '".$message."',
+              '3',
+              '".$departmentType."',
+              NOW()
+              ) ");
+              exit;
           if(mysqli_query($conn,$sql))
           {
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
