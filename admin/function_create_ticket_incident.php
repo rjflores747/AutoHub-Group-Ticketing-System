@@ -26,9 +26,9 @@ else
       // $invoiceid = $_POST['invoiceid'];
       // $prodname = $_POST['prodname'];
       // $price = $_POST['price'];
-      $departmentType = mysqli_real_escape_string($conn, $_POST['inputeparment']);
-      $sortdiscription = mysqli_real_escape_string($conn, $_POST['inputSubject']);
-      $message = mysqli_real_escape_string($conn, addslashes($_POST['inputMessage']));  
+      $departmentType = $_POST['inputeparment'];
+      $sortdiscription = $_POST['inputSubject'];
+      $message = addslashes($_POST['inputMessage']);  
       $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
       $employee_id = $_SESSION['id'];
 
@@ -43,24 +43,48 @@ else
       {
           // var_dump( 
             $sql = "insert into ticket_incident(
-          `ticket_number`, 
-          `u_id`, 
-          `ticket_caller`, 
-          `ticket_short_discrip`, 
-          `ticket_discription`, 
-          `ticket_status`,
-          `ticket_department_id`, 
-          `ticket_timeofdate`
+              `ticket_number`,
+              `u_id`,
+              `ticket_caller`,
+              `ticket_category`,
+              `ticket_subcategory`,
+              `ticket_service`,
+              `ticket_config_item`,
+              `ticket_short_discrip`,
+              `ticket_discription`,
+              `ticket_filedownload`,
+              `ticket_contact_type`,
+              `ticket_status`,
+              `ticket_imapact`,
+              `ticket_urgent`,
+              `ticket_priority`,
+              `ticket_assign_group`,
+              `ticket_assign_to`,
+              `ticket_department_id`,
+              `ticket_timeofdate`,
+              `ticket_timeofdate_end`
           )
           VALUES(
           '".$number."',
           '".$employee_id."',
           '".$fn."',
+          '',
+          '',
+          '',
+          '',
           '".$sortdiscription."',
           '".$message."',
+          '',
+          '',
           '3',
+          '',
+          '',
+          '',
+          '',
+          '',
           '".$departmentType."',
-          NOW()
+          NOW(),
+          ''
           ) ";
           if(mysqli_query($conn,$sql))
           {
@@ -81,17 +105,16 @@ else
                   $number = 'ATK-'.$id;
               }
          
-              header("location: ../admin/ticket_details_container.php?id=".$lastid);
+              // header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
           }
           else
           {
               echo "Record Faileddd";
-              // echo "Error: " . $sql . "" . mysqli_error($conn);
           }
           
         header("location: ./admin/ticket_details_container.php?id=".$lastid);
-
+        // require_once "../admin/ticket_details_container.php?id".$lastid;
 
       }
   }
