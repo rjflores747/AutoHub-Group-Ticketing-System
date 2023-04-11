@@ -81,13 +81,13 @@ else
                   $number = 'ATK-'.$id;
               }
          
-              // header("location: ../admin/ticket_details_container.php?id=".$lastid);
+              header("location: ../admin/ticket_details_container.php?id=".$lastid);
         
           }
           else
           {
               echo "Record Faileddd";
-              echo "Error: " . $sql . "" . mysqli_error($conn);
+              // echo "Error: " . $sql . "" . mysqli_error($conn);
           }
           
         header("location: ./admin/ticket_details_container.php?id=".$lastid);
