@@ -82,8 +82,8 @@ else
             $query = "SELECT id FROM ticket_incident ORDER BY id DESC";
             $result = mysqli_query($conn,$query);
             $row = mysqli_fetch_array($result);
-            var_dump($result);
-            exit;
+            // var_dump($result);
+            // exit;
 
             $lastid = $row['id'];
 
