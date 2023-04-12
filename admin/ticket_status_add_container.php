@@ -50,6 +50,16 @@ require_once '../connect.php';
 </body>
 </html>
 <!-- Page specific script -->
+<?php if(!empty($message)) { ?>
+      <script>
+        toastr.remove();
+        toastr.success("Successfully", "Incomplete data");
+        // alert ("Department cannot be empty");
+     </script>
+     <?php
+  } 
+   
+?>
 <script>
  
   $(function () {
