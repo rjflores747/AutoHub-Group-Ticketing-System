@@ -10,8 +10,8 @@ $message = '';
 
 if(count($_POST)>0) {
   
-mysqli_query($conn,"INSERT INTO `ticket_status`(`ticket_status_name`,`status`, `createdAt`) VALUES ('". $_POST['ticket_status_name'] . "','1',NOW())");
-
+// mysqli_query($conn,"INSERT INTO `ticket_status`(`ticket_status_name`,`status`, `createdAt`) VALUES ('". $_POST['ticket_status_name'] . "','1',NOW())");
+mysqli_query($conn,"INSERT INTO `ticket_status`(`ticket_status_name`, `status`, `createdAt`) VALUES ('". $_POST['ticket_status_name'] . "','1',NOW())");
 
  // Insert visitor activity log into database 
 $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");

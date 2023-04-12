@@ -21,9 +21,7 @@
 		
 		if($user_array ['status'] == 1){ //success
 			$SQLuserinsert = "INSERT INTO ticket_user(
-				id,
 				u_id,
-				ticket_users,
 				ticket_fn,
 				ticket_ln,
 				ticket_employee_id,
@@ -35,25 +33,21 @@
 				ticket_comp_name,
 				ticket_position,
 				ticket_mobile,
-				ticket_dob,
 				ticket_user_url,
 				ticket_user_role,
 				ticket_createdAt) VALUES 
-				('',
-				'".$user_array['u_id']."',
-				'',
-				'".$user_array['u_fname']."',
-				'".$user_array['u_lname']."',
-				'".$user_array['employee_id']."',
-				'".$user_array['email']."',
-				'".$user_array['u_password']."',
+				('". $user_array['u_id'] ."',
+				'". $user_array['u_fname'] ."',
+				'". $user_array['u_lname'] ."',
+				'". $user_array['employee_id'] ."',
+				'". $user_array['email'] ."',
+				'". $user_array['u_password'] ."',
 				'1',
-				'".$user_array['dept_id']."',
-				'".$user_array['deal_name']."',
-				'".$user_array['comp_name']."',
-				'".$user_array['u_position']."',
-				'".$user_array['usr_mobile']."',
-				'',
+				'". $user_array['dept_id'] ."',
+				'". $user_array['deal_name'] ."',
+				'". $user_array['comp_name'] ."',
+				'". $user_array['u_position'] ."',
+				'". $user_array['usr_mobile'] ."',
 				'ibro.png',
 				'3',
 				NOW()
@@ -65,7 +59,7 @@
 				 ticket_comp_name = VALUES(ticket_comp_name), 
 				 ticket_deal_name = VALUES(ticket_deal_name), 
 				 ticket_position = VALUES(ticket_position), 
-				 ticket_dob = VALUES(ticket_dob), 			
+							
 				 ticket_mobile = VALUES(ticket_mobile), 
 				 ticket_password = VALUES(ticket_password), 
 				 ticket_user_department = VALUES(ticket_user_department) 
@@ -81,8 +75,8 @@
 					`ticket_dept_tnd`
 					) VALUES 
 					(
-					'".$user_array['dept_id']."',
-					'".$user_array['dept_name']."',
+					'". $user_array['dept_id']. "',
+					'". $user_array['dept_name']. "',
 					NOW()
 					) ON DUPLICATE KEY UPDATE 
 					`ticket_dept_name`= VALUES(ticket_dept_name)
