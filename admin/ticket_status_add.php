@@ -10,7 +10,7 @@ $message = '';
 
 if(count($_POST)>0) {
   
-mysqli_query($conn,"INSERT INTO `ticket_status`(`ticket_status_name`, `createdAt`) VALUES ('". $_POST['ticket_status_name'] . "',NOW())");
+mysqli_query($conn,"INSERT INTO `ticket_status`(`ticket_status_name`,`status`, `createdAt`) VALUES ('". $_POST['ticket_status_name'] . "','1',NOW())");
 
 
  // Insert visitor activity log into database 
@@ -65,10 +65,10 @@ $message = "Record Modified Successfully";
 			<form name="frmUser" method="post" action="">
 
 				<div class="form-group">
-					<input type="text" name="ticket_status_name" placeholder="Name" class="form-control" />
+					<input type="text" name="ticket_status_name" placeholder="Name" class="form-control" required/>
 				</div>
                 <div class="form-group">
-					<input name="suggestions_submit" class="btn btn-primary" type="submit" value="save record"/>
+					<input name="suggestions_submit" class="btn btn-primary" type="submit" value="save record" required/>
 				</div>
 			</form>
 		</div>
