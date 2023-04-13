@@ -11,7 +11,7 @@
 								<div class="form-group">
 									<label>Status</label>
 									<!-- <input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control"> -->
-									<select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
+									<select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" required>
                                 	<option value="" style="text-align:center">----- SELECT STATUS -----</option>
                                     <?php 
                                       
@@ -43,7 +43,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>From Date</label>
-									<input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control">
+									<input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control" required>
 								</div>
 							</div><br>
 						</div>
@@ -52,7 +52,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>To Date</label>
-									<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control">
+									<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control" required>
 								</div>
 							</div>
 						</div>
