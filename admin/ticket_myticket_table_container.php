@@ -61,7 +61,7 @@ require_once '../connect.php';
 ?>
 <!-- Page specific script -->
 <script>
-  
+
  
   $(function () {
     //Initialize Select2 Elements
@@ -73,15 +73,19 @@ require_once '../connect.php';
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-    $("#example1").DataTable({
+    // $("#example1").DataTable({
+    //   fnDrawCallback: function () {
+    //     initActionRemove();
+    //   },
+    //   "responsive": true, "lengthChange": false, "autoWidth": false,
+    //   // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    //   "buttons": ["colvis"]
+    // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example1').DataTable({
       fnDrawCallback: function () {
         initActionRemove();
+        confirmDelete();
       },
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -95,73 +99,13 @@ require_once '../connect.php';
   });
 
 
+
+  
   function confirmDelete(self) {
-	var id = self.getAttribute("data-id");
-
-	document.getElementById("form-delete-user").id.value = id;
-	$("#myModal").modal("show");
-}
-
-function initActionRemove() {
-    $("[data-action-remove]").each(function () {
-      $(this).on("click", function () {
-        // const product_id =   $("#example1").DataTable().row(row).data().id;
-        //  //$(this).attr('data-action-remove');
-        // alert (product_id);
-
-        // return false;
-        // var row = $(this).closest("tr");
-        var ticket_id = $(this).attr('data-action-remove');
-
-           Swal.fire({
-          title: "Are you sure, you want to remove this Ticket?",
-          text: "This action cannot be undone.",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, remove it!",
-          showClass: {
-            backdrop: "swal2-noanimation", // disable backdrop animation
-            popup: "", // disable popup animation
-            icon: "", // disable icon animation
-          },
-          hideClass: {
-            popup: "", // disable popup fade-out animation
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              url: "function_delete_ticket_incident.php",
-              data: {
-                ticket_id: ticket_id, 
-              },
-              type: "POST",
-              dataType: "json",
-              beforeSend: function () {
-                // toast("info", "Updating...");
-              },
-              success: function (result) {
-                Toast.fire({
-                  icon: 'success',
-                  title: 'SucesssFul Deleted.',
-                  url: 'ticket_myticket_table_container.php'
-                }); 
-                
-                $("#example1").DataTable().ajax.reload();
-              },
-              error: function () {
-                // toast("error", "Error has occurred. Try again.");
-              },
-            });
-          }
-        });
-
-
-        return false;
-      
-      });
-    });
+        var id = self.getAttribute("data-id");
     
-  } 
+        document.getElementById("form-delete-user").id.value = id;
+        $("#myModal").modal("show");
+    
+}
 </script>

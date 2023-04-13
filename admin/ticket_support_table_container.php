@@ -60,12 +60,11 @@ require_once '../connect.php';
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example1').DataTable({
+      fnDrawCallback: function () {
+        initActionRemove();
+        confirmDelete();
+      },
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -73,8 +72,17 @@ require_once '../connect.php';
       "info": true,
       "autoWidth": false,
       "responsive": true,
-    });
+  
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  
   });
 
   
+  function confirmDelete(self) {
+        var id = self.getAttribute("data-id");
+    
+        document.getElementById("form-delete-user").id.value = id;
+        $("#myModal").modal("show");
+    
+}
 </script>
