@@ -19,7 +19,7 @@ if(isset($_POST['id']))
         $return_arr['status'] = 0;
     }
    
-    echo json_encode($return_arr);
+    // echo json_encode($return_arr);
     header("location: ../admin/ticket_myticket_table_container.php");
  
 
