@@ -52,6 +52,16 @@
 
 </body>
 </html>
+<?php if(!empty($message)) { ?>
+      <script>
+        toastr.remove();
+        toastr.success("Successfully", "Incomplete data");
+        // alert ("Department cannot be empty");
+     </script>
+     <?php
+  } 
+   
+?>
 <!-- Page specific script -->
 <script>
   //for the deparment to deparment assignment

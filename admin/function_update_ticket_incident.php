@@ -31,10 +31,12 @@ mysqli_query($conn,"UPDATE ticket_incident set
 $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");
 
 
+$message = "Record Modified Successfully";
+
 // $message = "Record Modified Successfully";
-echo '<script>alert("Successfully Update.");
-		window.location="ticket_update_incident_container.php";
-</script>';
+// echo '<script>alert("Successfully Update.");
+// 		window.location="ticket_update_incident_container.php";
+// </script>';
 
 }
 error_reporting(E_ALL);

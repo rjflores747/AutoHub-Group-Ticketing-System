@@ -50,13 +50,38 @@ $message = "Record Modified Successfully";
 							<td>  
 							<a href="../admin/ticket_update_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
         					<a href="../admin/ticket_update_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
-	  							<a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>
+	  							<!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
+								  <button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
+
 </td>
 							</tr>
 						<?php
 						}
 						?>
-					
+ <div id="myModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete User</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this Ticke ?</p>
+                        <form method="POST" action="../admin/function_delete_ticket_sugesstion.php" id="form-delete-user">
+                            <input type="hidden" name="id">
+                        </form>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
 				</tbody>
 			</table>
 		</div>

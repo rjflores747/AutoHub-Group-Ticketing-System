@@ -66,7 +66,7 @@
                     </div>
         
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Ticket <b><?php echo $roledata['ticket_number']?></b> ?</p>
+                        <p>Are you sure you want to delete this Ticket ?</p>
                         <form method="POST" action="../admin/function_delete_ticket_incident.php" id="form-delete-user">
                             <input type="hidden" name="id">
                         </form>
