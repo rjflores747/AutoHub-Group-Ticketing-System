@@ -96,7 +96,7 @@ $row= mysqli_fetch_array($result);
                                         
                                         <div class="col-sm-10">
                                           <div class="select2-pur ple">
-                                              <select class="form-control select2bs4" id="variable_ticket_status" name="variable_ticket_status" style="width: 100%;">
+                                              <select class="form-control select2bs4" id="variable_ticket_status" name="variable_ticket_status" style="width: 100%;" value="<?php echo $row['ticket_status']; ?>">
                                                 <option>----- Select CATEGORY -----</option>
                                                 <option value="1"> Active </option>
                                                 <option value="0"> Deactive </option>
@@ -154,7 +154,7 @@ $row= mysqli_fetch_array($result);
                                 </div>
                                   <!-- text input Category & Impact -->
                                 <div class="modal-footer">
-                                    <a href="../admin/ticket_table_container.php" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                    <a href="../admin/ticket_role_add_container.php" class="btn btn-secondary" data-dismiss="modal">Close</a>
                                     <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
                                 </div>
                               </div>

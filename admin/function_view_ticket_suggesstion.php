@@ -44,7 +44,7 @@ $row= mysqli_fetch_array($result);
                                     <div class="form-group row">
                                     <label for="id" class="col-sm-2 col-form-label">Id</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="id" name="id" value="<?php echo $row['id']; ?>" placeholder="TicketNo" disabled>
+                                      <input type="text" class="form-control" id="id" name="id" value="<?php echo $row['id']; ?>" placeholder="id" disabled>
                                     </div>
                                   </div>
                                   </div>
@@ -55,7 +55,7 @@ $row= mysqli_fetch_array($result);
                                     <div class="form-group row">
                                       <label for="suggestions_name" class="col-sm-2 col-form-label">Suggesstion Name</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="suggestions_name" name="suggestions_name"value="<?php echo $row['suggestions_name']; ?>" placeholder="Suggestions Name">
+                                        <input type="text"  class="form-control" id="suggestions_name" name="suggestions_name"value="<?php echo $row['suggestions_name']; ?>" placeholder="Suggestions Name" disabled>
                                       </div>
                                     </div>
                                   </div>
@@ -63,7 +63,7 @@ $row= mysqli_fetch_array($result);
                                     <div class="form-group row">
                                       <label for="suggestions_description" class="col-sm-2 col-form-label">Description</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="suggestions_description" name="suggestions_description"value="<?php echo $row['suggestions_description']; ?>" placeholder="Description">
+                                        <input type="text" class="form-control" id="suggestions_description" name="suggestions_description"value="<?php echo $row['suggestions_description']; ?>" placeholder="Description"disabled>
                                       </div>
                                     </div>
                                   </div>
@@ -72,7 +72,7 @@ $row= mysqli_fetch_array($result);
                                
                               
                                 <div class="modal-footer">
-                                    <a href="../admin/ticket_suggesstion_add_container.php" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                    <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
+                                    <a href="../admin/ticket_table_container.php" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                    <!-- <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button> -->
                                 </div>
                               </div>

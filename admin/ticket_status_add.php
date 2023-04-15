@@ -33,7 +33,8 @@ $message = "Record Modified Successfully";
 					<tr>
 						<th>Id</th>
 						<th>Subject Name</th>
-						<th>Create</th>
+						<th>Date</th>
+						<th>Action</th>
 
 					</tr>
 				</thead>
@@ -48,12 +49,41 @@ $message = "Record Modified Successfully";
 							<td><?php echo $roledata['ticket_status_id'];?></td>
 							<td><?php echo $roledata['ticket_status_name'];?></td>
 							<td><?php echo $roledata['createdAt'];?></td>
-							
-							</tr>
+							<td>  
+								<a href="../admin/ticket_view_suggestion_container.php?id=<?php echo $roledata['ticket_status_id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+								<a href="../admin/ticket_update_status_container.php?id=<?php echo $roledata['ticket_status_id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
+									<!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
+								<button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['ticket_status_id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
+
+							</td>
+						</tr>
 						<?php
 						}
 						?>
+					<div id="myModal" class="modal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								
+								<div class="modal-header">
+									<h4 class="modal-title">Delete User</h4>
+									<button type="button" class="close" data-dismiss="modal">×</button>
+								</div>
 					
+								<div class="modal-body">
+									<p>Are you sure you want to delete this Status ?</p>
+									<form method="POST" action="../admin/function_delete_ticket_sugesstion.php" id="form-delete-user">
+										<input type="hidden" name="id">
+									</form>
+								</div>
+					
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
+								</div>
+					
+							</div>
+						</div>
+					</div>
 				</tbody>
 			</table>
 		</div>

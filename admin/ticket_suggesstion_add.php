@@ -32,7 +32,7 @@ $message = "Record Modified Successfully";
 					<tr>
 						<th>Id</th>
 						<th>Subject Name</th>
-						<th>Suggesstion Status</th>
+						<th>Suggestion Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -48,7 +48,7 @@ $message = "Record Modified Successfully";
 							<td><?php echo $roledata['suggestions_name'];?></td>
 							<td><?php echo $roledata['suggestions_description'];?></td>
 							<td>  
-							<a href="../admin/ticket_update_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+							<a href="../admin/ticket_view_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
         					<a href="../admin/ticket_update_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
 	  							<!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
 								  <button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
@@ -68,7 +68,7 @@ $message = "Record Modified Successfully";
                     </div>
         
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Ticke ?</p>
+                        <p>Are you sure you want to delete this Suggestion ?</p>
                         <form method="POST" action="../admin/function_delete_ticket_sugesstion.php" id="form-delete-user">
                             <input type="hidden" name="id">
                         </form>
@@ -93,10 +93,10 @@ $message = "Record Modified Successfully";
 			<form name="frmUser" method="post" action="">
 				
 				<div class="form-group">
-					<input type="text" name="suggestions_name" placeholder="suggestions Name" class="form-control" required/>
+					<input type="text" name="suggestions_name" placeholder="Suggestion Name" class="form-control" required/>
 				</div>
 				<div class="form-group">
-					<input type="text" name="suggestions_description" placeholder="suggestions description" class="form-control" required/>
+					<input type="text" name="suggestions_description" placeholder="Suggestion description" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<input name="suggestions_submit" class="btn btn-primary" type="submit" value="save record"/>
