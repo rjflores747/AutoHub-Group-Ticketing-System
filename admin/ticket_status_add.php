@@ -50,7 +50,7 @@ $message = "Record Modified Successfully";
 							<td><?php echo $roledata['ticket_status_name'];?></td>
 							<td><?php echo $roledata['createdAt'];?></td>
 							<td>  
-								<a href="../admin/ticket_view_suggestion_container.php?id=<?php echo $roledata['ticket_status_id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+								<a href="../admin/ticket_view_status_container.php?id=<?php echo $roledata['ticket_status_id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
 								<a href="../admin/ticket_update_status_container.php?id=<?php echo $roledata['ticket_status_id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
 									<!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
 								<button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['ticket_status_id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
@@ -71,7 +71,7 @@ $message = "Record Modified Successfully";
 					
 								<div class="modal-body">
 									<p>Are you sure you want to delete this Status ?</p>
-									<form method="POST" action="../admin/function_delete_ticket_sugesstion.php" id="form-delete-user">
+									<form method="POST" action="../admin/function_delete_ticket_status.php" id="form-delete-user">
 										<input type="hidden" name="id">
 									</form>
 								</div>

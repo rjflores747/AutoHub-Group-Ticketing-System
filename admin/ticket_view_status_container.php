@@ -2,6 +2,13 @@
 
 require_once '../connect.php';
 
+
+
+if (!isset($_SESSION["id"])) {
+  header("Location: index.php");
+  exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +36,7 @@ require_once '../connect.php';
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <br>
-  <?php include '../admin/ticket_status_add.php';?>
+  <?php include '../admin/ticket_view_status.php';?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -49,7 +56,6 @@ require_once '../connect.php';
 
 </body>
 </html>
-<!-- Page specific script -->
 <?php if(!empty($message)) { ?>
       <script>
         toastr.remove();
@@ -60,8 +66,29 @@ require_once '../connect.php';
   } 
    
 ?>
+<!-- Page specific script -->
 <script>
- 
+  //for the deparment to deparment assignment
+  $(document).ready(function(){
+    $("#tkdepart").change()
+      $("#tkdepart").change(function(){
+        // alert (   $("#tkdepart").val());
+        var tkdepart_id = this.value;
+        $.ajax({
+        url: "function_update_ticket_incident_ajax.php",
+        type: "POST",
+        data: {
+          tkdepart_id: $("#tkdepart").val()
+          // tkdepart_id: tkdepart_id
+        },
+        cache: false,
+        success: function(result1){     
+          $("#deptgroup").html(result1);
+    
+        }
+        });    
+      });  
+    });
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -74,12 +101,8 @@ require_once '../connect.php';
       "responsive": true, "lengthChange": false, "autoWidth": false,
       // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
-      fnDrawCallback: function () {
-        initActionRemove();
-        confirmDelete();
-      },
+    })
+    $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -89,11 +112,4 @@ require_once '../connect.php';
       "responsive": true,
     });
   });
-  function confirmDelete(self) {
-        var id = self.getAttribute("data-id");
-    
-        document.getElementById("form-delete-user").id.value = id;
-        $("#myModal").modal("show");
-    
-}
 </script>
