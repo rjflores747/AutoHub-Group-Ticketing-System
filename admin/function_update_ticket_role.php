@@ -97,9 +97,21 @@ $row= mysqli_fetch_array($result);
                                         <div class="col-sm-10">
                                           <div class="select2-pur ple">
                                               <select class="form-control select2bs4" id="variable_ticket_status" name="variable_ticket_status" style="width: 100%;" value="<?php echo $row['ticket_status']; ?>">
-                                                <option>----- Select CATEGORY -----</option>
-                                                <option value="1"> Active </option>
-                                                <option value="0"> Deactive </option>
+                                                <option>----- Select Status -----</option>
+                                                <option
+                                                  <?php 
+                                                  if($row['ticket_status'] == "1")
+                                                  {
+                                                    echo "Selected";
+                                                  }?>
+                                                  > Active </option>
+                                                <option 
+                                                <?php 
+                                                  if($row['ticket_status'] == "0")
+                                                  {
+                                                    echo "Selected";
+                                                  }?>
+                                                  > Deactive </option>
                                               
                                              
                                             </select>

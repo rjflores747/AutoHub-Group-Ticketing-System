@@ -32,7 +32,7 @@ $message = "Record Modified Successfully";
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Subject Name</th>
+						<th>Status Name</th>
 						<th>Date</th>
 						<th>Action</th>
 

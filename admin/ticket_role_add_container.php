@@ -168,7 +168,7 @@ $(function() {
             return (
             `
                    <div class="row justify-content-center">
-                   `+view+update+` 
+                   `+update+` 
                    </div>
                    `
           );
