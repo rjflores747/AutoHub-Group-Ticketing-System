@@ -98,14 +98,14 @@ $row= mysqli_fetch_array($result);
                                           <div class="select2-pur ple">
                                               <select class="form-control select2bs4" id="variable_ticket_status" name="variable_ticket_status" style="width: 100%;" value="<?php echo $row['ticket_status']; ?>">
                                                 <option>----- Select Status -----</option>
-                                                <option
+                                                <option value="1"
                                                   <?php 
                                                   if($row['ticket_status'] == "1")
                                                   {
                                                     echo "Selected";
                                                   }?>
                                                   > Active </option>
-                                                <option 
+                                                <option value="0"
                                                 <?php 
                                                   if($row['ticket_status'] == "0")
                                                   {
