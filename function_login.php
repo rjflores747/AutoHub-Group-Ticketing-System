@@ -59,11 +59,9 @@
 				 ticket_comp_name = VALUES(ticket_comp_name), 
 				 ticket_deal_name = VALUES(ticket_deal_name), 
 				 ticket_position = VALUES(ticket_position), 
-							
 				 ticket_mobile = VALUES(ticket_mobile), 
 				 ticket_password = VALUES(ticket_password), 
 				 ticket_user_department = VALUES(ticket_user_department) 
-			
 				";
 				$return_arr['status'] = 1; 
 				mysqli_query($conn,$SQLuserinsert);
