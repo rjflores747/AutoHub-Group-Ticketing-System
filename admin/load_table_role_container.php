@@ -21,6 +21,8 @@
                            'ticket_fn'=>$rowsqltable['ticket_fn'],
                            'ticket_ln'=>$rowsqltable['ticket_ln'],
                            'ticket_status'=>$rowsqltable['ticket_status'],
+                           'ticket_user_role'=>$rowsqltable['ticket_user_role'],
+
                            
                          );
                          
