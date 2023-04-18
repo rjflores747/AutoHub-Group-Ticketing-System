@@ -163,7 +163,7 @@ $(function() {
             `" style="cursor:pointer;" class="m-1 btn btn-sm btn-primary btn-icon" title="Edit"><i class="fas fa-pen"></i></a>`;
           var remove = `<a data-action-remove="`+row.id+`" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a>`;
           
-          if(row['ticket_status'] == '1' || row['ticket_status'] == '0'  ){
+          if(row['ticket_user_role'] == '1' || row['ticket_user_role'] == '2'  ){
             return (
             
             ` 
