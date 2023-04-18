@@ -207,59 +207,80 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
             <h5 class="mt-5 text-muted">Project files</h5>
              <?php
-                // $conn = mysqli_connect('localhost','root','','autohub-ticketing');
-                // require_once '../connect.php';
-                if(isset($_POST['submit'])){
-                    // $fileName = basename($_FILES['file']['name']);
-                    // $fileTmpName = $_FILES['file']['tmp_name'];
-                    // $path = "../uploads/".$fileName;
-                    
-                    // if(file_exists($fileName))
-                    // {
-                    //   echo "Unable to locate folder";
-                    //   exit();
-              
-                    // }
-                    // else
-                    // {
-                      // $old_file = $_FILES['file']['name'];
-                      // $new_file = substr($_FILES['file']['name'], 0,40);
-                      // if(@move_uploaded_file($_FILES['file']['name'], $fileName.'-'.$new_file))
-                      // {
-                     
-                          
-                      // }
-                      // else{
-                      //     echo "Unable to Uploaded file! ";
-                         
-                      //     exit();
-                      // }
-                      $temp = explode(".", $_FILES["file"]["name"]);
-                      $newfilename = round(microtime(true)) . '.' . end($temp);
-                      move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
-                          $query = "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())";
-                          $run = mysqli_query($conn,$query);   
-                  
-                   
-                    // print_r($query);
-                    // exit();
+                          // $conn = mysqli_connect('localhost','root','','autohub-ticketing');
+                          // require_once '../connect.php';
 
-                    if($run){
-                      // move_uploaded_file($newfilename,$path);
-                      echo "success";
-                        }
-                        else{
-                            echo "error".mysqli_error($conn);
-                        }
-                    
-                }
+                          // if(isset($_POST['submit'])){
+                          //   if(count($_POST)>0) {
+                          //     // $fileName = basename($_FILES['file']['name']);
+                          //     // $fileTmpName = $_FILES['file']['tmp_name'];
+                          //     // $path = "../uploads/".$fileName;
+
+                          //     // if(file_exists($fileName))
+                          //     // {
+                          //     //   echo "Unable to locate folder";
+                          //     //   exit();
+
+                          //     // }
+                          //     // else
+                          //     // {
+                          //       // $old_file = $_FILES['file']['name'];
+                          //       // $new_file = substr($_FILES['file']['name'], 0,40);
+                          //       // if(@move_uploaded_file($_FILES['file']['name'], $fileName.'-'.$new_file))
+                          //       // {
+
+
+                          //       // }
+                          //       // else{
+                          //       //     echo "Unable to Uploaded file! ";
+
+                          //       //     exit();
+                          //       // }
+                          //       $temp = explode(".", $_FILES["file"]["name"]);
+                          //       $newfilename = round(microtime(true)) . '.' . end($temp);
+                          //       move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
+                          //           $query = "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())";
+                          //           $run = mysqli_query($conn,$query);   
+
+
+                          //     // print_r($query);
+                          //     // exit();
+
+                          //     if($run){
+                          //       // move_uploaded_file($newfilename,$path);
+                          //       // echo "success";
+                          //      $message = "Record Modified Successfully";
+
+                          //         }
+                          //         else{
+                          //             echo "error".mysqli_error($conn);
+                          //         }
+
+                          // }
+
+                          if (count($_POST) > 0) {
+  //                           mysqli_query($conn, "UPDATE ticket_incident set
+  //  id='" . $_POST['update_status_id'] . "', 
+  //  ticket_timeofdate_end =NOW(), 
+  //  ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
+  //                           // Insert visitor activity log into database 
+  //                           $ActivityLogs = mysqli_query($conn, "INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('" . $_SESSION['u_id'] . "','You have successfully updated' ,NOW())");
+
+                            $temp = explode(".", $_FILES["file"]["name"]);
+                            $newfilename = round(microtime(true)) . '.' . end($temp);
+                            move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
+                            mysqli_query($conn, "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())");
+
+
+                            $message = "Record Modified Successfully";
+                          }
                 
                 ?>
               
               <table border="1px" align="center">
                   <tr>
                       <td>
-                          <form action="../uploads/" method="post" enctype="multipart/form-data">
+                          <form action=" method="post" enctype="multipart/form-data">
                           <br>
                                 <input type="file" class="btn btn-warning"  name="file"><br><br>
 
