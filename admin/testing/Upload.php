@@ -46,7 +46,7 @@
                
                while($rows = mysqli_fetch_assoc($run2)){
                    ?>
-               <a href="download.php?file=<?php echo $rows['path'] ?>">Download</a><br>
+               <a href="download.php?file=<?php echo $rows['path'] ?>"><?php echo $rows['path'] ?></a><br>
                <?php
                }
                ?>

@@ -200,7 +200,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               <!-- <p class="text-sm">Client Company
                 <b class="d-block">Deveint Inc</b>
               </p> -->
-              <p class="text-sm">Project Leader
+              <p class="text-sm">Name
                 <b class="d-block"> <?php echo $row['ticket_caller'];?> </b>
               </p>
             </div>
@@ -258,7 +258,8 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                           // }
 
-                          if (count($_POST) > 0) {
+                          // if (count($_POST) > 0) {
+                            if(isset($_POST['submit'])){
   //                           mysqli_query($conn, "UPDATE ticket_incident set
   //  id='" . $_POST['update_status_id'] . "', 
   //  ticket_timeofdate_end =NOW(), 
@@ -280,7 +281,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               <table border="1px" align="center">
                   <tr>
                       <td>
-                          <form action=" method="post" enctype="multipart/form-data">
+                          <form action="" method="post" enctype="multipart/form-data">
                           <br>
                                 <input type="file" class="btn btn-warning"  name="file"><br><br>
 
@@ -296,7 +297,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           
                           while($rows = mysqli_fetch_assoc($run2)){
                               ?>
-                          <a href="download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br>
+                          <a href="../admin/testing/Download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> <?php echo $rows['path'] ?></a><br>
                           <?php
                           }
                           ?>

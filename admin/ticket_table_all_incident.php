@@ -12,14 +12,13 @@
       <th>Status</th>
       <th>Action </th>
 
-
     </tr>
   </thead>
   <tbody>
       <?php
       require_once '../connect.php';
     
-      $rolelistqry="SELECT * FROM ticket_incident where ticket_department_id ='".$_SESSION['ticket_user_department']."'";
+      $rolelistqry="SELECT * FROM ticket_incident where ticket_department_id ='".$_SESSION['ticket_user_department']."' Order by ticket_number DESC";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
       ?>
