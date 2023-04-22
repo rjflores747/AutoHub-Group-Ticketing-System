@@ -61,6 +61,7 @@ require_once '../connect.php';
       theme: 'bootstrap4'
     })
     $("#example1").DataTable({
+      order: [[ 0, 'desc' ], [ 0, 'asc' ]],
       fnDrawCallback: function () {
         initActionRemove();
         confirmDelete();

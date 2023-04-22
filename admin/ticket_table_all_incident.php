@@ -9,6 +9,8 @@
       <th>Ticket Number</th>
       <th>Subject</th>
       <th>Description</th>
+      <th>Date</th>
+      
       <th>Status</th>
       <th>Action </th>
 
@@ -27,6 +29,8 @@
         <td><?php echo $roledata['ticket_number'];?></td>
         <td><?php echo $roledata['ticket_short_discrip'];?></td>
         <td><?php echo $roledata['ticket_discription'];?></td>
+        <td><?php echo $roledata['ticket_timeofdate'];?></td>
+
        
         <td>
           <?php  if ($roledata["ticket_status"] == 1) {
