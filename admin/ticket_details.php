@@ -68,7 +68,10 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                     <?php include '../admin/ticket_chat_time_line.php'; ?>
                     <!-- SEND MESSAGE  -->
+
                     <div class="input-group ">
+                    <?php if($row['ticket_status'] == '3' || $row['ticket_status'] == '1'){?>
+
                         <input type="text"
                               placeholder="Type Message..."
                               id="messageText"
@@ -76,7 +79,19 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                         <button class="btn btn-primary" 
                                 id="messagebtn" name="Send" >
                                	Send
-                        </button>       
+                        </button>  
+                        <?php }?>  
+                        <?php if($row['ticket_status'] == '2' ){?>
+                          <input type="text"
+                              placeholder="Type Message..."
+                              id="messageText"
+                              class="form-control"disabled>
+                        <button class="btn btn-primary" 
+                                id="messagebtn" name="Send" disabled>
+                               	Send
+                        </button>  
+                          <?php }?>  
+
                   </div>
                   </div>
                 </div>
@@ -153,9 +168,11 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                     <?php 
                       if($_SESSION['ticket_user_role'] == '1'||$_SESSION['ticket_user_role'] == '2'){?>
-                       <span class="info-box-number text-left  mb-0">Status#:
+                       <span class="info-box-number text-left  mb-0">Status:
                           <div class="select2-purple">
-                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
+                          <?php if($row['ticket_status'] == '2'){?>
+
+                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" disabled>
                                 <option value="" style="text-align:center">----- SELECT STATUS -----</option>
                                     <?php 
                                       
@@ -182,9 +199,43 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                             </select>
                           </div><br>
                           <button class="btn btn-primary" 
-                                id="Updatestatu" name="Updatestatu" >
+                                id="Updatestatu" name="Updatestatu"disabled >
                                 <i class="fas fa-user-edit"></i>	Update
                         </button>
+                        <?php }?> 
+                        <?php if($row['ticket_status'] == '1' || $row['ticket_status'] == '3'){?>
+
+                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
+                                <option value="" style="text-align:center">----- SELECT STATUS -----</optaion>
+                                    <?php 
+                                      
+                                        $query= "SELECT * from ticket_status 
+                                        order by ticket_status_name ASC";
+                                        $result1= mysqli_query($conn,$query);
+                                      
+                                        while ($statusrow = mysqli_fetch_array($result1)) { 
+
+                                          if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
+                                          ?>  
+                                          <option selected value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <?php
+                                          
+                                          }
+                                          else
+                                          {
+                                            ?>  
+                                          <option  value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
+                                          <?php
+                                          }?>
+
+                                    <?php } ?>
+                            </select>
+                            </div><br>
+                            <button class="btn btn-primary" 
+                                id="Updatestatu" name="Updatestatu" >
+                                <i class="fas fa-user-edit"></i>	Update
+                            </button>
+                            <?php }?>
                       </span>
                       <?php
                       }
@@ -200,7 +251,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               <!-- <p class="text-sm">Client Company
                 <b class="d-block">Deveint Inc</b>
               </p> -->
-              <p class="text-sm">Name
+              <p class="text-sm">Name :
                 <b class="d-block"> <?php echo $row['ticket_caller'];?> </b>
               </p>
             </div>
@@ -210,7 +261,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           // $conn = mysqli_connect('localhost','root','','autohub-ticketing');
                           // require_once '../connect.php';
 
-                          // if(isset($_POST['submit'])){
+                          if(isset($_POST['submit'])){
                           //   if(count($_POST)>0) {
                           //     // $fileName = basename($_FILES['file']['name']);
                           //     // $fileTmpName = $_FILES['file']['tmp_name'];
@@ -259,21 +310,20 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           // }
 
                           // if (count($_POST) > 0) {
-                            if(isset($_POST['submit'])){
-  //                           mysqli_query($conn, "UPDATE ticket_incident set
-  //  id='" . $_POST['update_status_id'] . "', 
-  //  ticket_timeofdate_end =NOW(), 
-  //  ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
-  //                           // Insert visitor activity log into database 
-  //                           $ActivityLogs = mysqli_query($conn, "INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('" . $_SESSION['u_id'] . "','You have successfully updated' ,NOW())");
+                            mysqli_query($conn, "UPDATE ticket_incident set
+   id='" . $_POST['update_status_id'] . "', 
+   ticket_timeofdate_end =NOW(), 
+   ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
+                            // Insert visitor activity log into database 
+                            $ActivityLogs = mysqli_query($conn, "INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('" . $_SESSION['u_id'] . "','You have successfully updated' ,NOW())");
 
-                            $temp = explode(".", $_FILES["file"]["name"]);
-                            $newfilename = round(microtime(true)) . '.' . end($temp);
-                            move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
-                            mysqli_query($conn, "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())");
+                            // $temp = explode(".", $_FILES["file"]["name"]);
+                            // $newfilename = round(microtime(true)) . '.' . end($temp);
+                            // move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
+                            // mysqli_query($conn, "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())");
 
 
-                            $message = "Record Modified Successfully";
+                            // $message = "Record Modified Successfully";
                           }
                 
                 ?>
@@ -283,10 +333,20 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                       <td>
                           <form action="" method="post" enctype="multipart/form-data">
                           <br>
-                                <input type="file" class="btn btn-warning"  name="file"><br><br>
+                            <?php if($row['ticket_status'] == '3' || $row['ticket_status'] == '1'){?>
 
-                                <button type="submit" class="btn btn-success" name="submit"><i class="fa fa-upload"></i> Upload</button>
-                            </form>
+                                  <input type="file" class="btn btn-warning"  name="file"><br><br>
+
+                                  <button type="submit" class="btn btn-success" name="submit"><i class="fa fa-upload"></i> Upload</button>
+                            <?php }?>
+                            <?php if($row['ticket_status'] == '2'){?>
+
+                            <input type="file" class="btn btn-warning"  name="file" disabled><br><br>
+
+                            <button type="submit" class="btn btn-success" name="submit"disabled><i class="fa fa-upload"></i> Upload</button>
+                            <?php }?>
+                              
+                          </form>
                       </td>
                   </tr>
                   <tr>
@@ -297,7 +357,8 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           
                           while($rows = mysqli_fetch_assoc($run2)){
                               ?>
-                          <a href="../admin/testing/Download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> <?php echo $rows['path'] ?></a><br>
+                          <a href="../admin/download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br>
+                          <!-- <a href="../uploads/?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br> -->
                           <?php
                           }
                           ?>

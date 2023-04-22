@@ -62,7 +62,11 @@ require_once '../connect.php';
 
 <!-- Page specific script -->
 <script>
-
+// $(document).ready(function() {
+//     $('#example1').DataTable( {
+//         order: [[ 0, 'desc' ], [ 0, 'asc' ]]
+//     } );
+// } );
  
   $(function () {
     //Initialize Select2 Elements
@@ -75,6 +79,7 @@ require_once '../connect.php';
       theme: 'bootstrap4'
     })
     $("#example1").DataTable({
+      order: [[ 0, 'desc' ], [ 0, 'asc' ]],
       fnDrawCallback: function () {
         initActionRemove();
       },
@@ -87,6 +92,7 @@ require_once '../connect.php';
         initActionRemove();
         confirmDelete();
       },
+      //  "order": [[0, 'desc']],
       "paging": true,
       "lengthChange": false,
       "searching": false,

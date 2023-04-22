@@ -9,13 +9,13 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>From Date</label>
+									<label>Start Date</label>
 									<input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control" required>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>To Date</label>
+									<label>End Date</label>
 									<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control"required>
 								</div>
 							</div>
@@ -27,13 +27,8 @@
 							</div>
 						</div>
 					</form>
+					
 				</div>
-		
-					</select>
-				</div>
-				
-				
-			</form>
 		</div>
 	</div>
 </div>

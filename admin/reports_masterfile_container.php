@@ -26,12 +26,9 @@
 								</div>
 							</div>
 						</div>
+						
 					</form>
 				</div>
-<!-- 			
-				<div class="form-group">
-					<input type="submit" name="permission_update" class="btn btn-primary">
-				</div> -->
 			</form>
 		</div>
 	</div>

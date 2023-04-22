@@ -10,6 +10,7 @@
       <th>Ticket Number</th>
       <th>Subject</th>
       <th>Description</th>
+      <th>Date</th>
       <th>Status</th>
       <th>Action </th>
 
@@ -24,12 +25,14 @@
       $rolelistqry="SELECT * FROM ticket_incident  where u_id ='".$_SESSION['id']."' ";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
+        
       ?>
       <tr>
         <td><?php echo $roledata['id'];?></td>
         <td><?php echo $roledata['ticket_number'];?></td>
         <td><?php echo $roledata['ticket_short_discrip'];?></td>
         <td><?php echo $roledata['ticket_discription'];?></td>
+        <td><?php echo $roledata['ticket_timeofdate'];?></td>
        
         <td>
           <?php  if ($roledata["ticket_status"] == 1) {

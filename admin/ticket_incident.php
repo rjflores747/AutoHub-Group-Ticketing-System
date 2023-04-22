@@ -98,9 +98,15 @@ if (!isset($_SESSION["id"])) {
                   <div class="form-group">
                     <label for="inputSubject">Subject</label>
                     <!-- <input type="text" id="inputSubject" name="inputSubject" class="form-control"require /> -->
-                    <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject"required />  
-                    <div id="subjectList"></div>  
-            
+                    <!-- <input type="text" name="inputSubject" id="inputSubject" class="form-control" placeholder="Enter Subject"required />  
+                    <div id="subjectList"></div>   -->
+                                
+                                        <!-- Autocomplete input field -->
+                    <input id="searchInput"  name="inputSubject"  placeholder="Enter Subject..." class="form-control" autocomplete="off" required>
+
+                    <!-- Hidden input to store selected user's ID -->  
+                    <input type="hidden" id="userID" name="userID" class="form-control" value=""/>
+                    
                   </div>
               
                     <div class="form-group">
@@ -138,9 +144,31 @@ if (!isset($_SESSION["id"])) {
 <!-- ./wrapper -->
 <!-- link required scripts -->
 <?php include '../link-required-scripts-end.php';?>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- jQuery UI library -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </body>
 </html>
-
+<script>
+$(document).ready(function(){
+    $("#searchInput").autocomplete({
+        source: "../admin/fetchUsers.php",
+        minLength: 1,
+        select: function(event, ui) {
+            $("#searchInput").val(ui.item.value);
+            $("#userID").val(ui.item.id);
+        }
+    }).data("ui-autocomplete")._renderItem = function( ul, item ) {
+    return $( "<li class='ui-autocomplete-row'></li>" )
+        .data( "item.autocomplete", item )
+        .append( item.label )
+        .appendTo( ul );
+    };
+});
+</script>
 <script>
           var Toast = null;
             // global variable
