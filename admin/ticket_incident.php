@@ -20,7 +20,7 @@ if (!isset($_SESSION["id"])) {
        
            .ul-main{  
                 
-                background-color:#eee;  
+                background-color:#eee;   
                 cursor:pointer;  
                 
                 overflow: scroll;
@@ -155,7 +155,7 @@ if (!isset($_SESSION["id"])) {
 <script>
 $(document).ready(function(){
     $("#searchInput").autocomplete({
-        source: "../admin/fetchUsers.php",
+        source: "fetchUsers.php",
         minLength: 1,
         select: function(event, ui) {
             $("#searchInput").val(ui.item.value);
