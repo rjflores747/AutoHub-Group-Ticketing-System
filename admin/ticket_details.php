@@ -316,11 +316,25 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
   // //  ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
                             // Insert visitor activity log into database 
                             // $ActivityLogs = mysqli_query($conn, "INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('" . $_SESSION['u_id'] . "','You have successfully updated' ,NOW())");
+                            $fileName = $_FILES['file']['name'];
+                            $fileTmpName = $_FILES['file']['tmp_name'];
+                            $path = "../admin/uploads/".$fileName;
+                    
+                            $query = "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$fileName',NOW())";
+                            $run = mysqli_query($conn,$query);
+                            
+                            if($run){
+                                move_uploaded_file($fileTmpName,$path);
+                                echo "success";
+                            }
+                            else{
+                                echo "error".mysqli_error($conn);
+                            }
 
-                            $temp = explode(".", $_FILES["file"]["name"]);
-                            $newfilename = round(microtime(true)) . '.' . end($temp);
-                            move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
-                            mysqli_query($conn, "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())");
+                            // $temp = explode(".", $_FILES["file"]["name"]);
+                            // $newfilename = round(microtime(true)) . '.' . end($temp);
+                            // move_uploaded_file($_FILES["file"]["tmp_name"], "../uploads/" . $newfilename);
+                            // mysqli_query($conn, "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$newfilename',NOW())");
 
 
                             // $message = "Record Modified Successfully";
