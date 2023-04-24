@@ -357,7 +357,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           
                           while($rows = mysqli_fetch_assoc($run2)){
                               ?>
-                          <a href="../admin/download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br>
+                          <a href="../admin/download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> <?php echo $rows['path'] ?></a><br>
                           <!-- <a href="../uploads/?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br> -->
                           <?php
                           }
