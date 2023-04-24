@@ -3,10 +3,10 @@
 // Include database config file 
 
 // Database configuration
-$dbHost     = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName     = "autohub-ticketing";
+$dbHost     = "ticketing-system.adrianpusana.com";
+$dbUsername = "syofdjax_alberto_flores";
+$dbPassword = "v,O@0OngL;}g";
+$dbName     = "syofdjax_ticketing";
 
 // Create database connection
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
