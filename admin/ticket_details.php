@@ -320,6 +320,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                             $fileTmpName = $_FILES['file']['tmp_name'];
                             $path = "../admin/uploads/".$fileName;
                     
+                            
                             $query = "INSERT INTO ticket_files(ticket_number,path,createAt) VALUES ('$lastId','$fileName',NOW())";
                             $run = mysqli_query($conn,$query);
                             
