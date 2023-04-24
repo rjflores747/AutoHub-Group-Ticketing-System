@@ -59,7 +59,7 @@ if (!isset($_SESSION["id"])) {
 <?php if(!empty($message)) { ?>
       <script>
         toastr.remove();
-        toastr.success("Successfully", "Incomplete data");
+        toastr.success("Successfully", "Complete data");
         // alert ("Department cannot be empty");
      </script>
      <?php

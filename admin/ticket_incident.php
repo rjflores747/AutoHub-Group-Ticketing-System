@@ -234,7 +234,7 @@ $(document).ready(function(){
                   if(result.status == 1){ // success
                      
                       toastr.success();
-                      toastr.error("Add successfully", "Incomplete data");
+                      toastr.error("Add successfully", "Complete data");
                       
                       window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');
