@@ -12,7 +12,10 @@
 									<label>Status</label>
 									<!-- <input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control"> -->
 									<select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" required>
-                                	<option value="" style="text-align:center">----- SELECT STATUS -----</option>
+									<option value="1">In Progress</option>
+									<option value="2">Close</option>
+									<option value="3">New</option>
+                                	<!-- <option value="" style="text-align:center">----- SELECT STATUS -----</option>
                                     <?php 
                                       
                                         $query= "SELECT * from ticket_status 
@@ -34,7 +37,7 @@
                                           <?php
                                           }?>
                          
-                                    <?php } ?>
+                                    <?php } ?> -->
                             </select>
 								</div>
 							</div><br>

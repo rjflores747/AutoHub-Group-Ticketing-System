@@ -15,8 +15,9 @@ $document = new Dompdf($options);
 require_once '../connect.php';
 // $connect = mysqli_connect("localhost", "root", "", "autohub-ticketing");
 
-if(isset($_GET['from_date']) && isset($_GET['to_date']))
+if(isset($_GET['from_date']) && isset($_GET['to_date']) && isset($_GET['statusText']))
 {
+    $statusText = $_GET['statusText'];
     $from_date = $_GET['from_date'];
     $to_date = $_GET['to_date'];
 
@@ -49,7 +50,7 @@ FROM
 INNER JOIN ticket_status ON ticket_incident.ticket_status = ticket_status.ticket_status_id
 WHERE
     ticket_incident.ticket_number = ticket_status.ticket_status_id 
-    AND ticket_timeofdate  BETWEEN '$from_date' AND '$to_date'
+    AND ticket_timeofdate  BETWEEN '$from_date' AND '$to_date' AND '$statusText'
 ";
 $result = mysqli_query($conn, $query);
 
