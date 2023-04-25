@@ -155,6 +155,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_short_discrip'];?></h6>
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
+                    
                   <!-- star rating -->
                   <?php if($row['ticket_status'] == '2'){?>
                     <div class="rateYo" id= "rateYo"

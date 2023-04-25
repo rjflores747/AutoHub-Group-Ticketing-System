@@ -108,6 +108,15 @@ if (!isset($_SESSION["id"])) {
                     <input type="hidden" id="userID" name="userID" class="form-control" value=""/>
                     
                   </div>
+                  <div class="form-group">
+                    <label for="inputSubject">SLA</label>
+                    
+                                
+                                        <!-- Autocomplete input field -->
+                    <input id="inputSla"  name="inputSla"  placeholder="Enter inputSla..." class="form-control" autocomplete="off" required>
+
+                    
+                  </div>  
               
                     <div class="form-group">
                     <label for="inputMessage">Description</label>
@@ -169,6 +178,7 @@ $(document).ready(function(){
     };
 });
 </script>
+
 <script>
           var Toast = null;
             // global variable
@@ -192,7 +202,8 @@ $(document).ready(function(){
             var variable_department = $('#inputeparment').val();
             var variable_subject = $('#inputSubject').val();
             var variable_message = $('#inputMessage').val();
-
+            var variable_sla = $('#inputMessage').val();
+            
 
           // REQUIREMENTS
           if(variable_department == ""){
@@ -213,6 +224,12 @@ $(document).ready(function(){
 
             return;
           }
+          if(variable_sla == ""){
+            toastr.remove();
+            toastr.error("Sla cannot be empty", "Incomplete data");
+
+            return;
+          }
           // Login Validation
           $.ajax({
               // url:"function_create_ticket_incident.php",  
@@ -222,6 +239,7 @@ $(document).ready(function(){
                   var_department: variable_department, 
                   var_subject: variable_subject, 
                   var_message: variable_message, 
+                  var_sla: variable_sla, 
                   type: 1 // login status
               },
               beforeSend: function(){
@@ -261,7 +279,6 @@ $(document).ready(function(){
               //         toastr.error("Wrong Credentials");
               // return;
               //     } 
-              
               }
           })
 

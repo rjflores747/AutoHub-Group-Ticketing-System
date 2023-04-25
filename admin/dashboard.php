@@ -113,15 +113,31 @@
         <div class="col-lg-3 col-6">
           <!-- small card -->
           <div class="small-box bg-success">
-            <!-- Loading (remove the following to stop the loading)-->
+            <!-- Loading (remove the following to stop the loading)
             <div class="overlay dark">
               <i class="fas fa-3x fa-sync-alt"></i>
-            </div>
+            </div> -->
             <!-- end loading -->
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <?php
+            // require_once '../connect.php';
+            $sql = "SELECT count(*) as total  FROM `ticket_incident` WHERE `ticket_status` = '2'";
+            $result = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_assoc($result);
 
-              <p>Bounce Rate</p>
+            ?>
+            <div class="inner">
+            <div class="inner">
+              <h3> <?php
+                    echo $data['total'];
+
+                    ?>
+                <sup style="font-size: 20px">%</sup>
+              </h3>
+
+              <p>Incident Close</p>
+            </div>
+
+              <!-- <p>Bounce Rate</p> -->
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
