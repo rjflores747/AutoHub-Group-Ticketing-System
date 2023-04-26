@@ -168,6 +168,8 @@ $(document).ready(function(){
         minLength: 1,
         select: function(event, ui) {
             $("#searchInput").val(ui.item.value);
+            $("#inputSla").val(ui.item.value2);
+            $("#inputMessage").val(ui.item.value1);
             $("#userID").val(ui.item.id);
         }
     }).data("ui-autocomplete")._renderItem = function( ul, item ) {
