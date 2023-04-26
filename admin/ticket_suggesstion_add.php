@@ -9,11 +9,11 @@ $message = '';
 
 if(count($_POST)>0) {
   
-mysqli_query($conn,"INSERT INTO `ticket_suggestions`(`suggestions_name`, `suggestions_description`, `createdAt`, `suggestions_status`) VALUES ('". $_POST['suggestions_name'] . "','". $_POST['suggestions_description'] ."',NOW(),'1')");
+mysqli_query($conn,"INSERT INTO `ticket_suggestions`(`suggestions_name`, `suggestions_description`, `suggestions_sla`, `createdAt`, `suggestions_status`) VALUES ('". $_POST['suggestions_name'] . "','". $_POST['suggestions_description'] ."','". $_POST['suggestions_sla'] ."',NOW(),'1')");
 
 
  // Insert visitor activity log into database 
-$ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','Updating the Ticket Incident' ,NOW())");
+$ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['ticket_employee_id']."','Updating the Ticket Incident' ,NOW())");
 
 
 $message = "Record Modified Successfully";
@@ -33,13 +33,14 @@ $message = "Record Modified Successfully";
 						<th>Id</th>
 						<th>Subject Name</th>
 						<th>Suggestion Status</th>
+						<th>Suggestion SLA</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 						<?php
 						require_once '../connect.php';
-						$rolelistqry="SELECT * FROM ticket_suggestions WHERE suggestions_status='1'";
+						$rolelistqry="SELECT * FROM `ticket_suggestions` WHERE suggestions_status='1'";
 						$rolelistres=mysqli_query($conn,$rolelistqry);
 						while ($roledata=mysqli_fetch_assoc($rolelistres)) {
 						?>
@@ -47,6 +48,7 @@ $message = "Record Modified Successfully";
 							<td><?php echo $roledata['id'];?></td>
 							<td><?php echo $roledata['suggestions_name'];?></td>
 							<td><?php echo $roledata['suggestions_description'];?></td>
+							<td><?php echo $roledata['suggestions_sla'];?></td>
 							<td>  
 							<a href="../admin/ticket_view_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
         					<a href="../admin/ticket_update_suggestion_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
@@ -96,7 +98,10 @@ $message = "Record Modified Successfully";
 					<input type="text" name="suggestions_name" placeholder="Suggestion Name" class="form-control" required/>
 				</div>
 				<div class="form-group">
-					<input type="text" name="suggestions_description" placeholder="Suggestion description" class="form-control" required/>
+					<input type="text" name="suggestions_description" placeholder="Suggestion Description" class="form-control" required/>
+				</div>
+				<div class="form-group">
+					<input type="timer" name="suggestions_sla" placeholder="Suggestion SLA" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<input name="suggestions_submit" class="btn btn-primary" type="submit" value="save record"/>
