@@ -55,7 +55,9 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Ticket Detail</h3>
+        <!-- <h3 class="card-title">Ticket Detail</h3> -->
+        <h1 id="timeline">Ticket Detail</h1>
+
 
       </div>
       <div class="card-body">
@@ -109,7 +111,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <span class="info-box-text text-center text-muted">Your Request Has been Submitted</span>
                     <hr>
                     
-                    <span class="info-box-number text-left  mb-0">TicketNo#: <?php echo $row['ticket_number'];?>
+                    <span class="info-box-number text-left  mb-0">Ticket No: <?php echo $row['ticket_number'];?>
                     </span>
                     <span class="info-box-number text-left  mb-0">Status:
                     <?php 
@@ -118,7 +120,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                             echo '<span class="badge badge-info">Open</span>';
                           }else if($row['ticket_status'] == '2' ){
     
-                            echo'<span class="badge badge-danger">Close</span>' ;
+                            echo'<span class="badge badge-danger">Closed</span>' ;
                           }else if($row['ticket_status'] == '3' ){
     
                             echo '<span class="badge badge-success">New</span>' ;
@@ -149,11 +151,12 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                                         }
                
                     ?></span>
-                    <span class="info-box-number text-left  mb-0">Created: <?php echo $row['ticket_timeofdate'];?></span>
+                    <span class="info-box-number text-left  mb-0">Start Date: <?php echo $row['ticket_timeofdate'];?></span>
                     <span class="info-box-number text-left  mb-0">Date End: <?php echo $row['ticket_timeofdate_end'];?></span>
                     <hr>
-                    <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_discription'];?></h6>
-                    <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_discription'];?></h6>
+                    <span class="info-box-number text-left">Subject  <h6><?php echo $row['ticket_short_discrip'];?></h6> 
+                    <span class="info-box-number text-left">Please description your issue below.  <h6><?php echo $row['ticket_discription'];?> ( <?php echo $row['ticket_sla'];?> )</h6>
+                    <!-- <span class="info-box-number text-left">  <h6></h6> -->
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
 
@@ -170,26 +173,26 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                     <?php 
                       if($_SESSION['ticket_user_role'] == '1'||$_SESSION['ticket_user_role'] == '2'){?>
-                       <span class="info-box-number text-left  mb-0">Status:
+                       <!-- <span class="info-box-number text-left  mb-0">Status: -->
                           <div class="select2-purple">
                           <?php if($row['ticket_status'] == '2'){?>
 
-                            <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" disabled>
+                            <!-- <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" disabled>
                                 <option value="" style="text-align:center">----- SELECT STATUS -----</option>
-                                <option value="Close" style="text-align:center"> Close </option>
+                                <option value="Close" style="text-align:center"> Closd </option>
                                     
                             </select>
-                          </div><br>
-                          <button class="btn btn-primary" 
+                          </div><br> -->
+                          <!-- <button class="btn btn-primary" 
                                 id="Updatestatu" name="Updatestatu"disabled >
                                 <i class="fas fa-user-edit"></i>	Update
-                        </button>
+                        </button> -->
                         <?php }?> 
                         <?php if($row['ticket_status'] == '1' || $row['ticket_status'] == '3'){?>
-
+<!-- 
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
                                 <option value="" style="text-align:center">-- SELECT STATUS --</optaion>
-                                <option value="2" style="text-align:center">Close </option>
+                                <option value="2" style="text-align:center">Close </option> -->
 
                                     <?php 
                                       
@@ -201,24 +204,25 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                                         //   if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
                                         //   >  
-                                         //   <option selected value="<p echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option> -->
+                                          //  <option selected value="<p echo $statusrow['ticket_status_id']; ?>
+                                          <!-- </option> --> 
                                           <!-- <hp -->
                                           
                                         <!-- //   }
                                         //   else
                                         //   {
                                         //     ?>   -->
-                                        <!-- //   <option  value="<hp echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option> -->
+                                        <!-- //   <option  value="<hp echo $statusrow['ticket_status_id']; ?>"</option> -->
                                         <!-- //   <php -->
                                         <!-- //   }?> -->
 
                                     <?php ?>
                             </select>
                             </div><br>
-                            <button class="btn btn-primary" 
+                            <!-- <button class="btn btn-primary" 
                                 id="Updatestatu" name="Updatestatu" >
                                 <i class="fas fa-user-edit"></i>	Update
-                            </button>
+                            </button> -->
                             <?php }?>
                       </span>
                       <?php
@@ -235,8 +239,10 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               <!-- <p class="text-sm">Client Company
                 <b class="d-block">Deveint Inc</b>
               </p> -->
-              <p class="text-sm">Name :
-                <b class="d-block"> <?php echo $row['ticket_caller'];?> </b>
+              <b class="d-block"> User: </b>
+
+              <p class="text-lm">
+              <?php echo $row['ticket_caller'];?> 
               </p>
             </div>
 

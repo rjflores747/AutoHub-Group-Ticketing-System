@@ -53,6 +53,7 @@ $row= mysqli_fetch_array($result);
 <div style="padding-bottom:5px;">
 <!-- <a href="retrieve.php">Employee List</a> -->
   <div class="modal-body">
+    <h4>My Active tickets</h4>
                                 <!-- text input ticket no & contacttype -->
                                 <input type="hidden" name="update_id"  value="<?php echo $row['id']; ?>" id="update_id">
                                 <div class="row">
@@ -138,7 +139,7 @@ $row= mysqli_fetch_array($result);
                                                 $resultcategory1= mysqli_query($conn,$querycategory);
                                                 
                                                 while ($categoryrow= mysqli_fetch_array($resultcategory1)) { 
-                                                  if($row['ticket_category'] == $categoryrow['id'] ){
+                                                  if($row['ticket_category'] == $categoryrow['id']){
                                                   ?>  
                                                   <option selected value="<?php echo $categoryrow['id']; ?>"><?php echo $categoryrow['category_name'] ?></option>
                                                   <?php
@@ -273,7 +274,7 @@ $row= mysqli_fetch_array($result);
                                   <div class="col-sm-6">
                                
                                     <div class="form-group row">
-                                      <label for="inputPriority" class="col-sm-2 col-form-label">Assignment To</label>
+                                      <label for="inputPriority" class="col-sm-2 col-form-label">Assign to</label>
                                       <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputdepartment" name="inputdepartment" value="<?php echo $row['ticket_assign_group']; ?>" /> -->
                                       <div class="select2-purple">
@@ -281,7 +282,26 @@ $row= mysqli_fetch_array($result);
 
                                       <!-- <select class="select2" id="deptgroup" name="deptgroup" multiple="multiple" data-placeholder="Select a Assignment" data-dropdown-css-class="select2-purple" style="width: 100%;"> -->
                                        <option >----- NONE DEPARMENT -----</option>
-                                  
+                                             <?php 
+                                              $querycategory= "SELECT * FROM `ticket_incident`
+                                              order by ticket_department_id ASC";
+                                              $resultcategory1= mysqli_query($conn,$querycategory);
+                                              
+                                              while ($categoryrow= mysqli_fetch_array($resultcategory1)) { 
+                                                if($row['ticket_category'] == $categoryrow['ticket_department_id']){
+                                                ?>  
+                                                <option selected value="<?php echo $categoryrow['ticket_department_id']; ?>"><?php echo $categoryrow['category_name'] ?></option>
+                                                <?php
+                                                
+                                                }
+                                                else
+                                                {
+                                                  ?>  
+                                                <option  value="<?php echo $categoryrow['ticket_department_id']; ?>"><?php echo $categoryrow['category_name'] ?></option>
+                                                <?php
+                                                }?>
+                                            
+                                            <?php } ?>
                                        </select>
                                         </div>
                                       </div>

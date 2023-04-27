@@ -36,7 +36,7 @@
       <th>Ticket Number</th>
       <th>Subject</th>
       <th>Description</th>
-      <th>Date</th>
+      <th>Recieved Date</th>
       <th>Status</th>
       <th>Action </th>
 
@@ -66,7 +66,7 @@
           <?php  if ($roledata["ticket_status"] == 1) {
               echo '<span class="badge badge-primary">In Progress</span>';
             }else if ($roledata["ticket_status"] == 2){
-              echo '<span class="badge badge-danger">Close</span>';
+              echo '<span class="badge badge-danger">Closed</span>';
             }else if ($roledata["ticket_status"] == 3){
               echo '<span class="badge badge-success">New</span>' ;
             } else {
@@ -95,7 +95,7 @@
                 <div class="modal-content">
                     
                     <div class="modal-header">
-                        <h4 class="modal-title">Delete User</h4>
+                        <h4 class="modal-title">Delete Ticket</h4>
                         <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
         

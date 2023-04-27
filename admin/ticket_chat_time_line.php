@@ -142,7 +142,7 @@
 
 <div class="container">
     <div class="page-header">
-        <h1 id="timeline">Ticket Detail</h1>
+        <!-- <h1 id="timeline">Ticket Detail</h1> -->
     </div>
     <div class="overflow-auto" style=" height: 500px; overflow-y: scroll;">
       <div class="overflow-hidden">
