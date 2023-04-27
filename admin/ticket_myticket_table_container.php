@@ -49,6 +49,9 @@ require_once '../connect.php';
 
 </body>
 </html>
+<?php 
+
+?>
 <?php if(!empty($message)) { ?>
       <script>
         toastr.remove();
@@ -80,17 +83,21 @@ require_once '../connect.php';
     })
     $("#example1").DataTable({
       order: [[ 0, 'desc' ], [ 0, 'asc' ]],
+      pageLength: 5,
       fnDrawCallback: function () {
-        initActionRemove();
+        // initActionRemove();
       },
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      // "responsive": true, "lengthChange": false, "autoWidth": false,
       // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      // "buttons": ["colvis"]
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    })
+    .buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example1').DataTable({
       fnDrawCallback: function () {
-        initActionRemove();
-        confirmDelete();
+        // initActionRemove();
+        // confirmDelete();
       },
       //  "order": [[0, 'desc']],
       "paging": true,
@@ -101,8 +108,6 @@ require_once '../connect.php';
       "autoWidth": false,
       "responsive": true,
     });
-
-
   });
 
 
@@ -116,3 +121,34 @@ require_once '../connect.php';
     
 }
 </script>
+<!-- <script type="text/javascript">
+
+$(document).ready(function(){
+  $(document).ready(function(){
+    $("#fetchval").on('change',function(){
+
+        var value = $(this).val();
+        // alert(value);
+
+        $.ajax({
+          url:"fetch.php",
+          type:"POST",
+          data: 'request=' + value,
+          beforeSend:function(){
+            $(".container").html("<span> Working... </span>");
+          },
+          success:function(data){
+            $(".container").html(data);
+          }
+        });
+      });
+  });
+    // Redraw the table
+    // table.draw();
+    
+    // Redraw the table based on the custom input
+    $('#searchInput,#sortBy').bind("keyup change", function(){
+        table.draw();
+    });
+});
+</script> -->

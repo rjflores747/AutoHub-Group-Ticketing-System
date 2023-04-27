@@ -21,7 +21,7 @@ mysqli_query($conn,"UPDATE ticket_incident set
  ticket_timeofdate_end =NOW(), 
  ticket_status ='" . $_POST['statusText'] . "' WHERE id='" . $_POST['update_status_id'] . "'");
  // Insert visitor activity log into database 
- $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['u_id']."','You have successfully updated' ,NOW())");
+ $ActivityLogs = mysqli_query($conn,"INSERT INTO `ticket_activity_logs`(`ticket_activity_uid`, `ticket_activity_name`, `ticket_activity_created_on`) VALUES ('".$_SESSION['ticket_employee_id']."','You have successfully updated' ,NOW())");
 
  $message = "Record Modified Successfully";
 }
@@ -153,6 +153,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <span class="info-box-number text-left  mb-0">Date End: <?php echo $row['ticket_timeofdate_end'];?></span>
                     <hr>
                     <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_discription'];?></h6>
+                    <span class="info-box-number text-left">Please Describe your issue below.  <h6><?php echo $row['ticket_discription'];?></h6>
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
 
@@ -175,28 +176,8 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;" disabled>
                                 <option value="" style="text-align:center">----- SELECT STATUS -----</option>
-                                    <?php 
-                                      
-                                        $query= "SELECT * from ticket_status 
-                                        order by ticket_status_name ASC";
-                                        $result1= mysqli_query($conn,$query);
-                                       
-                                        while ($statusrow = mysqli_fetch_array($result1)) { 
-
-                                          if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
-                                          ?>  
-                                          <option selected value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
-                                          
-                                          }
-                                          else
-                                          {
-                                            ?>  
-                                          <option  value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
-                                          }?>
-                         
-                                    <?php } ?>
+                                <option value="Close" style="text-align:center"> Close </option>
+                                    
                             </select>
                           </div><br>
                           <button class="btn btn-primary" 
@@ -207,29 +188,31 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                         <?php if($row['ticket_status'] == '1' || $row['ticket_status'] == '3'){?>
 
                             <select class="form-control select2bs4" id="statusText" name="statusText" style="width: 70%;">
-                                <option value="" style="text-align:center">----- SELECT STATUS -----</optaion>
+                                <option value="" style="text-align:center">-- SELECT STATUS --</optaion>
+                                <option value="2" style="text-align:center">Close </option>
+
                                     <?php 
                                       
-                                        $query= "SELECT * from ticket_status 
-                                        order by ticket_status_name ASC";
-                                        $result1= mysqli_query($conn,$query);
+                                        // $query= "SELECT * from ticket_status 
+                                        // order by ticket_status_name ASC";
+                                        // $result1= mysqli_query($conn,$query);
                                       
-                                        while ($statusrow = mysqli_fetch_array($result1)) { 
+                                        // while ($statusrow = mysqli_fetch_array($result1)) { 
 
-                                          if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
-                                          ?>  
-                                          <option selected value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
+                                        //   if($row['ticket_status'] == $statusrow['ticket_status_id'] ){
+                                        //   >  
+                                         //   <option selected value="<p echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option> -->
+                                          <!-- <hp -->
                                           
-                                          }
-                                          else
-                                          {
-                                            ?>  
-                                          <option  value="<?php echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option>
-                                          <?php
-                                          }?>
+                                        <!-- //   }
+                                        //   else
+                                        //   {
+                                        //     ?>   -->
+                                        <!-- //   <option  value="<hp echo $statusrow['ticket_status_id']; ?>"><?php echo $statusrow['ticket_status_name'] ?></option> -->
+                                        <!-- //   <php -->
+                                        <!-- //   }?> -->
 
-                                    <?php } ?>
+                                    <?php ?>
                             </select>
                             </div><br>
                             <button class="btn btn-primary" 

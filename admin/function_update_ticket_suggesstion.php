@@ -68,6 +68,24 @@ $row= mysqli_fetch_array($result);
                                     </div>
                                   </div>
                                 </div>
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                      <label for="suggestions_name" class="col-sm-2 col-form-label"> SLA</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="suggestions_sla" name="suggestions_sla"value="<?php echo $row['suggestions_sla']; ?>" placeholder="Suggestions SLA">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="col-sm-6">
+                                    <div class="form-group row">
+                                      <label for="suggestions_description" class="col-sm-2 col-form-label">Description</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="suggestions_description" name="suggestions_description"value="<?php echo $row['suggestions_description']; ?>" placeholder="Description">
+                                      </div>
+                                    </div>
+                                  </div> -->
+                                </div>
                                   <!-- text input Caller & State -->
                                
                               

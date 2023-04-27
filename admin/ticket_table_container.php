@@ -62,6 +62,8 @@ require_once '../connect.php';
     })
     $("#example1").DataTable({
       order: [[ 0, 'desc' ], [ 0, 'asc' ]],
+      pageLength: 5,
+
       fnDrawCallback: function () {
         initActionRemove();
         confirmDelete();

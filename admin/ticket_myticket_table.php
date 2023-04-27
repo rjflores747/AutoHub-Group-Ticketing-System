@@ -1,9 +1,35 @@
+<!-- <?php
+// require_once '../connect.php';
+//     if(isset($_POST['request']))
+//     {
+
+//         $require = $_POST['request'];
+//         $quert = "SELECT * FROM ticket_incident WHERE ticket_status= '$require' AND u_id ='".$_SESSION['id']."'";
+//         $result = mysqli_query($conn, $quert);
+//         $count = mysqli_num_rows($result);
+
+        
+//     }
+?> -->
 <div class="container">
    
 <h4>My active tickets </h4>
 
 <hr>
+<div id="filters" class="post-search-panel">
+    <!-- <input type="text" id="searchInput" placeholder="Type keywords..." /> -->
+    <!-- <span></span> -->
+        <select id="fetchval" name="fetchval">
+        <option value="" disabled="" selected="">Status</option>
+        <option value="1">In Progress</option>
+        <option value="2">Close</option>
+        <option value="3">New</option>
+       
+    
+    </select>
+</div>
 <table id="example1" class="table table-bordered">
+
   <thead>
     <tr>
     <th>Id</th>
@@ -17,7 +43,9 @@
 
 
     </tr>
+
   </thead>
+
   <tbody>
       <?php
       require_once '../connect.php';
@@ -50,9 +78,12 @@
           <a href="../admin/ticket_details_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
         
           <a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
-        	
+          <?php if($roledata['ticket_status'] == '2'){?>
+          <button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);" disabled><i class="fa fa-trash"></i></button>
+          <?php }?>
+          <?php if($roledata['ticket_status'] == '1' || $roledata['ticket_status']== '3'){?>
           <button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
-
+          <?php }?>
           <!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
           <!-- <button type="button" class="btn btn-danger btn-icon" data-toggle="modal" data-target="#myModal" data-id="<?php echo $roledata['id'];?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button> -->
           <!-- <button type="button" class="btn btn-danger" data-id="<?php echo $roledata['id']; ?>" onclick="confirmDelete(this);">Delete</button> -->

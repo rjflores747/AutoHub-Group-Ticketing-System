@@ -58,7 +58,17 @@ require_once '../connect.php';
 <!-- link required scripts -->
 <?php include '../link-required-scripts-end.php';?>
 </body>
-
+<!-- Page specific script -->
+<?php if(!empty($message)) { ?>
+      <script>
+        toastr.remove();
+        toastr.success("Successfully", "Complete data");
+        // alert ("Department cannot be empty");
+     </script>
+     <?php
+  } 
+   
+?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script>
@@ -68,6 +78,7 @@ require_once '../connect.php';
       showConfirmButton: false,
       timer: 3000
     });
+    
 //rating fuction to insert the database
  function rate(ticketrating,ticketreadonly){
   $(".rateYo").rateYo({fullStar: true,  rating: ticketrating, readOnly: ticketreadonly })

@@ -24,6 +24,7 @@ else
       // $price = $_POST['price'];
       $departmentType = $_POST['inputeparment'];
       $sortdiscription = $_POST['inputSubject'];
+      $inputSla = $_POST['inputSla'];
       $message = addslashes($_POST['inputMessage']);  
       $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
       $employee_id = $_SESSION['id'];
@@ -54,7 +55,8 @@ else
           `ticket_assign_group`,
           `ticket_assign_to`, 
           `ticket_department_id`, 
-          `ticket_timeofdate`
+          `ticket_timeofdate`,
+          ticket_sla
           )
           VALUES(
           '".$number."',
@@ -75,7 +77,8 @@ else
           '',
           '',
           '".$departmentType."',
-          NOW()
+          NOW(),
+          '".$inputSla."'
           ) ";
           if(mysqli_query($conn,$sql))
           {

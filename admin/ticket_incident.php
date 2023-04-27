@@ -109,11 +109,11 @@ if (!isset($_SESSION["id"])) {
                     
                   </div>
                   <div class="form-group">
-                    <label for="inputSubject">SLA</label>
+                    <label for="inputSubject">Service-Level Agreement(SLA)</label>
                     
                                 
                                         <!-- Autocomplete input field -->
-                    <input id="inputSla"  name="inputSla"  placeholder="Enter inputSla..." class="form-control" autocomplete="off" required>
+                    <input id="inputSla"  name="inputSla"  placeholder="Enter input Sla..." class="form-control" autocomplete="off" required>
 
                     
                   </div>  
@@ -287,7 +287,7 @@ $(document).ready(function(){
         });
       })
 </script>
-<script>  
+<!-- <script>  
  $(document).ready(function(){  
       $('#inputSubject').keyup(function(){  
            var query = $(this).val();  
@@ -310,4 +310,5 @@ $(document).ready(function(){
            $('#subjectList').fadeOut();  
       });  
  });  
- </script>  
+ </script>   -->
+
