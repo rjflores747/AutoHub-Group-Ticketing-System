@@ -160,15 +160,23 @@ $row= mysqli_fetch_array($result);
                                   </div>
                                   <div class="col-sm-6">
                                     <div class="form-group row">
-                                      <label for="inputImpact" class="col-sm-2 col-form-label">Impact</label>
+                                      <label for="inputImpact" class="col-sm-2 col-form-label">Level Of Support</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputImpact" name="inputImpact"value="<?php echo $row['ticket_imapact']; ?>" placeholder="Impact">
+                                        <!-- <input type="text" class="form-control" id="inputImpact" name="inputImpact"value="<?php echo $row['ticket_imapact']; ?>" placeholder="Impact"> -->
+                                        <div class="select2-purple">
+                                          <select class="form-control select2bs4" id="inputImpact" name="inputImpact" style="width: 100%;">
+                                            <option>----- Select Level of Support -----</option>
+                                            <option value="low"> Low </option>
+                                            <option value="mid"> Mid </option>
+                                            <option value="high"> High</option>
+                                          </select>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <!-- text input Subcategory & Urgent -->
-                                <div class="row">
+                                <!-- <div class="row">
                                   <div class="col-sm-6">
                                     <div class="form-group row">
                                     <label for="inputsubcategory" class="col-sm-2 col-form-label">Subcategory </label>
@@ -189,9 +197,9 @@ $row= mysqli_fetch_array($result);
                                     </div>
                                   </div>
                                 </div>
-        
+         -->
                                   <!-- text input Subcategory & Urgent -->
-                                  <div class="row">
+                                  <!-- <div class="row">
                                   <div class="col-sm-6">
                                     <div class="form-group row">
                                     <label for="inputService" class="col-sm-2 col-form-label">Service</label>
@@ -208,18 +216,18 @@ $row= mysqli_fetch_array($result);
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
         
                                   <!-- text input Configuration & Assignmentgroup -->
                                   <div class="row">
-                                  <div class="col-sm-6">
+                                  <!-- <div class="col-sm-6">
                                     <div class="form-group row">
                                     <label for="inputconfigitem" class="col-sm-2 col-form-label">Config Item</label>
                                     <div class="col-sm-10">
                                       <input type="text" class="form-control" id="inputconfigitem" name="inputconfigitem"value="<?php echo $row['ticket_config_item']; ?>" placeholder="Service">
                                     </div>
                                   </div>
-                                  </div>
+                                  </div> -->
                                   <div class="col-sm-6">
                                     <div class="form-group row">
                                       <label for="tkdepart" class="col-sm-2 col-form-label">Department</label>
@@ -258,20 +266,7 @@ $row= mysqli_fetch_array($result);
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-        
-                                <!-- text input Subcategory & Assignmentto -->
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <div class="form-group row">
-                                    
-                                    <div class="col-sm-10">                                                                                                                     
-                                    
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="col-sm-6">
+                                      <div class="col-sm-6">
                                
                                     <div class="form-group row">
                                       <label for="inputPriority" class="col-sm-2 col-form-label">Assign to</label>
@@ -307,6 +302,11 @@ $row= mysqli_fetch_array($result);
                                       </div>
                                     </div>
                                   </div>
+                                    
+                                  </div>
+                                </div>
+        
+                            
                                   <div class="form-group">
                                     <label for="inputSubject">Subject</label>
                                     <input type="text"class="form-control" style="background: transparent;" id="inputSubject" name="inputSubject" value="<?php echo $row['ticket_short_discrip']; ?>" class="form-control" readonly/>

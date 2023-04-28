@@ -152,10 +152,11 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                
                     ?></span>
                     <span class="info-box-number text-left  mb-0">Start Date: <?php echo $row['ticket_timeofdate'];?></span>
-                    <span class="info-box-number text-left  mb-0">Date End: <?php echo $row['ticket_timeofdate_end'];?></span>
+                    <span class="info-box-number text-left  mb-0">End Date: <?php echo $row['ticket_timeofdate_end'];?></span>
                     <hr>
                     <span class="info-box-number text-left">Subject  <h6><?php echo $row['ticket_short_discrip'];?></h6> 
-                    <span class="info-box-number text-left">Please description your issue below.  <h6><?php echo $row['ticket_discription'];?> ( <?php echo $row['ticket_sla'];?> )</h6>
+                    <span class="info-box-number text-left">Description  <h6><?php echo $row['ticket_discription'];?> </h6>
+                    <span class="info-box-number text-left">Service-Level Agreement (SLA)  <h6><?php echo $row['ticket_sla'];?> </h6>
                     <!-- <span class="info-box-number text-left">  <h6></h6> -->
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
@@ -246,7 +247,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               </p>
             </div>
 
-            <h5 class="mt-5 text-muted">Project files</h5>
+            <h5 class="mt-5 text-muted">Attachment</h5>
              <?php
                           // $conn = mysqli_connect('localhost','root','','autohub-ticketing');
                           // require_once '../connect.php';
