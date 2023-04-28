@@ -28,7 +28,7 @@
 	 		</div>
 	 		
 		  <div class="mb-3">
-		    <label class="form-label"> User ID</label>
+		    <label class="form-label"> ASA Account</label>
 		    <input type="text"class="form-control" id="inputuser" name="user" require>
 		  </div>
 

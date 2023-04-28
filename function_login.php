@@ -49,9 +49,9 @@
 				'". $user_array['u_position'] ."',
 				'". $user_array['usr_mobile'] ."',
 				'ibro.png',
-				'3',
+				'1',
 				NOW()
-				) ON DUPLICATE KEY UPDATE u_id = VALUES(u_id),
+				) ON DUPLICATE KEY UPDATE 
                  ticket_fn = VALUES(ticket_fn),
 				 ticket_ln = VALUES(ticket_ln), 
 				 ticket_employee_id = VALUES(ticket_employee_id), 
