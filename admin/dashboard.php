@@ -287,100 +287,138 @@
                     'data' => $row['Ticket']
                 );
             }
-            // Include Chart.js library
-              // require_once('path/to/chart.min.js');
+          //   // Include Chart.js library
+          //     // require_once('path/to/chart.min.js');
 
-              // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
-              // $servername = "localhost";
-              // $username = "root";
-              // // // $username = "autoph_helpdesk";
-              // // // $password = "AGc@2023#$@help@";
-              // $password = "";
-              // $db ="autohub-ticketing";
-              // Establish a database connection
-              $connection = new PDO("mysql:host=$host;dbname=$db", $user, $password);
+          //     // Retrieve data from the database
+          //     // $host = 'localhost';
+          //     // $db = 'autohub-ticketing';
+          //     // $user = 'root';
+          //     // $password = '';
+          //     $host = 'ticketing-system.adrianpusana.com';
+          //     $db = 'syofdjax_ticketing';
+          //     $user = 'syofdjax_alberto_flores';
+          //     $password = 'v,O@0OngL;}g';
+          //     // $servername = "localhost";
+          //     // $username = "root";
+          //     // // // $username = "autoph_helpdesk";
+          //     // // // $password = "AGc@2023#$@help@";
+          //     // $password = "";
+          //     // $db ="autohub-ticketing";
+          //     // Establish a database connection
+          //     $connection = new PDO("mysql:host=$host;dbname=$db", $user, $password);
 
-              // Execute a query to retrieve data
-              $query = "SELECT
-              ti.ticket_imapact,
-              tlos.id,
-              tlos.ticket_los_name,
-              COUNT(*) AS Ticket
-          FROM
-              ticket_incident AS ti
-          LEFT JOIN ticket_level_of_support AS tlos
-          ON
-              ti.ticket_imapact = tlos.id
-          GROUP BY
-              ti.ticket_imapact;";
+          //     // Execute a query to retrieve data
+          //     $query = "SELECT
+          //     ti.ticket_imapact,
+          //     tlos.id,
+          //     tlos.ticket_los_name,
+          //     COUNT(*) AS Ticket
+          // FROM
+          //     ticket_incident AS ti
+          // LEFT JOIN ticket_level_of_support AS tlos
+          // ON
+          //     ti.ticket_imapact = tlos.id
+          // GROUP BY
+          //     ti.ticket_imapact;";
 
-              $stmt = $connection->query($query);
+          //     $stmt = $connection->query($query);
 
-              // Fetch the result set
-              $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          //     // Fetch the result set
+          //     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-              // Close the database connection
-              $connection = null;
+          //     // Close the database connection
+          //     $connection = null;
             // Build the dataset array for the graph
-            $dataset = array(
-              'labels' => array(),
-              'datasets' => array(
-                  array(
-                      'label' => 'Data',
-                      'data' => array(),
-                      'backgroundColor' => array()
-                  )
-              )
-            );
+            // $dataset = array(
+            //   'labels' => array(),
+            //   'datasets' => array(
+            //       array(
+            //           'label' => 'Data',
+            //           'data' => array(),
+            //           'backgroundColor' => array()
+            //       )
+            //   )
+            // );
 
-          // Generate random colors for each data point
-          $colorCount = count($data);
-          $randomColors = generateRandomColors($colorCount);
+          // // Generate random colors for each data point
+          // $colorCount = count($data);
+          // $randomColors = generateRandomColors($colorCount);
 
-          // Iterate over the fetched data
-          foreach ($data as $index => $row) {
-            // Extract values
-            $label = $row['ticket_los_name'];
-            $dataValue = $row['Ticket'];
+          // // Iterate over the fetched data
+          // foreach ($data as $index => $row) {
+          //   // Extract values
+          //   $label = $row['ticket_los_name'];
+          //   $dataValue = $row['Ticket'];
 
-            // Add values to the dataset array
-            $dataset['labels'][] = $label;
-            $dataset['datasets'][0]['data'][] = $dataValue;
-            $dataset['datasets'][0]['backgroundColor'][] = $randomColors[$index];
-          }
+          //   // Add values to the dataset array
+          //   $dataset['labels'][] = $label;
+          //   $dataset['datasets'][0]['data'][] = $dataValue;
+          //   $dataset['datasets'][0]['backgroundColor'][] = $randomColors[$index];
+          // }
+          //   $data_json = json_encode($data);
 
-          // Function to generate random colors
-          function generateRandomColors($count)
-          {
-            $colors = array();
 
-            for ($i = 0; $i < $count; $i++) {
-                $red = rand(0, 255);
-                $green = rand(0, 255);
-                $blue = rand(0, 255);
-                $colors[] = "rgb($red, $green, $blue)";
-            }
+          // // Function to generate random colors
+          // function generateRandomColors($count)
+          // {
+          //   $colors = array();
 
-            return $colors;
-          }
+          //   for ($i = 0; $i < $count; $i++) {
+          //       $red = rand(0, 255);
+          //       $green = rand(0, 255);
+          //       $blue = rand(0, 255);
+          //       $colors[] = "rgb($red, $green, $blue)";
+          //   }
+
+          //   return $colors;
+          // }
 
           // Generate the chart
-          echo '<canvas id="myChart"></canvas>';
+          // echo '<canvas id="myChart"></canvas>';
 
-          // JavaScript code to render the chart
+          // // JavaScript code to render the chart
+          // echo '<script>';
+          // echo 'var ctx = document.getElementById("myChart1").getContext("2d");';
+          // echo 'var myChart = new Chart(ctx, {';
+          // echo '    type: "pie",';
+          // echo '    data: ' . json_encode($dataset) . ',';
+          // echo '    options: {}';
+          // echo '});';
+          // echo '</script>';
+          $data_json = json_encode($data);
+
+          // Create HTML canvas element
+          // echo '<canvas id="myChart"></canvas>';
+
+          // Include Chart.js library
+          echo '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>';
+
+          // Create JavaScript function to generate chart
           echo '<script>';
-          echo 'var ctx = document.getElementById("myChart1").getContext("2d");';
-          echo 'var myChart = new Chart(ctx, {';
-          echo '    type: "pie",';
-          echo '    data: ' . json_encode($dataset) . ',';
-          echo '    options: {}';
-          echo '});';
+          echo 'function generateChart(data) {';
+          echo '    var ctx = document.getElementById("myChart1").getContext("2d");';
+          echo '    var chart = new Chart(ctx, {';
+          echo '        type: "pie",';
+          echo '        data: {';
+          echo '            labels: data.map(d => d.label),';
+          echo '            datasets: [{';
+          echo '                label: "None",';
+          echo '                data: data.map(d => d.data),';
+          echo '                backgroundColor: "rgb(57, 129, 35) ",';
+          echo '                borderColor: "rgba(0,0,0,0.2)",';
+          echo '                borderWidth: 3';
+          echo '            }]';
+          echo '        },';
+       
+          echo '    });';
+          echo '}';
           echo '</script>';
-            ?>
+
+          // Call JavaScript function with data
+          echo '<script>generateChart(' . $data_json . ')</script>';
+          ?>
+            
 
         </div>
       <!-- /.row -->
@@ -389,36 +427,40 @@
     <?php
             // Retrieve data from MySQL
             // $query = "SELECT ticket_status, COUNT(*) as Ticket FROM ticket_incident GROUP BY ticket_status";
-            $query = "SELECT
-            ti.ticket_imapact,
-            tlos.id,
-            tlos.ticket_los_name,
-            COUNT(*) AS Ticket
-        FROM
-            ticket_incident AS ti
-        LEFT JOIN ticket_level_of_support AS tlos
-        ON
-            ti.ticket_imapact = tlos.id
-        GROUP BY
-            ti.ticket_imapact;";
-            $result = mysqli_query($conn, $query);
+        //     $query = "SELECT
+        //     ti.ticket_imapact,
+        //     tlos.id,
+        //     tlos.ticket_los_name,
+        //     COUNT(*) AS Ticket
+        // FROM
+        //     ticket_incident AS ti
+        // LEFT JOIN ticket_level_of_support AS tlos
+        // ON
+        //     ti.ticket_imapact = tlos.id
+        // GROUP BY
+        //     ti.ticket_imapact;";
+        //     $result = mysqli_query($conn, $query);
 
-            // Format data for Chart.js
-            $data = array();
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = array(
-                    'label' => $row['ticket_los_name'],
-                    'data' => $row['Ticket']
-                );
-            }
+        //     // Format data for Chart.js
+        //     $data = array();
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $data[] = array(
+        //             'label' => $row['ticket_los_name'],
+        //             'data' => $row['Ticket']
+        //         );
+        //     }
             // Include Chart.js library
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              // $host = 'localhost';
+              // $db = 'autohub-ticketing';
+              // $user = 'root';
+              // $password = '';
+              $host = 'ticketing-system.adrianpusana.com';
+              $db = 'syofdjax_ticketing';
+              $user = 'syofdjax_alberto_flores';
+              $password = 'v,O@0OngL;}g';
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
@@ -511,36 +553,40 @@
 <?php
             // Retrieve data from MySQL
             // $query = "SELECT ticket_status, COUNT(*) as Ticket FROM ticket_incident GROUP BY ticket_status";
-            $query = "SELECT
-            ti.ticket_imapact,
-            tlos.id,
-            tlos.ticket_los_name,
-            COUNT(*) AS Ticket
-        FROM
-            ticket_incident AS ti
-        LEFT JOIN ticket_level_of_support AS tlos
-        ON
-            ti.ticket_imapact = tlos.id
-        GROUP BY
-            ti.ticket_imapact;";
-            $result = mysqli_query($conn, $query);
+        //     $query = "SELECT
+        //     ti.ticket_imapact,
+        //     tlos.id,
+        //     tlos.ticket_los_name,
+        //     COUNT(*) AS Ticket
+        // FROM
+        //     ticket_incident AS ti
+        // LEFT JOIN ticket_level_of_support AS tlos
+        // ON
+        //     ti.ticket_imapact = tlos.id
+        // GROUP BY
+        //     ti.ticket_imapact;";
+        //     $result = mysqli_query($conn, $query);
 
-            // Format data for Chart.js
-            $data = array();
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = array(
-                    'label' => $row['ticket_los_name'],
-                    'data' => $row['Ticket']
-                );
-            }
+        //     // Format data for Chart.js
+        //     $data = array();
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $data[] = array(
+        //             'label' => $row['ticket_los_name'],
+        //             'data' => $row['Ticket']
+        //         );
+        //     }
             // Include Chart.js library
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              // $host = 'localhost';
+              // $db = 'autohub-ticketing';
+              // $user = 'root';
+              // $password = '';
+              $host = 'ticketing-system.adrianpusana.com';
+              $db = 'syofdjax_ticketing';
+              $user = 'syofdjax_alberto_flores';
+              $password = 'v,O@0OngL;}g';
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
