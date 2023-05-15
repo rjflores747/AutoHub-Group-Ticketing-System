@@ -2,6 +2,21 @@
    
 <h4>Assigned Tickets </h4>
 <hr>
+          <div class="col-4">
+						<div class="btn-group submitter-group ">
+							<div class="input-group-prepend">
+								<div class="input-group-text">Status</div>
+							</div>
+							<select class="form-control status-dropdown">
+								<option value="">All</option>
+								<option value="1">In Progress</option>
+								<option value="2">Closed</option>
+								<option value="3">New</option>
+							
+							</select>
+						</div>
+					</div>
+				
 <table id="example1" class="table table-bordered">
   <thead>
     <tr>
@@ -12,6 +27,7 @@
             <th>Date</th>
       <th>Status</th>
       <th>Action </th>
+      <th>Action </th>
 
 
 
@@ -21,7 +37,7 @@
       <?php
       require_once '../connect.php';
     
-      $rolelistqry="SELECT * FROM ticket_incident where ticket_assign_to ='".$_SESSION['id']."'";
+      $rolelistqry="SELECT * FROM ticket_incident where  ticket_assign_to ='".$_SESSION['id']."'";
       $rolelistres=mysqli_query($conn,$rolelistqry);
       while ($roledata=mysqli_fetch_assoc($rolelistres)) {
       ?>
@@ -32,27 +48,55 @@
         <td><?php echo $roledata['ticket_discription'];?></td>
                 <td><?php echo $roledata['ticket_timeofdate'];?></td>
        
-        <td>
-          <?php  if ($roledata["ticket_status"] == 1) {
-              echo '<span class="badge badge-primary">In Progress</span>';
-            }else if ($roledata["ticket_status"] == 2){
-              echo '<span class="badge badge-danger">Close</span>';
-            }else if ($roledata["ticket_status"] == 3){
-              echo '<span class="badge badge-success">New</span>' ;
+                <td>
+            
+            <?php if ($roledata["ticket_status"] == 1) {
+              echo '
+              <div class="badge status-badge badge-info">
+								In Progress
+							</div>
+						
+            <td>1</td>
+        ';
+            } else if ($roledata["ticket_status"] == 2) {
+              echo '
+              <div class="badge status-badge badge-danger">
+                Closed
+              </div>
+              
+              <td>2</td>
+              ';
+            } else if ($roledata["ticket_status"] == 3) {
+              echo '
+              <div class="badge status-badge badge-success">
+                New
+              </div>
+            
+            <td>3</td>
+              ';
             } else {
-                echo "Inactive";
+              echo "Inactive";
             }
-          ?></td>
-        <td>
-          
-          <a href="../admin/ticket_details_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
-        
-          <a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id'];?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
-        
-          <!-- <a data-action-remove="<?php echo $roledata['id'];?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
+            ?></td>
+          <td>
 
-                              <button type="button" class="m-1 btn btn-sm btn-danger btn-icon"  data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
-        </td>
+<a href="../admin/ticket_details_container.php?id=<?php echo $roledata['id']; ?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+<?php
+if ($_SESSION['ticket_user_role'] == '1' || $_SESSION['ticket_user_role'] == '2') { ?>
+  <a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id']; ?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
+  <?php if ($roledata['ticket_status'] == '2') { ?>
+
+    <button type="button" class="m-1 btn btn-sm btn-danger btn-icon" data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);" disabled><i class="fa fa-trash"></i></button>
+  <?php } ?>
+  <?php if ($roledata['ticket_status'] == '1' || $roledata['ticket_status'] == '3') { ?>
+    <button type="button" class="m-1 btn btn-sm btn-danger btn-icon" data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button>
+  <?php } ?>
+<?php } ?>
+<!-- <a data-action-remove="<?php echo $roledata['id']; ?>" style="cursor:pointer;" class="m-1 btn btn-sm btn-danger btn-icon" title="Remove"><i class="fa fa-trash"></i></a> -->
+<!-- <button type="button" class="btn btn-danger btn-icon" data-toggle="modal" data-target="#myModal" data-id="<?php echo $roledata['id']; ?>" onclick="confirmDelete(this);"><i class="fa fa-trash"></i></button> -->
+<!-- <button type="button" class="btn btn-danger" data-id="<?php echo $roledata['id']; ?>" onclick="confirmDelete(this);">Delete</button> -->
+
+</td>
         </tr>
         <div id="myModal" class="modal">
             <div class="modal-dialog">

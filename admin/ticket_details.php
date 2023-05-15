@@ -1,4 +1,4 @@
- <?php 
+<?php 
  require_once '../connect.php';
   if (isset($_GET['id'])) {
   $lastId = $_GET['id'];
@@ -48,7 +48,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
 //  exit;
 
  ?>
- 
+
  <!-- Main content -->
  <section class="content">
 
@@ -56,7 +56,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
     <div class="card">
       <div class="card-header">
         <!-- <h3 class="card-title">Ticket Detail</h3> -->
-        <h1 id="timeline">Ticket Detail</h1>
+        <h4 id="timeline">Ticket Details</h4>
 
 
       </div>
@@ -136,8 +136,19 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           }
                     ?> </span>
               
-                    <span class="info-box-number text-left  mb-0">Priority: <?php echo $row['ticket_priority'];?> </span>
-                    <span class="info-box-number text-left  mb-0">Assginee :
+              <span class="info-box-number text-left  mb-0">Level of Support: <?php
+               if($row['ticket_imapact'] == "1")
+               {
+                 echo "LOW";
+               }elseif($row['ticket_imapact'] == "2")
+               {
+                 echo "MID";
+               }elseif($row['ticket_imapact'] == "3"){
+                echo "HIGH";
+                
+               }
+              ?> </span>
+                    <span class="info-box-number text-left  mb-0">Assigned :
                        <?php  
                                         $assignto =  $row['ticket_assign_to'];
                                       
@@ -157,6 +168,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                     <span class="info-box-number text-left">Subject  <h6><?php echo $row['ticket_short_discrip'];?></h6> 
                     <span class="info-box-number text-left">Description  <h6><?php echo $row['ticket_discription'];?> </h6>
                     <span class="info-box-number text-left">Service-Level Agreement (SLA)  <h6><?php echo $row['ticket_sla'];?> </h6>
+                    <span class="info-box-number text-left">Service <h6><?php echo $row['ticket_config_item'];?> </h6>
                     <!-- <span class="info-box-number text-left">  <h6></h6> -->
                     <form name="updatestatus" method="post" action="">
                     <input type="hidden" name="update_status_id"  value="<?php echo $row['id']; ?>" id="update_status_id">
@@ -237,15 +249,20 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
               </div>
             <br>
             <div class="text-muted">
-              <!-- <p class="text-sm">Client Company
-                <b class="d-block">Deveint Inc</b>
-              </p> -->
-              <b class="d-block"> User: </b>
+             <p class="text-sm">
+               <b class="d-block">User: <?php echo $row['ticket_caller'];?></b>
+             </p>
+             <p class="text-sm">
+               <b class="d-block">Position: <?php echo $row['ticket_position'];?></b>
+             </p>
+<!-- 
 
-              <p class="text-lm">
-              <?php echo $row['ticket_caller'];?> 
-              </p>
-            </div>
+              <span class="info-box-number text-left  mb-0">User: <p><?php echo $row['ticket_caller'];?></p></span>
+              <span class="info-box-number text-left  mb-0">Position: <p><?php echo $row['ticket_position'];?></p></span>
+             
+               -->
+             
+           </div>
 
             <h5 class="mt-5 text-muted">Attachment</h5>
              <?php
@@ -363,7 +380,7 @@ while ($rowrating= mysqli_fetch_array($resultrating)) {
                           
                           while($rows = mysqli_fetch_assoc($run2)){
                               ?>
-                          <a href="../admin/download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> <?php echo $rows['path'] ?></a><br>
+                          <a href="download.php?file=<?php echo $rows['path'] ?>"><i class="fas fa-download"></i> <?php echo $rows['path'] ?></a><br>
                           <!-- <a href="../uploads/?php echo $rows['path'] ?>"><i class="fas fa-download"></i> Download</a><br> -->
                           <?php
                           }

@@ -26,8 +26,9 @@ else
       $sortdiscription = $_POST['inputSubject'];
       $inputSla = $_POST['inputSla'];
       $message = addslashes($_POST['inputMessage']);  
-      $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
+      $fn = $_SESSION['ticket_fn'] . ' ' . $_SESSION['ticket_ln'];
       $employee_id = $_SESSION['id'];
+      $position = $_SESSION['ticket_position'];
   
       if(!$conn)
       {
@@ -40,6 +41,7 @@ else
           `ticket_number`, 
           `u_id`, 
           `ticket_caller`, 
+          `ticket_position`, 
           `ticket_category`, 
           `ticket_subcategory`, 
           `ticket_service`, 
@@ -62,6 +64,7 @@ else
           '".$number."',
           '".$employee_id."',
           '".$fn."',
+          '".$position."',
           '',
           '',
           '',
@@ -100,10 +103,39 @@ else
                   $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
                   $number = 'ATK-'.$id;
               }
+              
+
+
   
+  
+            
+                // Perform form processing and validation
+                
+                // If the form is valid and data is successfully saved
+                
+                // Trigger SweetAlert popup with custom options
+             
+                echo '<script>
+                      Swal.fire({
+                        title: "Your ticket has been submitted",
+                        text: "Please wait for your ticket to be assigned",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                      });
+                    </script>';
+                
+                  
+            
+              
+
           }
           else
           {
+            
+            // Trigger SweetAlert error popup
+                    echo '<script>
+                        swal("Error", "Failed to save data!", "error");
+                    </script>';
               echo "Record Faileddd";
           }
 

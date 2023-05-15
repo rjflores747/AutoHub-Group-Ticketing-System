@@ -49,44 +49,57 @@ require_once '../connect.php';
 
 </body>
 </html>
+<?php if(!empty($message)) { ?>
+      <script>
+        toastr.remove();
+        toastr.success("Successfully", "Complete data");
+        // alert ("Department cannot be empty");
+     </script>
+     <?php
+  } 
+   
+?>
+
 <!-- Page specific script -->
 <script>
+// $(document).ready(function() {
+//     $('#example1').DataTable( {
+//         order: [[ 0, 'desc' ], [ 0, 'asc' ]]
+//     } );
+// } );
  
   $(function () {
     //Initialize Select2 Elements
+    
     $('.select2').select2()
+    
 
     //Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-    $('#example1').DataTable({
+    dataTable = $("#example1").DataTable({
       order: [[ 0, 'desc' ], [ 0, 'asc' ]],
+      "columnDefs": [
+            {
+                "targets": [6],
+                "visible": false
+            }
+        ], 
       pageLength: 5,
-
       fnDrawCallback: function () {
-        initActionRemove();
-        confirmDelete();
+        // initActionRemove();
       },
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-  
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+      // "responsive": true, "lengthChange": false, "autoWidth": false,
+      // "buttons": ["copy", "csv", "e                                                                                                                                            xcel", "pdf", "print", "colvis"]
+      // "buttons": ["colvis"]
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    })
+    
   });
+
+
 
   
   function confirmDelete(self) {
@@ -96,4 +109,48 @@ require_once '../connect.php';
         $("#myModal").modal("show");
     
 }
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    // dataTable = $("#example1").DataTable({
+    //   "columnDefs": [
+    //         {
+    //             "targets": [6],
+    //             "visible": false
+    //         }
+    //     ]
+      
+    // });
+  
+  
+  
+  /*dataTable.columns().every( function () {
+        var that = this;
+ 
+        $('input', this.footer()).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that.search(this.value).draw();
+            }
+        });
+      });*/
+  
+  
+    $('.filter-checkbox').on('change', function(e){
+      var searchTerms = []
+      $.each($('.filter-checkbox'), function(i,elem){
+        if($(elem).prop('checked')){
+          searchTerms.push("^" + $(this).val() + "$")
+        }
+      })
+      dataTable.column(1).search(searchTerms.join('|'), true, false, true).draw();
+    });
+  
+    $('.status-dropdown').on('change', function(e){
+      var status = $(this).val();
+      $('.status-dropdown').val(status)
+      console.log(status)
+      //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+      dataTable.column(6).search(status).draw();
+    })
+});
 </script>

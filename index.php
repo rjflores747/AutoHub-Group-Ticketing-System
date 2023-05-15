@@ -23,12 +23,14 @@
 	 		<div class="d-flex justify-content-center align-items-center flex-column">
 
 	 		<img src="img/autohub-logo.png" class="rounded-circle" style="width: 130px;" alt="Cinque Terre">
-	 		<h3 class="display-4 fs-1 text-center"> LOGIN</h3>   
+			<br>
+			<br>
+	 		<p>Please login your ASA account </p>
 
 	 		</div>
 	 		
 		  <div class="mb-3">
-		    <label class="form-label"> ASA Account</label>
+		    <label class="form-label"> Employee ID</label>
 		    <input type="text"class="form-control" id="inputuser" name="user" require>
 		  </div>
 

@@ -4,7 +4,7 @@ if(isset($_POST['id']))
 {
     $id = $_POST['id'];
     $return_arr = array(); 
-    $query = "DELETE FROM ticket_status WHERE ticket_status_id='$id'"; 
+    $query = "DELETE FROM `ticket-category` WHERE id='$id'"; 
     $query_run = mysqli_query($conn, $query); // echo $query; exit;
     $deleted = mysqli_affected_rows($conn);
 
@@ -20,7 +20,7 @@ if(isset($_POST['id']))
     }
    
     // echo json_encode($return_arr);
-    header("location: ../admin/ticket_status_add_container.php");
+    header("location: ../admin/ticket_category_add_container.php");
  
 
 }

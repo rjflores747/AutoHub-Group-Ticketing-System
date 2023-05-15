@@ -2,9 +2,9 @@
 @session_start();
 // change the url if you have a local 
 // <<<<<<< HEAD
-// define('APP_URL','http://192.168.8.187/AutoHub-Group-Ticketing-System/');
+define('APP_URL','http://localhost/AutoHub-Ticketing/');
 // =======
-define('APP_URL','https://ticketing-system.adrianpusana.com');
+// define('APP_URL','https://ticketing-system.adrianpusana.com');
 
 require_once 'utility.php';
 // $array_data ['uri'] = 'https://autohub.ph/connect/api/v1/asa/api.php';
@@ -15,17 +15,21 @@ require_once 'utility.php';
 
 // exit;
 
+$servername = "localhost";
+$username = "root";
+// // $username = "autoph_helpdesk";
+// // $password = "AGc@2023#$@help@";
+$password = "";
+$db ="autohub-ticketing";
+  // $servername = "ticketing-system.adrianpusana.com";
+  // $username = "syofdjax_alberto_flores";
+  // $password = "v,O@0OngL;}g";
+  // $db ="syofdjax_ticketing";
+
 // $servername = "localhost";
-// $username = "root";
 // $username = "autoph_helpdesk";
 // $password = "AGc@2023#$@help@";
-// $password = "";
-// $db ="autohub-ticketing";
-  $servername = "ticketing-system.adrianpusana.com";
-  $username = "syofdjax_alberto_flores";
-  $password = "v,O@0OngL;}g";
-  $db ="syofdjax_ticketing";
-
+// $db ="autoph_ticketing";
   // Create connection
   $conn = new mysqli($servername, $username, $password,$db);
 

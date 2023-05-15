@@ -49,9 +49,9 @@
 				'". $user_array['u_position'] ."',
 				'". $user_array['usr_mobile'] ."',
 				'ibro.png',
-				'1',
+				'3',
 				NOW()
-				) ON DUPLICATE KEY UPDATE 
+				) ON DUPLICATE KEY UPDATE u_id = VALUES(u_id),
                  ticket_fn = VALUES(ticket_fn),
 				 ticket_ln = VALUES(ticket_ln), 
 				 ticket_employee_id = VALUES(ticket_employee_id), 
@@ -116,7 +116,7 @@
 			$return_arr ['status'] = 0; //no record found 
 
 		}else{
-			$query = "SELECT id,ticket_fn,ticket_ln,ticket_user_department,ticket_user_url,ticket_user_role,u_id FROM ticket_user WHERE ticket_email='$email' AND ticket_passaword='$password' AND ticket_status='1'"; 
+			$query = "SELECT id,ticket_fn,ticket_ln,ticket_user_department,ticket_user_url,ticket_position,ticket_user_role,u_id FROM ticket_user WHERE ticket_email='$email' AND ticket_passaword='$password' AND ticket_status='1'"; 
 			$data = $conn->query($query);
 			$ticketfn ='';
 			foreach($data AS $row){
@@ -125,6 +125,7 @@
 					$ticketdepartment = $row['ticket_user_department']; 
 					$ticketid_user = $row['id']; 
 					$ticket_user_url = $row['ticket_user_url'];
+					$ticket_user_url = $row['ticket_position'];
 					$ticket_user_role = $row['ticket_user_role'];
 					$employee_id = $row['u_id'];
 					$email = $row['u_id'];
@@ -138,6 +139,7 @@
 					$_SESSION['ticket_ln'] = $ticketln;	
 					$_SESSION['ticket_user_department']	= $ticketdepartment;
 					$_SESSION['ticket_user_url'] = $ticket_user_url;
+					$_SESSION['ticket_position'] = $ticket_position;
 					$_SESSION['ticket_user_role'] = $ticket_user_role;
 					$_SESSION['u_id'] = $employee_id;
 					$_SESSION['ticket_user_role']=$row['ticket_user_role'];

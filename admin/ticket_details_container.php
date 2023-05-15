@@ -22,15 +22,16 @@ require_once '../connect.php';
   <?php include '../link-required-start.php';?>
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
+  <!-- Preloader
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="../img/autohub-logo.png" alt="AutohubLogo" height="60" width="60">
-  </div>
+  </div> -->
 <!-- navbar -->
 <?php include '../navbar/navbar.php';?>
 
@@ -69,6 +70,7 @@ require_once '../connect.php';
   } 
    
 ?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script>
@@ -236,4 +238,5 @@ $('#Updatestatu').on('click',function(){
         });  
   });
 </script>
+
 </html>

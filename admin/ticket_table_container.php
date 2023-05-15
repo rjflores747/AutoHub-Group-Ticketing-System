@@ -48,43 +48,59 @@ require_once '../connect.php';
 
 
 </body>
-</html>
+</html><?php if(!empty($message)) { ?>
+      <script>
+        toastr.remove();
+        toastr.success("Successfully", "Complete data");
+        // alert ("Department cannot be empty");
+     </script>
+     <?php
+  } 
+   
+?>
+
 <!-- Page specific script -->
 <script>
+// $(document).ready(function() {
+//     $('#example1').DataTable( {
+//         order: [[ 0, 'desc' ], [ 0, 'asc' ]]
+//     } );
+// } );
  
   $(function () {
     //Initialize Select2 Elements
+    
     $('.select2').select2()
+    
 
     //Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-    $("#example1").DataTable({
+    dataTable = $("#example1").DataTable({
       order: [[ 0, 'desc' ], [ 0, 'asc' ]],
+      "columnDefs": [
+            {
+                "targets": [6],
+                "visible": false
+            }
+        ], 
       pageLength: 5,
-
       fnDrawCallback: function () {
-        initActionRemove();
-        confirmDelete();
+        // initActionRemove();
       },
+      // "responsive": true, "lengthChange": false, "autoWidth": false,
+      // "buttons": ["copy", "csv", "e                                                                                                                                            xcel", "pdf", "print", "colvis"]
+      // "buttons": ["colvis"]
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      "buttons": ["colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    })
+    
   });
 
-  
 
+
+  
   function confirmDelete(self) {
         var id = self.getAttribute("data-id");
     
@@ -92,66 +108,48 @@ require_once '../connect.php';
         $("#myModal").modal("show");
     
 }
-  function initActionRemove() {
-    $("[data-action-remove]").each(function () {
-      $(this).on("click", function () {
-        // const product_id =   $("#example1").DataTable().row(row).data().id;
-        //  //$(this).attr('data-action-remove');
-        // alert (product_id);
-
-        // return false;
-        // var row = $(this).closest("tr");
-        var ticket_id = $(this).attr('data-action-remove');
-
-           Swal.fire({
-          title: "Are you sure, you want to remove this Ticket?",
-          text: "This action cannot be undone.",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, remove it!",
-          showClass: {
-            backdrop: "swal2-noanimation", // disable backdrop animation
-            popup: "", // disable popup animation
-            icon: "", // disable icon animation
-          },
-          hideClass: {
-            popup: "", // disable popup fade-out animation
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              url: "function_delete_ticket_incident.php",
-              data: {
-                ticket_id: ticket_id, 
-              },
-              type: "POST",
-              dataType: "json",
-              beforeSend: function () {
-                // toast("info", "Updating...");
-              },
-              success: function (result) {
-                Toast.fire({
-                  icon: 'success',
-                  title: 'SucesssFul Deleted.',
-                  url: 'ticket_myticket_table_container.php'
-                }); 
-                
-                $("#example1").DataTable().ajax.reload();
-              },
-              error: function () {
-                // toast("error", "Error has occurred. Try again.");
-              },
-            });
-          }
-        });
-
-
-        return false;
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    // dataTable = $("#example1").DataTable({
+    //   "columnDefs": [
+    //         {
+    //             "targets": [6],
+    //             "visible": false
+    //         }
+    //     ]
       
-      });
+    // });
+  
+  
+  
+  /*dataTable.columns().every( function () {
+        var that = this;
+ 
+        $('input', this.footer()).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that.search(this.value).draw();
+            }
+        });
+      });*/
+  
+  
+    $('.filter-checkbox').on('change', function(e){
+      var searchTerms = []
+      $.each($('.filter-checkbox'), function(i,elem){
+        if($(elem).prop('checked')){
+          searchTerms.push("^" + $(this).val() + "$")
+        }
+      })
+      dataTable.column(1).search(searchTerms.join('|'), true, false, true).draw();
     });
-    
-  } 
+  
+    $('.status-dropdown').on('change', function(e){
+      var status = $(this).val();
+      $('.status-dropdown').val(status)
+      console.log(status)
+      //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+      dataTable.column(6).search(status).draw();
+    })
+});
 </script>

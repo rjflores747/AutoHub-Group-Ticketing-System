@@ -248,13 +248,13 @@ $(function() {
         var ticket_id = $(this).attr('data-action-remove');
 
            Swal.fire({
-          title: "Are you sure, you want to remove this Ticket?",
+          title: "Are you sure you want to Submit a Ticket?",
           text: "This action cannot be undone.",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, remove it!",
+          confirmButtonText: "Yes",
           showClass: {
             backdrop: "swal2-noanimation", // disable backdrop animation
             popup: "", // disable popup animation

@@ -81,8 +81,14 @@ require_once '../connect.php';
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-    $("#example1").DataTable({
+    dataTable = $("#example1").DataTable({
       order: [[ 0, 'desc' ], [ 0, 'asc' ]],
+      "columnDefs": [
+            {
+                "targets": [6],
+                "visible": false
+            }
+        ], 
       pageLength: 5,
       fnDrawCallback: function () {
         // initActionRemove();
@@ -93,21 +99,7 @@ require_once '../connect.php';
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     })
-    .buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
-      fnDrawCallback: function () {
-        // initActionRemove();
-        // confirmDelete();
-      },
-      //  "order": [[0, 'desc']],
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+    
   });
 
 
@@ -121,34 +113,47 @@ require_once '../connect.php';
     
 }
 </script>
-<!-- <script type="text/javascript">
-
-$(document).ready(function(){
-  $(document).ready(function(){
-    $("#fetchval").on('change',function(){
-
-        var value = $(this).val();
-        // alert(value);
-
-        $.ajax({
-          url:"fetch.php",
-          type:"POST",
-          data: 'request=' + value,
-          beforeSend:function(){
-            $(".container").html("<span> Working... </span>");
-          },
-          success:function(data){
-            $(".container").html(data);
-          }
+<script type="text/javascript">
+$(document).ready(function() {
+    // dataTable = $("#example1").DataTable({
+    //   "columnDefs": [
+    //         {
+    //             "targets": [6],
+    //             "visible": false
+    //         }
+    //     ]
+      
+    // });
+  
+  
+  
+  /*dataTable.columns().every( function () {
+        var that = this;
+ 
+        $('input', this.footer()).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that.search(this.value).draw();
+            }
         });
-      });
-  });
-    // Redraw the table
-    // table.draw();
-    
-    // Redraw the table based on the custom input
-    $('#searchInput,#sortBy').bind("keyup change", function(){
-        table.draw();
+      });*/
+  
+  
+    $('.filter-checkbox').on('change', function(e){
+      var searchTerms = []
+      $.each($('.filter-checkbox'), function(i,elem){
+        if($(elem).prop('checked')){
+          searchTerms.push("^" + $(this).val() + "$")
+        }
+      })
+      dataTable.column(1).search(searchTerms.join('|'), true, false, true).draw();
     });
+  
+    $('.status-dropdown').on('change', function(e){
+      var status = $(this).val();
+      $('.status-dropdown').val(status)
+      console.log(status)
+      //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+      dataTable.column(6).search(status).draw();
+    })
 });
-</script> -->
+</script>

@@ -70,13 +70,34 @@ if (!isset($_SESSION["id"])) {
                 <li class="nav-item">
                 <a href="../admin/ticket_myticket_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
+                
                   <p>My active tickets</p>
+                  <?php
+                      $sql = "SELECT count(*) as total  FROM `ticket_incident`    where ticket_status = '3' AND  u_id ='" . $_SESSION['id'] . "' ";
+                      $result = mysqli_query($conn, $sql);
+                      $data = mysqli_fetch_assoc($result);
+                    ?>
+                    <span class="right badge badge-info">
+                    <?php echo $data['total'];?></span>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/ticket_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
                   <p> Department tickets </p>
+                  <?php
+                      $sql = "SELECT count(*) as total  FROM `ticket_incident`   where ticket_department_id ='".$_SESSION['ticket_user_department']."' ";
+                      $result = mysqli_query($conn, $sql);
+                      $data = mysqli_fetch_assoc($result);
+                    ?>
+                  <?php 
+                  
+                  ?>
+                  <span class="right badge badge-info">
+                  <?php echo $data['total'];?></span>
+                    
+                  </span>
+
                 </a>
               </li>
             
@@ -84,6 +105,18 @@ if (!isset($_SESSION["id"])) {
                 <a href="../admin/ticket_support_table_container.php" class="nav-link">
                 <i class='fas fa-ticket-alt'></i>
                   <p> Assigned Tickets</p>
+                  <?php
+                      $sql = "SELECT count(*) as total  FROM `ticket_incident`   where ticket_assign_to ='".$_SESSION['id']."'";
+                      $result = mysqli_query($conn, $sql);
+                      $data = mysqli_fetch_assoc($result);
+                    ?>
+                  <?php 
+                  
+                  ?>
+                  <span class="right badge badge-info">
+                  <?php echo $data['total'];?></span>
+                    
+                  </span>
                 </a>
               </li>
             </ul>
@@ -114,9 +147,9 @@ if (!isset($_SESSION["id"])) {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/ticket_status_add_container.php" class="nav-link ">
+                <a href="../admin/ticket_category_add_container.php" class="nav-link ">
                   <i class="fas fa-users-cog"></i>
-                  <p> Status masterfile</p>
+                  <p> Category masterfile</p>
                 </a>
               </li>
             </ul> 
