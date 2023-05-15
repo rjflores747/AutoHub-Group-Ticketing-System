@@ -79,7 +79,7 @@ if (!isset($_SESSION["id"])) {
           </div>
           <div class="col-7"> 
              <!-- <form method="post"> -->
-                <!-- <form action="" method="POST"> -->
+                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" required>
@@ -123,7 +123,7 @@ if (!isset($_SESSION["id"])) {
                     
                                 
                                         <!-- Autocomplete input field -->
-                    <input id="inputSla"  name="inputSla"  placeholder="" class="form-control" autocomplete="off" readonly required>
+                    <input id="inputSla"  name="inputSla"  placeholder="" class="form-control select2bs4" autocomplete="off" readonly required>
 
                     
                   </div>  
@@ -133,7 +133,7 @@ if (!isset($_SESSION["id"])) {
                     <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"required></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" id="btn"  class="btn btn-primary" name="submit" value="Send message">
+                    <input type="submit" id="button-send-message-detail" class="btn btn-primary" name="submit" value="Send message">
                   </div>
                 <!-- </form> -->
               
@@ -198,10 +198,12 @@ $(document).ready(function(){
     var variable_department = $('#inputeparment').val();
             var variable_subject = $('#inputSubject').val();
             var variable_message = $('#inputMessage').val();
-            var variable_sla = $('#inputMessage').val();
+            var variable_sla = $('#inputSla').val();
             
 
-$('#btn').on('click',function(){
+// $('#button-send-message-details').on('click',function(){
+  $('#button-send-message-detail').on('click', function(){ 
+   
     Swal.fire({
       title: "Your ticket has been submitted",
           text: "Please wait for your ticket to be assigned",
@@ -220,6 +222,7 @@ $('#btn').on('click',function(){
           },
         }).then((result) => {
           if (result.isConfirmed) {
+          
             $.ajax({
               url: "function_create_ticket_incident.php",
               data: {
@@ -227,6 +230,8 @@ $('#btn').on('click',function(){
                   var_subject: variable_subject, 
                   var_message: variable_message, 
                   var_sla: variable_sla, 
+                  type: 1 // login status
+
               },
               type: "POST",
               dataType: "json",
@@ -236,12 +241,14 @@ $('#btn').on('click',function(){
               success: function (result) {
                 Toast.fire({
                   icon: 'success',
-                  title: 'SucesssFul Deleted.'
+                  title: 'SucesssFul .'
                 }); 
                 
                 $("#example1").DataTable().ajax.reload();
               },
               error: function () {
+    //             alert('');
+    // return;
                 // toast("error", "Error has occurred. Try again.");
               },
             });

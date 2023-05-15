@@ -81,9 +81,10 @@
           <td>
 
 <a href="../admin/ticket_details_container.php?id=<?php echo $roledata['id']; ?>" class="m-1 btn btn-sm btn-warning btn-icon"><i class="fas fa-eye"></i></a>
+<a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id']; ?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
+
 <?php
 if ($_SESSION['ticket_user_role'] == '1' || $_SESSION['ticket_user_role'] == '2') { ?>
-  <a href="../admin/ticket_update_incident_container.php?id=<?php echo $roledata['id']; ?>" class="m-1 btn btn-sm btn-primary btn-icon"><i class="fas fa-pen"></i></a>
   <?php if ($roledata['ticket_status'] == '2') { ?>
 
     <button type="button" class="m-1 btn btn-sm btn-danger btn-icon" data-id="<?php echo $roledata['id'] ?>" onclick="confirmDelete(this);" disabled><i class="fa fa-trash"></i></button>

@@ -67,8 +67,8 @@ $row= mysqli_fetch_array($result);
                                     <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputcategory" placeholder="Category"> -->
                                         <div class="select2-purple">
-                                          <select class="form-control select2bs4" id="inputcategory" name="inputcategory" style="width: 100%;">
-                                            <option>----- Select Category -----</option>
+                                          <select class="form-control select2bs4" id="inputcategory" name="inputcategory" style="width: 100%;" required>
+                                            <option value="">----- Select Category -----</option>
                                               <?php 
                                               
                                                 $querycategory= "SELECT * FROM `ticket-category`
@@ -116,7 +116,7 @@ $row= mysqli_fetch_array($result);
                                       <div class="col-sm-10">
                                       <div class="select2-pur ple">
                                           <select class="form-control select2bs4" id="inputstate" name="inputstate" style="width: 100%;" required>
-                                            <option>----- Select CATEGORY -----</option>
+                                            <option value="">----- Select CATEGORY -----</option>
                                               <?php 
                                               
                                                 $querycategory= "SELECT * FROM `ticket_status`
@@ -161,8 +161,8 @@ $row= mysqli_fetch_array($result);
                                       <div class="col-sm-10">
                                         <!-- <input type="text" class="form-control" id="inputImpact" name="inputImpact"value="<?php echo $row['ticket_imapact']; ?>" placeholder="Impact"> -->
                                         <div class="select2-purple">
-                                          <select class="form-control select2bs4" id="inputImpact" name="inputImpact" style="width: 100%;">
-                                            <option >----- Select Level of Support -----</option>
+                                          <select class="form-control select2bs4" id="inputImpact" name="inputImpact" style="width: 100%;" required>
+                                            <option value="">----- Select Level of Support -----</option>
                                             <option value="1"                                           <?php 
                                                   if($row['ticket_imapact'] == "1")
                                                   {
@@ -185,6 +185,7 @@ $row= mysqli_fetch_array($result);
                                     </div>
                                   </div>
                                 </div>
+                                      <?php if ($_SESSION['ticket_user_role'] == '1' || $_SESSION['ticket_user_role'] == '2') { ?>
                                 
                                 <div class="row">
                                   <div class="col-sm-6">
@@ -192,7 +193,7 @@ $row= mysqli_fetch_array($result);
                                     <label for="variable_ticket_category" class="col-sm-2 col-form-label">Department</label>
                                     <div class="col-sm-10">
                                       <!-- <input type="text" class="form-control" id="inputcategory" value="<?php echo $row['ticket_position']; ?>" disabled placeholder="Category"> -->
-                                            <select class="form-control select2bs4" id="tkdepart" name="tkdepart" style="width: 100%;" >
+                                            <select class="form-control select2bs4" id="tkdepart" name="tkdepart" style="width: 100%;" required >
                                               <!-- <select class="form-control select2bs4" id="inputcategory" name="inputcategory" style="width: 100%;"> -->
                                                 <option>----- Select Department -----</option>
                                                   <?php 
@@ -239,6 +240,12 @@ $row= mysqli_fetch_array($result);
                                                     if($row['ticket_assign_to'] == $usersrow['id']){
                                                     ?>  
                                                     <option selected value="<?php echo $usersrow['id']; ?>"><?php echo $usersrow['ticket_fn'] ?> <?php echo $usersrow['ticket_ln'] ?> </option>
+                                                    <?php 
+
+                                                            // Insert visitor activity log into database 
+                                                            $notificationAlert = mysqli_query($conn,"UPDATE INTO `ticket_incident`(`id`, `active`) VALUES ('". $_POST['update_id'] . "','1'");
+
+                                                            ?> 
                                                     <?php
                                                     
                                                     }
@@ -256,6 +263,87 @@ $row= mysqli_fetch_array($result);
                                     </div>
                                   </div>
                                 </div>
+                                <?php } ?>
+                                <?php if ($_SESSION['ticket_user_role'] == '3' ){ ?>
+
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="form-group row">
+                                    <label for="variable_ticket_category" class="col-sm-2 col-form-label">Department</label>
+                                    <div class="col-sm-10">
+                                      <!-- <input type="text" class="form-control" id="inputcategory" value="<?php echo $row['ticket_position']; ?>" disabled placeholder="Category"> -->
+                                            <select class="form-control select2bs4" id="tkdepart" name="tkdepart" style="width: 100%;" required disabled >
+                                              <!-- <select class="form-control select2bs4" id="inputcategory" name="inputcategory" style="width: 100%;"> -->
+                                                <option >----- Select Department -----</option>
+                                                  <?php 
+                                                  
+                                                    $querydepartment = "SELECT * FROM ticket_deparment
+                                                    order by ticket_dept_name ASC";
+                                                    $resultdepartment= mysqli_query($conn,$querydepartment);
+                                                    
+                                                    while ($departmentrow= mysqli_fetch_array($resultdepartment)) { 
+                                                      if($row['ticket_department_id'] == $departmentrow['ticket_dept_source_id']){
+                                                      ?>  
+                                                      <option selected value="<?php echo $departmentrow['ticket_dept_source_id']; ?>"><?php echo $departmentrow['ticket_dept_name'] ?></option>
+                                                      <?php
+                                                      
+                                                      }
+                                                      else
+                                                      {
+                                                        ?>  
+                                                      <option  value="<?php echo $departmentrow['ticket_dept_source_id']; ?>"><?php echo $departmentrow['ticket_dept_name'] ?></option>
+                                                      <?php
+                                                      }?>
+                                                  
+                                                  <?php } ?>
+                                                </select>
+                                    </div>
+                                  </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group row">
+                                      <label for="inputImpact" class="col-sm-2 col-form-label">Assign to</label>
+                                      <div class="col-sm-10">
+                                        <!-- <input type="text" class="form-control" id="inputImpact" name="inputImpact"value="<?php echo $row['ticket_imapact']; ?>" placeholder="Please record the service you provided"> -->
+                                        <div class="select2-purple">
+                                        <select class="form-control select2bs4" id="deptgroup" name="deptgroup" style="width: 100%;" disabled>
+
+                                          <!-- <select class="select2" id="deptgroup" name="deptgroup" multiple="multiple" data-placeholder="Select a Assignment" data-dropdown-css-class="select2-purple" style="width: 100%;"> -->
+                                          <option value="" required >----- Select Assign to -----</option>
+                                                <?php 
+                                                  $queryusers= "SELECT * FROM `ticket_user`
+                                                  order by ticket_user_department ASC";
+                                                  $resultcategory1= mysqli_query($conn,$queryusers);
+                                                  
+                                                  while ($usersrow= mysqli_fetch_array($resultcategory1)) { 
+                                                    if($row['ticket_assign_to'] == $usersrow['id']){
+                                                    ?>  
+                                                    <option selected value="<?php echo $usersrow['id']; ?>"><?php echo $usersrow['ticket_fn'] ?> <?php echo $usersrow['ticket_ln'] ?> </option>
+                                                    <?php 
+
+                                                            // Insert visitor activity log into database 
+                                                            $notificationAlert = mysqli_query($conn,"UPDATE INTO `ticket_incident`(`id`, `active`) VALUES ('". $_POST['update_id'] . "','1'");
+
+                                                            ?> 
+                                                    <?php
+                                                    
+                                                    }
+                                                    else
+                                                    {
+                                                      ?>  
+                                                    <option  value="<?php echo $usersrow['id']; ?>"><?php echo $usersrow['ticket_fn'] ?> <?php echo $usersrow['ticket_ln'] ?> </option>
+                                                    <?php
+                                                    }?>
+                                                
+                                                <?php } ?>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <?php } ?>
+                                
                                 <div class="form-group row">
                                 
                                 <div class="row">
