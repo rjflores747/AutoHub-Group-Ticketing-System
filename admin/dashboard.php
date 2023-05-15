@@ -291,10 +291,11 @@
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              $host = 'ticketing-system.adrianpusana.com';
+              $db = 'syofdjax_ticketing';
+              $user = 'syofdjax_alberto_flores';
+              $password = 'v,O@0OngL;}g';
+       
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
@@ -415,10 +416,10 @@
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              $host = 'ticketing-system.adrianpusana.com';
+              $db = 'syofdjax_ticketing';
+              $user = 'syofdjax_alberto_flores';
+              $password = 'v,O@0OngL;}g';
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
@@ -537,10 +538,10 @@
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              $host = 'ticketing-system.adrianpusana.com';
+              $db = 'syofdjax_ticketing';
+              $user = 'syofdjax_alberto_flores';
+              $password = 'v,O@0OngL;}g';
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
