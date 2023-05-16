@@ -1,4 +1,4 @@
-  <?
+<?
   require_once '../connect.php';
 
   ?>
@@ -265,36 +265,40 @@
     <?php
             // Retrieve data from MySQL
             // $query = "SELECT ticket_status, COUNT(*) as Ticket FROM ticket_incident GROUP BY ticket_status";
-            $query = "SELECT
-            ti.ticket_imapact,
-            tlos.id,
-            tlos.ticket_los_name,
-            COUNT(*) AS Ticket
-        FROM
-            ticket_incident AS ti
-        LEFT JOIN ticket_level_of_support AS tlos
-        ON
-            ti.ticket_imapact = tlos.id
-        GROUP BY
-            ti.ticket_imapact;";
-            $result = mysqli_query($conn, $query);
+        //     $query = "SELECT
+        //     ti.ticket_imapact,
+        //     tlos.id,
+        //     tlos.ticket_los_name,
+        //     COUNT(*) AS Ticket
+        // FROM
+        //     ticket_incident AS ti
+        // LEFT JOIN ticket_level_of_support AS tlos
+        // ON
+        //     ti.ticket_imapact = tlos.id
+        // GROUP BY
+        //     ti.ticket_imapact;";
+        //     $result = mysqli_query($conn, $query);
 
-            // Format data for Chart.js
-            $data = array();
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = array(
-                    'label' => $row['ticket_los_name'],
-                    'data' => $row['Ticket']
-                );
-            }
+        //     // Format data for Chart.js
+        //     $data = array();
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $data[] = array(
+        //             'label' => $row['ticket_los_name'],
+        //             'data' => $row['Ticket']
+        //         );
+        //     }
             // Include Chart.js library
               // require_once('path/to/chart.min.js');
 
               // Retrieve data from the database
-              $host = 'localhost';
-              $db = 'autohub-ticketing';
-              $user = 'root';
-              $password = '';
+              // $host = 'localhost';
+              // $db = 'autohub-ticketing';
+              // $user = 'root';
+              // $password = '';
+              $host = "ticketing-system.adrianpusana.com";
+              $user = "syofdjax_alberto_flores";
+              $password = "v,O@0OngL;}g";
+              $db ="syofdjax_ticketing";
               // $servername = "localhost";
               // $username = "root";
               // // // $username = "autoph_helpdesk";
@@ -389,28 +393,28 @@
     <?php
             // Retrieve data from MySQL
             // $query = "SELECT ticket_status, COUNT(*) as Ticket FROM ticket_incident GROUP BY ticket_status";
-            $query = "SELECT
-            ti.ticket_imapact,
-            tlos.id,
-            tlos.ticket_los_name,
-            COUNT(*) AS Ticket
-        FROM
-            ticket_incident AS ti
-        LEFT JOIN ticket_level_of_support AS tlos
-        ON
-            ti.ticket_imapact = tlos.id
-        GROUP BY
-            ti.ticket_imapact;";
-            $result = mysqli_query($conn, $query);
+        //     $query = "SELECT
+        //     ti.ticket_imapact,
+        //     tlos.id,
+        //     tlos.ticket_los_name,
+        //     COUNT(*) AS Ticket
+        // FROM
+        //     ticket_incident AS ti
+        // LEFT JOIN ticket_level_of_support AS tlos
+        // ON
+        //     ti.ticket_imapact = tlos.id
+        // GROUP BY
+        //     ti.ticket_imapact;";
+        //     $result = mysqli_query($conn, $query);
 
-            // Format data for Chart.js
-            $data = array();
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = array(
-                    'label' => $row['ticket_los_name'],
-                    'data' => $row['Ticket']
-                );
-            }
+        //     // Format data for Chart.js
+        //     $data = array();
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $data[] = array(
+        //             'label' => $row['ticket_los_name'],
+        //             'data' => $row['Ticket']
+        //         );
+        //     }
             // Include Chart.js library
               // require_once('path/to/chart.min.js');
 
@@ -515,28 +519,28 @@
 <?php
             // Retrieve data from MySQL
             // $query = "SELECT ticket_status, COUNT(*) as Ticket FROM ticket_incident GROUP BY ticket_status";
-            $query = "SELECT
-            ti.ticket_imapact,
-            tlos.id,
-            tlos.ticket_los_name,
-            COUNT(*) AS Ticket
-        FROM
-            ticket_incident AS ti
-        LEFT JOIN ticket_level_of_support AS tlos
-        ON
-            ti.ticket_imapact = tlos.id
-        GROUP BY
-            ti.ticket_imapact;";
-            $result = mysqli_query($conn, $query);
+        //     $query = "SELECT
+        //     ti.ticket_imapact,
+        //     tlos.id,
+        //     tlos.ticket_los_name,
+        //     COUNT(*) AS Ticket
+        // FROM
+        //     ticket_incident AS ti
+        // LEFT JOIN ticket_level_of_support AS tlos
+        // ON
+        //     ti.ticket_imapact = tlos.id
+        // GROUP BY
+        //     ti.ticket_imapact;";
+        //     $result = mysqli_query($conn, $query);
 
-            // Format data for Chart.js
-            $data = array();
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = array(
-                    'label' => $row['ticket_los_name'],
-                    'data' => $row['Ticket']
-                );
-            }
+        //     // Format data for Chart.js
+        //     $data = array();
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $data[] = array(
+        //             'label' => $row['ticket_los_name'],
+        //             'data' => $row['Ticket']
+        //         );
+        //     }
             // Include Chart.js library
               // require_once('path/to/chart.min.js');
 
