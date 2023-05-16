@@ -6,6 +6,8 @@ if (!isset($_SESSION["id"])) {
   exit();
  
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ if (!isset($_SESSION["id"])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AutoHubGroup | TicketingSystem</title>
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <?php include '../link-required-start.php';?>
           <style>  
        
@@ -28,14 +30,22 @@ if (!isset($_SESSION["id"])) {
            .li-main{  
                 padding:12px;  
            }  
+         
+     
+
+           .inputSubject {
+       font-family: 'Times New Roman';
+       font-size: 12px;
+     }
+
            </style> 
 <body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="../img/autohub-logo.png" alt="AutohubLogo" height="60" width="60">
-  </div>
+  </div> -->
 <!-- navbar -->
 <?php include '../navbar/navbar.php';?>
 
@@ -69,7 +79,7 @@ if (!isset($_SESSION["id"])) {
           </div>
           <div class="col-7"> 
              <!-- <form method="post"> -->
-                <form action="../admin/function_create_ticket_incident.php" method="POST">
+                <!-- <form action="" method="POST"> -->
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" required>
@@ -123,9 +133,9 @@ if (!isset($_SESSION["id"])) {
                     <textarea id="inputMessage" class="form-control" name="inputMessage" rows="4"required></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" id="button-send-message-details"  class="btn btn-primary" name="submit" value="Send message">
+                    <input type="submit" id="btn"  class="btn btn-primary" name="submit" value="Send message">
                   </div>
-                </form>
+                <!-- </form> -->
               
             <!-- </form> -->
           </div>
@@ -155,12 +165,14 @@ if (!isset($_SESSION["id"])) {
 <?php include '../link-required-scripts-end.php';?>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <!-- jQuery UI library -->
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 </html>
+
 <script>
 $(document).ready(function(){
     $("#searchInput").autocomplete({
@@ -182,6 +194,66 @@ $(document).ready(function(){
 </script>
 
 <script>
+    //variable
+    var variable_department = $('#inputeparment').val();
+            var variable_subject = $('#inputSubject').val();
+            var variable_message = $('#inputMessage').val();
+            var variable_sla = $('#inputMessage').val();
+            
+
+$('#btn').on('click',function(){
+    Swal.fire({
+      title: "Your ticket has been submitted",
+          text: "Please wait for your ticket to be assigned",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, remove it!",
+          showClass: {
+            backdrop: "swal2-noanimation", // disable backdrop animation
+            popup: "", // disable popup animation
+            icon: "", // disable icon animation
+          },
+          hideClass: {
+            popup: "", // disable popup fade-out animation
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: "function_create_ticket_incident.php",
+              data: {
+                var_department: variable_department, 
+                  var_subject: variable_subject, 
+                  var_message: variable_message, 
+                  var_sla: variable_sla, 
+              },
+              type: "POST",
+              dataType: "json",
+              beforeSend: function () {
+                // toast("info", "Updating...");
+              },
+              success: function (result) {
+                Toast.fire({
+                  icon: 'success',
+                  title: 'SucesssFul Deleted.'
+                }); 
+                
+                $("#example1").DataTable().ajax.reload();
+              },
+              error: function () {
+                // toast("error", "Error has occurred. Try again.");
+              },
+            });
+          }
+    })
+  
+  })
+   
+  
+  </script>
+
+<script>
           var Toast = null;
             // global variable
           $(function() {
@@ -192,12 +264,7 @@ $(document).ready(function(){
               timer: 3000
             });
                //Initialize Select2 Elements
-             $('.select2').select2()
-
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-              theme: 'bootstrap4'
-            })
+           
             $('#button-send-message-details').on('click', function(){ 
          
             //variable
@@ -253,8 +320,16 @@ $(document).ready(function(){
             // alert(result.status);
                   if(result.status == 1){ // success
                      
-                      toastr.success();
-                      toastr.error("Add successfully", "Complete data");
+                      // toastr.success();
+                      // toastr.error("Add successfully", "Complete data");
+                    
+                        swal({
+                            title: "Your ticket has been submitted",
+                            text: "Please wait for your ticket to be assigned",
+                            icon: "success",
+                            button: "OK"
+                        });
+          
                       
                       window.location.href='ticket_details_container.php?id='+result.id;
                       // $('#modal-finance-add-fni').modal('hide');

@@ -103,10 +103,39 @@ else
                   $id = str_pad($idd + 1, 7, 0, STR_PAD_LEFT);
                   $number = 'ATK-'.$id;
               }
+              
+
+
   
+  
+            
+                // Perform form processing and validation
+                
+                // If the form is valid and data is successfully saved
+                
+                // Trigger SweetAlert popup with custom options
+             
+                echo '<script>
+                      Swal.fire({
+                        title: "Your ticket has been submitted",
+                        text: "Please wait for your ticket to be assigned",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                      });
+                    </script>';
+                
+                  
+            
+              
+
           }
           else
           {
+            
+            // Trigger SweetAlert error popup
+                    echo '<script>
+                        swal("Error", "Failed to save data!", "error");
+                    </script>';
               echo "Record Faileddd";
           }
 
