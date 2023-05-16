@@ -193,7 +193,7 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
+<!-- <script>
     //variable
     var variable_department = $('#inputeparment').val();
             var variable_subject = $('#inputSubject').val();
@@ -202,7 +202,7 @@ $(document).ready(function(){
             
 
 // $('#button-send-message-details').on('click',function(){
-  $('#').on('click', function(){ 
+  $('#button-send-message-detail').on('click', function(){ 
    
     Swal.fire({
       title: "Your ticket has been submitted",
@@ -258,7 +258,7 @@ $(document).ready(function(){
   })
    
   
-  </script>
+  </script> -->
 
 <script>
           var Toast = null;
