@@ -115,14 +115,14 @@ else
                 
                 // Trigger SweetAlert popup with custom options
              
-                echo '<script>
-                      Swal.fire({
-                        title: "Your ticket has been submitted",
-                        text: "Please wait for your ticket to be assigned",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                      });
-                    </script>';
+                // echo '<script>
+                //       Swal.fire({
+                //         title: "Your ticket has been submitted",
+                //         text: "Please wait for your ticket to be assigned",
+                //         icon: "success",
+                //         confirmButtonText: "OK"
+                //       });
+                //     </script>';
                 
                   
             
@@ -133,9 +133,9 @@ else
           {
             
             // Trigger SweetAlert error popup
-                    echo '<script>
-                        swal("Error", "Failed to save data!", "error");
-                    </script>';
+                    // echo '<script>
+                    //     swal("Error", "Failed to save data!", "error");
+                    // </script>';
               echo "Record Faileddd";
           }
 
