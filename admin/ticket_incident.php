@@ -79,7 +79,7 @@ if (!isset($_SESSION["id"])) {
           </div>
           <div class="col-7"> 
              <!-- <form method="post"> -->
-                <!-- <form action="../admin/function_create_ticket_incident.php" method="POST"> -->
+                <form action="../admin/function_create_ticket_incident.php" method="POST">
                   <div class="form-group">
                     <label for="inputeparment">Department</label>
                     <select class="form-control select2bs4"  name="inputeparment" id="inputeparment" style="width: 100%;" required>
@@ -135,7 +135,7 @@ if (!isset($_SESSION["id"])) {
                   <div class="form-group">
                     <input type="submit" id="button-send-message-detail" class="btn btn-primary" name="submit" value="Send message">
                   </div>
-                <!-- </form> -->
+                </form>
               
             <!-- </form> -->
           </div>
@@ -202,7 +202,7 @@ $(document).ready(function(){
             
 
 // $('#button-send-message-details').on('click',function(){
-  $('#button-send-message-detail').on('click', function(){ 
+  $('#').on('click', function(){ 
    
     Swal.fire({
       title: "Your ticket has been submitted",
