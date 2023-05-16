@@ -113,7 +113,7 @@ if (!isset($_SESSION["id"])) {
                     
                                 
                                         <!-- Autocomplete input field -->
-                    <input id="inputSla"  name="inputSla"  placeholder="Enter input Sla..." class="form-control" autocomplete="off" required>
+                    <input id="inputSla"  name="inputSla"  placeholder="Enter input Sla..." class="form-control" autocomplete="off" required readonly>
 
                     
                   </div>  

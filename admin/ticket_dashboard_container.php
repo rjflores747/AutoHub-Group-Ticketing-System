@@ -80,6 +80,7 @@ require_once '../connect.php';
     });
   });
 </script>
+<!-- 
 <script type="text/javascript">
   var ctx = document.getElementById("chartjs_bar").getContext('2d');
   var myChart = new Chart(ctx, {
@@ -109,4 +110,4 @@ require_once '../connect.php';
       },
     }
   });
-</script>
+</script> -->
