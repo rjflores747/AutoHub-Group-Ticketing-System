@@ -320,15 +320,15 @@ $('#btn').on('click',function(){
             // alert(result.status);
                   if(result.status == 1){ // success
                      
-                      // toastr.success();
-                      // toastr.error("Add successfully", "Complete data");
+                      toastr.success();
+                      toastr.error("Add successfully", "Complete data");
                     
-                        swal({
-                            title: "Your ticket has been submitted",
-                            text: "Please wait for your ticket to be assigned",
-                            icon: "success",
-                            button: "OK"
-                        });
+                        // swal({
+                        //     title: "Your ticket has been submitted",
+                        //     text: "Please wait for your ticket to be assigned",
+                        //     icon: "success",
+                        //     button: "OK"
+                        // });
           
                       
                       window.location.href='ticket_details_container.php?id='+result.id;
