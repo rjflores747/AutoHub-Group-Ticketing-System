@@ -26,9 +26,8 @@ else
       $sortdiscription = $_POST['inputSubject'];
       $inputSla = $_POST['inputSla'];
       $message = addslashes($_POST['inputMessage']);  
-      $fn = $_SESSION['ticket_fn'] . ' ' . $_SESSION['ticket_ln'];
+      $fn = $_SESSION['ticket_fn']. $_SESSION['ticket_ln']; 
       $employee_id = $_SESSION['id'];
-      $position = $_SESSION['ticket_position'];
   
       if(!$conn)
       {
@@ -41,7 +40,6 @@ else
           `ticket_number`, 
           `u_id`, 
           `ticket_caller`, 
-          `ticket_position`, 
           `ticket_category`, 
           `ticket_subcategory`, 
           `ticket_service`, 
@@ -64,7 +62,6 @@ else
           '".$number."',
           '".$employee_id."',
           '".$fn."',
-          '".$position."',
           '',
           '',
           '',
