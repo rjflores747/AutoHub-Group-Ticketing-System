@@ -14,7 +14,7 @@ mysqli_query($conn,"UPDATE ticket_incident set
  ticket_category='" . $_POST['inputcategory'] . "' ,
  ticket_short_discrip='" . $_POST['inputSubject'] . "', 
  ticket_discription='" . $_POST['inputMessage'] . "', 
- ticket_contact_type='" . $_POST['contacttype'] . "' ,
+ ticket_service='" . $_POST['inputService'] . "' ,
  ticket_status='" . $_POST['inputstate'] . "', 
  ticket_imapact='" . $_POST['inputImpact'] . "', 
  ticket_assign_group='', 
@@ -48,7 +48,7 @@ $row= mysqli_fetch_array($result);
 <div style="padding-bottom:5px;">
 <!-- <a href="retrieve.php">Employee List</a> -->
   <div class="modal-body">
-    <h4>Assigned ticket </h4>
+    <h4>My Active tickets</h4>
     <hr>
                                 <!-- text input ticket no & contacttype -->
                                 <input type="hidden" name="update_id"  value="<?php echo $row['id']; ?>" id="update_id">
@@ -371,7 +371,7 @@ $row= mysqli_fetch_array($result);
                                   <!-- <div class="col-sm-12"> -->
                                     <div class="form-group">
                                       <label for="variable_ticket_contact_type" class="col-sm-2 col-form-label">Service</label>
-                                      <input type="text" style="background: transparent;" id="contacttype" name="contacttype" value="<?php echo $row['ticket_config_item']; ?>" class="form-control" placeholder="Please record the service you provided"/>
+                                      <input type="text" style="background: transparent;" id="inputService" name="inputService" value="<?php echo $row['ticket_service']; ?>" class="form-control" placeholder="Please record the service you provided"/>
                                   
                                     </div>
                                   
