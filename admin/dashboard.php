@@ -160,17 +160,17 @@
      
         
           <!-- <div class="row"> -->
-            <div class="col-md-12 offset-md">
-              <div class="card">
-                <div class="car-header bg">
+           
+              <!-- <div class="card"> -->
+                <!-- <div class="car-header bg"> -->
                   <h1><center>Ticket Incident</center>
 </h1>
-                </div>
-                <div class="card-body">
+                <!-- </div> -->
+                <!-- <div class="card-body"> -->
                 <canvas id="myChart"></canvas>  
 
-                </div>
-              </div>
+                <!-- </div> -->
+              <!-- </div> -->
               <div class="card">
                 <div class="car-header bg">
                   <h1><center>Department</center></h1>
@@ -180,7 +180,7 @@
 
                 </div>
               </div>
-            </div>
+            
             <div class="col-md-6 offset-md">
               <div class="card">
                 <div class="car-header bg"><br>
@@ -250,7 +250,7 @@
                       echo '                data: data.map(d => d.data),';
                       echo '                backgroundColor: "rgb(57, 129, 35) ",';
                       echo '                borderColor: "rgba(0,0,0,0.2)",';
-                      echo '                borderWidth: 3';
+                      echo '                borderWidth: 1';
                       echo '            }]';
                       echo '        },';
                    
