@@ -48,7 +48,7 @@ $row= mysqli_fetch_array($result);
 <div style="padding-bottom:5px;">
 <!-- <a href="retrieve.php">Employee List</a> -->
   <div class="modal-body">
-    <h4>My Active tickets</h4>
+    <h4>Assigned ticket </h4>
     <hr>
                                 <!-- text input ticket no & contacttype -->
                                 <input type="hidden" name="update_id"  value="<?php echo $row['id']; ?>" id="update_id">
